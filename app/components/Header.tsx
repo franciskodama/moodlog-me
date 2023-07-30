@@ -13,31 +13,32 @@ export const Header = () => {
             moodlog.me
           </h1>
         </Link>
-
-        {user && !user.userId && (
-          <div className='flex items-center text-white font-medium'>
-            <Link href='sign-in'>
-              <h2 className='hover:text-green-500 px-4'>sign in</h2>
-            </Link>
-            <Link href='sign-up'>
-              <h2 className='hover:text-green-500 px-4'>sign up</h2>
-            </Link>
-          </div>
-        )}
-        <UserButton
-          userProfileMode='navigation'
-          userProfileUrl={
-            typeof window !== 'undefined'
-              ? `${window.location.origin}/profile`
-              : undefined
-          }
-          afterSignOutUrl='/'
-          appearance={{
-            elements: {
-              userButtonPopoverFooter: 'hidden',
-            },
-          }}
-        />
+        <div>
+          {user && !user.userId && (
+            <div className='flex items-center text-white font-medium'>
+              <Link href='sign-in'>
+                <h2 className='hover:text-green-500 px-4'>sign in</h2>
+              </Link>
+              <Link href='sign-up'>
+                <h2 className='hover:text-green-500 px-4'>sign up</h2>
+              </Link>
+            </div>
+          )}
+          <UserButton
+            userProfileMode='navigation'
+            userProfileUrl={
+              typeof window !== 'undefined'
+                ? `${window.location.origin}/profile`
+                : undefined
+            }
+            afterSignOutUrl='/'
+            appearance={{
+              elements: {
+                userButtonPopoverFooter: 'hidden',
+              },
+            }}
+          />
+        </div>
       </div>
     </>
   );

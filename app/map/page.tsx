@@ -1,7 +1,9 @@
 const MapPage = () => {
   return (
     <>
-      <div className='container'>🙄🙄🙄🙄🙄🙄🙄🙄🙄</div>
+      <div className='container border-2 border-green-600 w-full'>
+        🙄🙄🙄🙄🙄🙄🙄🙄🙄
+      </div>
     </>
   );
 };
