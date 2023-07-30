@@ -7,20 +7,20 @@ export const Header = () => {
 
   return (
     <>
-      <div className='nav bg-neutral-400 py-4 px-10 flex justify-between items-center'>
+      <div className='nav bg-primary py-4 px-10 flex justify-between items-center'>
         <Link href='./'>
           <h1 className='text-lg text-white font-medium hover:text-green-500'>
-            MoodLog.me
+            moodlog.me
           </h1>
         </Link>
 
         {user && !user.userId && (
           <div className='flex items-center text-white font-medium'>
             <Link href='sign-in'>
-              <h2 className='hover:text-green-500 px-4'>Sign In</h2>
+              <h2 className='hover:text-green-500 px-4'>sign in</h2>
             </Link>
             <Link href='sign-up'>
-              <h2 className='hover:text-green-500 px-4'>Sign Up</h2>
+              <h2 className='hover:text-green-500 px-4'>sign up</h2>
             </Link>
           </div>
         )}

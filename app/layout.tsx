@@ -3,10 +3,12 @@ import type { Metadata } from 'next';
 
 import { ClerkProvider } from '@clerk/nextjs';
 
-import { Inter } from 'next/font/google';
+import { Comfortaa } from 'next/font/google';
 import { Header } from './components/Header';
 
-const inter = Inter({ subsets: ['latin'] });
+const comfortaa = Comfortaa({
+  subsets: ['latin'],
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -19,9 +21,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang='en'>
-        <body className={inter.className}>
+    <ClerkProvider
+      appearance={{
+        layout: {
+          helpPageUrl: 'https://www.shopthelnk.com/ca/c',
+          logoImageUrl: '/android-chrome-72x72.png',
+          logoPlacement: 'inside',
+          privacyPageUrl: 'https://www.shopthelnk.com/privacy-policy.html',
+          showOptionalFields: true,
+          socialButtonsPlacement: 'bottom',
+          socialButtonsVariant: 'iconButton',
+          termsPageUrl: 'https://www.shopthelnk.com/terms-conditions.html',
+        },
+        variables: {
+          // fontFamily: 'Roboto',
+          borderRadius: '0rem',
+        },
+      }}
+    >
+      <html lang='en' className='bg-primary'>
+        <body className={comfortaa.className}>
           <Header />
           <main className='container'>
             <div className='flex items-start justify-center min-h-screen'>
