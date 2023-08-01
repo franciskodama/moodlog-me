@@ -67,8 +67,8 @@ const Home = () => {
 
             <li className='py-4'>
               <span className='uppercase text-lg'>Positive Habits:</span> <br />
-              Establish healthy habits and reinforce positive emotions through
-              the app's motivational features and goal-setting capabilities.
+              {`Establish healthy habits and reinforce positive emotions through
+              the app's motivational features and goal-setting capabilities.`}
             </li>
 
             <li className='py-4'>

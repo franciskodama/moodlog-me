@@ -8,7 +8,7 @@ export const Header = () => {
   return (
     <>
       <div className='nav bg-primary py-4 px-10 flex justify-between items-center'>
-        <Link href='./'>
+        <Link href={user ? '/map' : '/'}>
           <h1 className='text-lg text-white font-medium hover:text-green-500'>
             moodlog.me
           </h1>
