@@ -42,10 +42,8 @@ export default function RootLayout({
       <html lang='en' className='bg-primary'>
         <body className={comfortaa.className}>
           <Header />
-          <main className='container'>
-            <div className='flex items-start justify-center min-h-screen'>
-              <div className='mt-20'>{children}</div>
-            </div>
+          <main className='p-10'>
+            <div>{children}</div>
           </main>
         </body>
       </html>
