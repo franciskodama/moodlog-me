@@ -1,8 +1,9 @@
 import { auth, UserButton } from '@clerk/nextjs';
 
 import Link from 'next/link';
+import Flag from './Flag';
 
-export const Header = () => {
+export const Header = ({ locale }: { locale: string }) => {
   const user = auth();
 
   return (
@@ -13,7 +14,7 @@ export const Header = () => {
             moodlog.me
           </h1>
         </Link>
-        <div>
+        <div className='flex items-center gap-3'>
           {user && !user.userId && (
             <div className='flex items-center text-white font-medium'>
               <Link href='sign-in'>
@@ -38,6 +39,7 @@ export const Header = () => {
               },
             }}
           />
+          <Flag countryCode={locale} />
         </div>
       </div>
     </>

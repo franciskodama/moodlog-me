@@ -5,20 +5,20 @@
 //     headers: { Authorization: `Bearer ${process.env.REDIS_REST_TOKEN}` },
 //   }).then((response) => response.json());
 
-export const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
+// export const months = [
+//   'January',
+//   'February',
+//   'March',
+//   'April',
+//   'May',
+//   'June',
+//   'July',
+//   'August',
+//   'September',
+//   'October',
+//   'November',
+//   'December',
+// ];
 
 export const year2023 = [
   { name: 'January', days: 31, firstDayOfWeek: 'Sunday' },
