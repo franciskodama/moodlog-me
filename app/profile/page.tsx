@@ -1,6 +1,6 @@
 import { UserProfile } from '@clerk/clerk-react';
 
-const ProfilePage = () => {
+export default async function ProfilePage() {
   return (
     <div className='relative'>
       <UserProfile
@@ -18,5 +18,4 @@ const ProfilePage = () => {
       <div className='absolute top-0 left-0 w-7 h-[15em] bg-primary' />
     </div>
   );
-};
-export default ProfilePage;
+}

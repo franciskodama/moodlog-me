@@ -1,8 +1,9 @@
 import { auth, UserButton } from '@clerk/nextjs';
 
 import Link from 'next/link';
+import Flag from './Flag';
 
-export const Header = () => {
+export const Header = ({ locale }: { locale: string }) => {
   const user = auth();
 
   return (
@@ -38,6 +39,7 @@ export const Header = () => {
               },
             }}
           />
+          <Flag countryCode={locale} />
         </div>
       </div>
     </>
