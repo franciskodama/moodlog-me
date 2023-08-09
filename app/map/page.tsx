@@ -1,10 +1,9 @@
 import { year2023 } from '../lib/calendar';
 import { getHolidays } from '../lib/holidays';
 
-const MapPage = async ({ locale }: { locale: string }) => {
+const MapPage = async () => {
   const holidays = await getHolidays();
   console.log('---  🚀 ---> | holidays:', holidays.response.holidays);
-  console.log('---  🚀 ---> | locale:', locale);
 
   return (
     <>
