@@ -1,4 +1,4 @@
-import { Loading } from '@/app/components/Loading';
+import { Loading } from '@/ui/Loading';
 import { cn } from '@/app/lib/cn';
 import { CheckIcon } from 'lucide-react';
 
