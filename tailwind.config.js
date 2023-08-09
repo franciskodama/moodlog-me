@@ -11,6 +11,9 @@ module.exports = {
         'primary': '#fcd34d',
         'secondary': '#262626',
       },
+      fontFamily: {
+        // sans: ["var(--font-jost)", ...defaultTheme.fontFamily.sans],
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
