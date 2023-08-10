@@ -1,3 +1,4 @@
+import { year2023 } from '../lib/calendar';
 import { getHolidays } from '../lib/holidays';
 
 const MapPage = async () => {
@@ -32,3 +33,18 @@ const MapPage = async () => {
   );
 };
 export default MapPage;
+
+// export const year2023 = [
+//   { name: 'January', days: 31, firstDayOfWeek: 'Sunday' },
+//   { name: 'February', days: 28, firstDayOfWeek: 'Wednesday' },
+//   { name: 'March', days: 31, firstDayOfWeek: 'Wednesday' },
+//   { name: 'April', days: 30, firstDayOfWeek: 'Saturday' },
+//   { name: 'May', days: 31, firstDayOfWeek: 'Monday' },
+//   { name: 'June', days: 30, firstDayOfWeek: 'Friday' },
+//   { name: 'July', days: 31, firstDayOfWeek: 'Sunday' },
+//   { name: 'August', days: 31, firstDayOfWeek: 'Wednesday' },
+//   { name: 'September', days: 30, firstDayOfWeek: 'Saturday' },
+//   { name: 'October', days: 31, firstDayOfWeek: 'Monday' },
+//   { name: 'November', days: 30, firstDayOfWeek: 'Thursday' },
+//   { name: 'December', days: 31, firstDayOfWeek: 'Saturday' },
+// ];
