@@ -8,9 +8,9 @@ export const Header = ({ locale }: { locale: string }) => {
 
   return (
     <>
-      <div className='nav bg-primary py-4 px-10 flex justify-between items-center'>
+      <div className='nav bg-primary pb-6 px-10 flex justify-between items-center'>
         <Link href={user ? '/map' : '/'}>
-          <h1 className='text-lg text-white font-medium hover:text-green-500'>
+          <h1 className='text-2xl text-secondary font-bold hover:text-green-500'>
             moodlog.me
           </h1>
         </Link>

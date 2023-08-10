@@ -49,8 +49,8 @@ export default function RootLayout({
     >
       <html lang='en' className='bg-primary'>
         <body className={comfortaa.className}>
-          <Header locale={locale} />
-          <main className='p-10'>
+          <main className='pt-8 pb-8 px-10'>
+            <Header locale={locale} />
             <div>{children}</div>
           </main>
         </body>
