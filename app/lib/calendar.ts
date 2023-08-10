@@ -20,14 +20,6 @@ export const year2023 = [
   { monthName: 'December', days: 31, firstDayOfWeek: 'Saturday' },
 ];
 
-// type DayObject = {
-//   id: number;
-//   weekDay: string;
-//   month: string;
-//   weekend: boolean;
-//   holiday: object;
-// };
-
 // export const setCache = async (key: string, value: string) =>
 //   fetch(`${process.env.REDIS_REST_URL}/set/${key}`, {
 //     method: "POST",

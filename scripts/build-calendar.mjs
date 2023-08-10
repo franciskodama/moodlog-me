@@ -41,7 +41,7 @@ const buildCalendar = () => {
 
 const yearCalendar = buildCalendar();
 const jsonData = JSON.stringify(yearCalendar, null, 2); 
-fs.writeFile('./scripts/calendar.json', jsonData, err => {
+fs.writeFile('./lib/calendar.json', jsonData, err => {
   if (err) {
     console.error('Error writing JSON file:', err);
   } else {
