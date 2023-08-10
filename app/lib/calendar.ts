@@ -5,6 +5,15 @@ export const getHolidays = async () => {
   return calendar;
 };
 
+export type DayObject = {
+  id: number;
+  monthDay: number;
+  weekDay: string;
+  month: string;
+  weekend: boolean;
+  holiday?: object;
+};
+
 export const year2023 = [
   { monthName: 'January', days: 31, firstDayOfWeek: 'Sunday' },
   { monthName: 'February', days: 28, firstDayOfWeek: 'Wednesday' },
