@@ -1,12 +1,14 @@
 import { DayObject } from '../lib/calendar';
 import {
-  CircleDashed,
-  Meh,
+  CircleDashedIcon,
+  MehIcon,
   Smile,
-  Laugh,
-  Annoyed,
-  Frown,
-  Angry,
+  LaughIcon,
+  AnnoyedIcon,
+  FrownIcon,
+  AngryIcon,
+  BedDoubleIcon,
+  DumbbellIcon,
 } from 'lucide-react';
 
 const Cell = ({ day }: { day: DayObject }) => {
@@ -17,7 +19,7 @@ const Cell = ({ day }: { day: DayObject }) => {
         day.weekend && 'bg-yellow-500'
       }`}
     >
-      <CircleDashed className='h-8 w-8' strokeWidth='1.4px' />
+      <CircleDashedIcon className='h-8 w-8' strokeWidth='1.4px' />
 
       <p className='text-secondary font-bold text-[10px]'>{day.month}</p>
       <p className='text-secondary font-bold text-xs'>{day.monthDay}</p>
@@ -25,24 +27,3 @@ const Cell = ({ day }: { day: DayObject }) => {
   );
 };
 export default Cell;
-
-{
-  /* <p className='text-white font-normal text-xs'>{day.weekDay}</p> */
-}
-
-{
-  /* <div className='text-3xl'>🤪</div> */
-}
-{
-  /* <Annoyed  className='h-8 w-8' strokeWidth='1.4px'  />
-        <Angry  className='h-8 w-8' strokeWidth='1.4px' />
-        <Frown  className='h-8 w-8' strokeWidth='1.4px'  />
-        <Annoyed  className='h-8 w-8' strokeWidth='1.4px'  />
-        <Laugh  className='h-8 w-8' strokeWidth='1.4px' /> */
-}
-{
-  /* <Meh  className='h-8 w-8' strokeWidth='1.4px'  /> */
-}
-{
-  /* <Smile className='h-8 w-8' strokeWidth='1.4px' /> */
-}
