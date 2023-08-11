@@ -2,20 +2,35 @@ import Cell from '../components/Cell';
 import calendarData from '../lib/calendar.json';
 import { DayObject } from '../lib/calendar';
 import { getHolidays } from '../lib/holidays';
-
+import { currentUser } from '@clerk/nextjs';
+import { getDay } from '../lib/day';
+import Link from 'next/link';
 // https://yarnpkg.com/package/classnames
 
 const MapPage = async () => {
-  // const holidays = await getHolidays();
-  // console.log('---  🚀 ---> | holidays:', holidays.response.holidays);
-  // console.log('---  🚀 ---> | calendarData:', calendarData);
+  const user = await currentUser();
+
+  let day;
+  if (user) {
+    day = await getDay(user?.id);
+  }
+
+  console.log('---  🚀 ---> | day:', day);
 
   return (
     <div className='flex flex-wrap items-center justify-center gap-2'>
       {calendarData.map((day: DayObject) => (
-        <Cell key={day.id} day={day} />
+        <div key={day.id}>
+          <Link href={`/map/${day.id}`}>
+            <Cell day={day} />
+          </Link>
+        </div>
       ))}
     </div>
   );
 };
 export default MapPage;
+
+// const holidays = await getHolidays();
+// console.log('---  🚀 ---> | holidays:', holidays.response.holidays);
+// console.log('---  🚀 ---> | calendarData:', calendarData);

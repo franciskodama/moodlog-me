@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { ClerkProvider } from '@clerk/nextjs';
+import { currentUser, ClerkProvider } from '@clerk/nextjs';
 import { Comfortaa } from 'next/font/google';
 
 import { Header } from './components/Header';
@@ -26,11 +26,14 @@ const locale: string = 'ca';
 // Custom Hook for context locale
 // https://www.youtube.com/watch?v=I7dwJxGuGYQ&list=WL&index=118&t=93s
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // const user = await currentUser();
+  // console.log('---  🚀 ---> | user:', user);
+
   return (
     <ClerkProvider
       appearance={{
