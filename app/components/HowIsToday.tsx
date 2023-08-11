@@ -1,18 +1,98 @@
+import {
+  MehIcon,
+  SmileIcon,
+  LaughIcon,
+  FrownIcon,
+  AngryIcon,
+  BedDoubleIcon,
+  DumbbellIcon,
+  AppleIcon,
+  GlassWaterIcon,
+  ListChecksIcon,
+} from 'lucide-react';
+
 export const HowIsToday = () => {
   return (
-    <div className='flex px-2 mb-6 gap-4'>
-      <form action='' className='w-1/2'>
+    <div className='flex w-full'>
+      <form action='' className='flex flex-col w-1/2 px-2 mb-6 gap-4'>
         <input
           className='w-full h-10 rounded pl-4'
           placeholder={questions[Math.floor(Math.random() * 10)]}
         />
+
+        <div className='flex items-center gap-4'>
+          {/* <h3 className='text-sm'>mood:</h3> */}
+          <AngryIcon className='h-8 w-8' strokeWidth='1.4px' />
+          <FrownIcon className='h-8 w-8' strokeWidth='1.4px' />
+          <MehIcon className='h-8 w-8' strokeWidth='1.4px' />
+          <SmileIcon className='h-8 w-8' strokeWidth='1.4px' />
+          <LaughIcon className='h-8 w-8' strokeWidth='1.4px' />
+        </div>
+
+        <div className='flex items-center gap-4'>
+          {/* <h3 className='text-sm'>sleep:</h3> */}
+          <BedDoubleIcon className='h-8 w-8' strokeWidth='1.4px' />
+          <input
+            type='checkbox'
+            className='w-full h-10 rounded pl-4'
+            placeholder='How many hours of sleep?'
+          />
+          {/* <input
+            className='w-full h-10 rounded pl-4'
+            placeholder='How many hours of sleep?'
+          /> */}
+        </div>
+
+        <div className='flex items-center gap-4'>
+          {/* <h3 className='text-sm'>workout:</h3> */}
+          <DumbbellIcon className='h-8 w-8' strokeWidth='1.4px' />
+          <input
+            type='checkbox'
+            className='w-full h-10 rounded pl-4'
+            placeholder='How many hours of sleep?'
+          />
+        </div>
+
+        <div className='flex items-center gap-4'>
+          {/* <h3 className='text-sm'>workout:</h3> */}
+          <AppleIcon className='h-8 w-8' strokeWidth='1.4px' />
+          <input
+            type='checkbox'
+            className='w-full h-10 rounded pl-4'
+            placeholder='How many hours of sleep?'
+          />
+        </div>
+
+        <div className='flex items-center gap-4'>
+          {/* <h3 className='text-sm'>workout:</h3> */}
+          <GlassWaterIcon className='h-8 w-8' strokeWidth='1.4px' />
+          <input
+            type='checkbox'
+            className='w-full h-10 rounded pl-4'
+            placeholder='How many hours of sleep?'
+          />
+        </div>
+
+        <div className='flex items-center gap-4'>
+          {/* <h3 className='text-sm'>workout:</h3> */}
+          <ListChecksIcon className='h-8 w-8' strokeWidth='1.4px' />
+          <input
+            type='checkbox'
+            className='w-full h-10 rounded pl-4'
+            placeholder='How many hours of sleep?'
+          />
+        </div>
+
+        <div className='flex items-center h-10 border-2 border-secondary rounded'>
+          <div className='pl-4'>0%</div>
+        </div>
       </form>
-      <div className='flex items-center w-1/2 h-10 border-2 border-secondary rounded'>
-        <div className='pl-4'>0%</div>
-      </div>
     </div>
   );
 };
+
+// Loiro server actions: https://www.youtube.com/watch?v=RadgkoJrhu0&list=WL&index=120
+// To do app: https://www.youtube.com/watch?v=8e35eo447Zw
 
 const questions = [
   'How are you doing today?',
