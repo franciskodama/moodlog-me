@@ -5,6 +5,7 @@ import { Comfortaa } from 'next/font/google';
 
 import { Header } from './components/Header';
 import './globals.css';
+import { HowIsToday } from './components/HowIsToday';
 
 const comfortaa = Comfortaa({
   subsets: ['latin'],
@@ -22,6 +23,8 @@ export const metadata: Metadata = {
 };
 
 const locale: string = 'ca';
+// Custom Hook for context locale
+// https://www.youtube.com/watch?v=I7dwJxGuGYQ&list=WL&index=118&t=93s
 
 export default function RootLayout({
   children,
@@ -51,6 +54,7 @@ export default function RootLayout({
         <body className={comfortaa.className}>
           <main className='pt-8 pb-8 px-10'>
             <Header locale={locale} />
+            <HowIsToday />
             <div>{children}</div>
           </main>
         </body>
