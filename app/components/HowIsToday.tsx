@@ -10,101 +10,97 @@ import {
   GlassWaterIcon,
   ListChecksIcon,
 } from 'lucide-react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+import { Checkbox } from '@/components/ui/checkbox';
 
 export const HowIsToday = () => {
   return (
-    <div className='flex w-full'>
-      <form action='' className='flex w-full px-2 gap-8'>
-        {/* ===================== 1 COL ===================== */}
-        <div className='flex flex-col w-1/3 mb-6 gap-4'>
-          <input
-            className='w-full h-10 rounded pl-4'
-            placeholder={questions[Math.floor(Math.random() * 10)]}
-          />
+    <Accordion type='single' collapsible>
+      <AccordionItem value='item-1'>
+        <AccordionTrigger>
+          {questions[Math.floor(Math.random() * 10)]}
+        </AccordionTrigger>
+        <AccordionContent>
+          <div className='flex w-full'>
+            <form action='' className='flex w-full px-2 gap-8'>
+              {/* ===================== 1 COL ===================== */}
+              <div className='flex flex-col w-1/3 mb-6 gap-4'>
+                <input
+                  className='w-full h-10 rounded pl-4'
+                  placeholder='Drop a line for yourself'
+                />
 
-          <div className='flex items-center gap-4'>
-            {/* <h3 className='text-sm'>mood:</h3> */}
-            <AngryIcon className='h-8 w-8' strokeWidth='1.4px' />
-            <FrownIcon className='h-8 w-8' strokeWidth='1.4px' />
-            <MehIcon className='h-8 w-8' strokeWidth='1.4px' />
-            <SmileIcon className='h-8 w-8' strokeWidth='1.4px' />
-            <LaughIcon className='h-8 w-8' strokeWidth='1.4px' />
-          </div>
+                <div className='flex items-center gap-4'>
+                  {/* <h3 className='text-sm'>mood:</h3> */}
+                  <AngryIcon className='h-8 w-8' strokeWidth='1.4px' />
+                  <FrownIcon className='h-8 w-8' strokeWidth='1.4px' />
+                  <MehIcon className='h-8 w-8' strokeWidth='1.4px' />
+                  <SmileIcon className='h-8 w-8' strokeWidth='1.4px' />
+                  <LaughIcon className='h-8 w-8' strokeWidth='1.4px' />
+                </div>
 
-          <div className='flex items-center gap-4'>
-            {/* <h3 className='text-sm'>sleep:</h3> */}
-            <BedDoubleIcon className='h-8 w-8' strokeWidth='1.4px' />
-            <input
-              type='checkbox'
-              className='w-full h-10 rounded pl-4'
-              placeholder='How many hours of sleep?'
-            />
-            {/* <input
+                <div className='flex items-center gap-4'>
+                  {/* <h3 className='text-sm'>sleep:</h3> */}
+                  <BedDoubleIcon className='h-8 w-8' strokeWidth='1.4px' />
+                  <Checkbox placeholder='How many hours of sleep?' />
+                  {/* <input
             className='w-full h-10 rounded pl-4'
             placeholder='How many hours of sleep?'
           /> */}
+                </div>
+
+                <div className='flex items-center gap-4'>
+                  {/* <h3 className='text-sm'>workout:</h3> */}
+                  <DumbbellIcon className='h-8 w-8' strokeWidth='1.4px' />
+                  <Checkbox placeholder='How many hours of sleep?' />
+                </div>
+
+                <div className='flex items-center gap-4'>
+                  {/* <h3 className='text-sm'>workout:</h3> */}
+                  <AppleIcon className='h-8 w-8' strokeWidth='1.4px' />
+                  <Checkbox placeholder='How many hours of sleep?' />
+                </div>
+
+                <div className='flex items-center gap-4'>
+                  {/* <h3 className='text-sm'>workout:</h3> */}
+                  <GlassWaterIcon className='h-8 w-8' strokeWidth='1.4px' />
+                  <Checkbox placeholder='How many hours of sleep?' />
+                </div>
+
+                <div className='flex items-center gap-4'>
+                  {/* <h3 className='text-sm'>workout:</h3> */}
+                  <ListChecksIcon className='h-8 w-8' strokeWidth='1.4px' />
+                  <Checkbox placeholder='How many hours of sleep?' />
+                </div>
+
+                <div className='flex items-center h-10 border-2 border-secondary rounded'>
+                  <div className='pl-4'>0%</div>
+                </div>
+              </div>
+              {/* ===================== 2 COL ===================== */}
+
+              <div className='w-1/3 h-full pb-6'>
+                <input
+                  className='w-full h-full rounded pl-4'
+                  placeholder='Any thoughts?'
+                />
+              </div>
+
+              {/* ===================== 3 COL ===================== */}
+
+              <div className='w-1/3 pb-6'>
+                <div className='w-full h-full rounded pl-4 border-2 border-secondary' />
+              </div>
+            </form>
           </div>
-
-          <div className='flex items-center gap-4'>
-            {/* <h3 className='text-sm'>workout:</h3> */}
-            <DumbbellIcon className='h-8 w-8' strokeWidth='1.4px' />
-            <input
-              type='checkbox'
-              className='w-full h-10 rounded pl-4'
-              placeholder='How many hours of sleep?'
-            />
-          </div>
-
-          <div className='flex items-center gap-4'>
-            {/* <h3 className='text-sm'>workout:</h3> */}
-            <AppleIcon className='h-8 w-8' strokeWidth='1.4px' />
-            <input
-              type='checkbox'
-              className='w-full h-10 rounded pl-4'
-              placeholder='How many hours of sleep?'
-            />
-          </div>
-
-          <div className='flex items-center gap-4'>
-            {/* <h3 className='text-sm'>workout:</h3> */}
-            <GlassWaterIcon className='h-8 w-8' strokeWidth='1.4px' />
-            <input
-              type='checkbox'
-              className='w-full h-10 rounded pl-4'
-              placeholder='How many hours of sleep?'
-            />
-          </div>
-
-          <div className='flex items-center gap-4'>
-            {/* <h3 className='text-sm'>workout:</h3> */}
-            <ListChecksIcon className='h-8 w-8' strokeWidth='1.4px' />
-            <input
-              type='checkbox'
-              className='w-full h-10 rounded pl-4'
-              placeholder='How many hours of sleep?'
-            />
-          </div>
-
-          <div className='flex items-center h-10 border-2 border-secondary rounded'>
-            <div className='pl-4'>0%</div>
-          </div>
-        </div>
-        {/* ===================== 2 COL ===================== */}
-
-        <div className='w-1/3 h-full pb-6'>
-          <input
-            className='w-full h-full rounded pl-4'
-            placeholder='Any thoughts?'
-          />
-        </div>
-
-        {/* ===================== 3 COL ===================== */}
-
-        <div className='w-1/3 pb-6'>
-          <div className='w-full h-full rounded pl-4 border-2 border-secondary' />
-        </div>
-      </form>
-    </div>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
   );
 };
 
