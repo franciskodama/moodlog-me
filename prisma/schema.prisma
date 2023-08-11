@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Day {
+  id               Int       @id @default(autoincrement())
+  uid              String?   @unique
+  sleep            String?
+  meditation       Boolean?  @default(false)
+  gym              Boolean?  @default(false)
+  food             Boolean?  @default(false)
+  todayGoals       Boolean?  @default(false)
+  date             DateTime? @default(now()) @db.Date
+  moodPhrase       String?
+  city             String?
+  state            String?
+  country          String?
+  temperature      String?
+  weather          String?
+  moon             String?
+  moodFace         String?
+  createdAt        DateTime  @default(now()) @db.Timestamptz(6)
+  CustomOneName    String?
+  CustomOneValue   Boolean?  @default(false)
+  CustomTwoName    String?
+  CustomTwoValue   Boolean?  @default(false)
+  CustomThreeName  String?
+  CustomThreeValue Boolean?  @default(false)
+  updatedAt        DateTime? @default(now()) @db.Timestamptz(6)
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  firstName String?
+  lastName  String?
+  city      String?
+  state     String?
+  country   String?
+  email     String?
+  uid       String?   @unique
+  createdAt DateTime  @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime? @default(now()) @db.Timestamptz(6)
+}

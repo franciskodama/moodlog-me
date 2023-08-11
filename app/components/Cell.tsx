@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 
 const Cell = ({ day }: { day: DayObject }) => {
-  console.log('---  🚀 ---> | day:', day);
+  // console.log('---  🚀 ---> | day:', day);
   return (
     <div
       className={`flex flex-col items-center justify-center h-20 w-20 border-2 border-secondary rounded ${
