@@ -7,6 +7,8 @@ import { getDay } from '../lib/day';
 import Link from 'next/link';
 // https://yarnpkg.com/package/classnames
 
+// https://ui.shadcn.com/docs/components/dialog
+
 const MapPage = async () => {
   const user = await currentUser();
 

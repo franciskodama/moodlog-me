@@ -10,101 +10,279 @@ import {
   GlassWaterIcon,
   ListChecksIcon,
 } from 'lucide-react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Progress } from '@/components/ui/progress';
+import { Slider } from '@/components/ui/slider';
+import { Textarea } from '@/components/ui/textarea';
+import { Input } from '@/components/ui/input';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
+
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from '@/components/ui/hover-card';
 
 export const HowIsToday = () => {
   return (
-    <div className='flex w-full'>
-      <form action='' className='flex w-full px-2 gap-8'>
-        {/* ===================== 1 COL ===================== */}
-        <div className='flex flex-col w-1/3 mb-6 gap-4'>
-          <input
-            className='w-full h-10 rounded pl-4'
-            placeholder={questions[Math.floor(Math.random() * 10)]}
-          />
+    <TooltipProvider>
+      <Accordion type='single' collapsible>
+        <AccordionItem value='item-1' className='border-0'>
+          <AccordionTrigger className='text-sm pl-2'>
+            {questions[Math.floor(Math.random() * 10)]}
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className='flex w-full'>
+              <form action='' className='flex w-full px-2 gap-8'>
+                {/* ===================== 1 COL ===================== */}
+                <div className='flex flex-col w-1/3 mb-6 gap-4'>
+                  <Input
+                    className='bg-white'
+                    placeholder='Drop a line for yourself'
+                  />
+                  <div className='flex w-full justify-evenly'>
+                    <RadioGroup defaultValue='bad' className='flex items'>
+                      <div className='flex items-center space-x-2'>
+                        <RadioGroupItem value='bad' id='bad' />
+                        <Label htmlFor='bad'>
+                          <Tooltip>
+                            <TooltipTrigger>
+                              <AngryIcon
+                                className='h-8 w-8'
+                                strokeWidth='1.4px'
+                              />
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p className='text-xs'>Angry</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </Label>
+                      </div>
+                      <div className='flex items-center space-x-2'>
+                        <RadioGroupItem value='regular' id='regular' />
+                        <Label htmlFor='regular'>
+                          <Tooltip>
+                            <TooltipTrigger>
+                              <FrownIcon
+                                className='h-8 w-8'
+                                strokeWidth='1.4px'
+                              />
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p className='text-xs'>Frown</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </Label>
+                      </div>
+                      <div className='flex items-center space-x-2'>
+                        <RadioGroupItem value='okay' id='okay' />
+                        <Label htmlFor='okay'>
+                          <Tooltip>
+                            <TooltipTrigger>
+                              <MehIcon
+                                className='h-8 w-8'
+                                strokeWidth='1.4px'
+                              />
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p className='text-xs'>Meh</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </Label>
+                      </div>
+                      <div className='flex items-center space-x-2'>
+                        <RadioGroupItem value='perfect' id='perfect' />
+                        <Label htmlFor='perfect'>
+                          <Tooltip>
+                            <TooltipTrigger>
+                              <SmileIcon
+                                className='h-8 w-8'
+                                strokeWidth='1.4px'
+                              />
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p className='text-xs'>Smile</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </Label>
+                      </div>
+                      <div className='flex items-center space-x-2'>
+                        <RadioGroupItem value='perfect' id='perfect' />
+                        <Label htmlFor='perfect'>
+                          <Tooltip>
+                            <TooltipTrigger>
+                              <LaughIcon
+                                className='h-8 w-8'
+                                strokeWidth='1.4px'
+                              />
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p className='text-xs'>Happy</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </Label>
+                      </div>
+                    </RadioGroup>
+                  </div>
 
-          <div className='flex items-center gap-4'>
-            {/* <h3 className='text-sm'>mood:</h3> */}
-            <AngryIcon className='h-8 w-8' strokeWidth='1.4px' />
-            <FrownIcon className='h-8 w-8' strokeWidth='1.4px' />
-            <MehIcon className='h-8 w-8' strokeWidth='1.4px' />
-            <SmileIcon className='h-8 w-8' strokeWidth='1.4px' />
-            <LaughIcon className='h-8 w-8' strokeWidth='1.4px' />
-          </div>
+                  {/* ======================== END SMILES ======================== */}
 
-          <div className='flex items-center gap-4'>
-            {/* <h3 className='text-sm'>sleep:</h3> */}
-            <BedDoubleIcon className='h-8 w-8' strokeWidth='1.4px' />
-            <input
-              type='checkbox'
-              className='w-full h-10 rounded pl-4'
-              placeholder='How many hours of sleep?'
-            />
-            {/* <input
-            className='w-full h-10 rounded pl-4'
-            placeholder='How many hours of sleep?'
-          /> */}
-          </div>
+                  <div className='flex items-center gap-4'>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <BedDoubleIcon
+                          className='h-6 w-6'
+                          strokeWidth='1.4px'
+                        />
+                      </TooltipTrigger>
+                      <TooltipContent className='text-xs'>
+                        How many hours did you sleep last night?
+                      </TooltipContent>
+                    </Tooltip>
+                    <Slider
+                      className='border border-primary bg-primary rounded cursor-pointer'
+                      defaultValue={[7]}
+                      max={10}
+                      step={1}
+                    />
+                  </div>
 
-          <div className='flex items-center gap-4'>
-            {/* <h3 className='text-sm'>workout:</h3> */}
-            <DumbbellIcon className='h-8 w-8' strokeWidth='1.4px' />
-            <input
-              type='checkbox'
-              className='w-full h-10 rounded pl-4'
-              placeholder='How many hours of sleep?'
-            />
-          </div>
+                  <div className='flex items-center gap-4'>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <DumbbellIcon className='h-6 w-6' strokeWidth='1.4px' />
+                      </TooltipTrigger>
+                      <TooltipContent className='text-xs'>
+                        How long did you workout today?
+                      </TooltipContent>
+                    </Tooltip>
+                    <Slider
+                      className='border border-primary bg-primary rounded cursor-pointer'
+                      defaultValue={[45]}
+                      max={180}
+                      step={15}
+                    />
+                  </div>
 
-          <div className='flex items-center gap-4'>
-            {/* <h3 className='text-sm'>workout:</h3> */}
-            <AppleIcon className='h-8 w-8' strokeWidth='1.4px' />
-            <input
-              type='checkbox'
-              className='w-full h-10 rounded pl-4'
-              placeholder='How many hours of sleep?'
-            />
-          </div>
+                  <div className='flex items-center gap-4'>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <GlassWaterIcon
+                          className='h-6 w-6'
+                          strokeWidth='1.4px'
+                        />
+                      </TooltipTrigger>
+                      <TooltipContent className='text-xs'>
+                        How much water have you drank today?
+                      </TooltipContent>
+                    </Tooltip>
+                    <Slider
+                      className='border border-primary bg-primary rounded cursor-pointer'
+                      defaultValue={[2]}
+                      max={3}
+                      step={0.5}
+                    />
+                  </div>
 
-          <div className='flex items-center gap-4'>
-            {/* <h3 className='text-sm'>workout:</h3> */}
-            <GlassWaterIcon className='h-8 w-8' strokeWidth='1.4px' />
-            <input
-              type='checkbox'
-              className='w-full h-10 rounded pl-4'
-              placeholder='How many hours of sleep?'
-            />
-          </div>
+                  {/* ----------------------- MEALS ----------------------- */}
 
-          <div className='flex items-center gap-4'>
-            {/* <h3 className='text-sm'>workout:</h3> */}
-            <ListChecksIcon className='h-8 w-8' strokeWidth='1.4px' />
-            <input
-              type='checkbox'
-              className='w-full h-10 rounded pl-4'
-              placeholder='How many hours of sleep?'
-            />
-          </div>
+                  <div className='flex w-full items-center'>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <AppleIcon className='h-6 w-6' strokeWidth='1.4px' />
+                      </TooltipTrigger>
+                      <TooltipContent className='text-xs'>
+                        How healthy were your meals today?
+                      </TooltipContent>
+                    </Tooltip>
+                    <RadioGroup
+                      defaultValue='bad'
+                      className='flex items-center w-full ml-4 gap-8'
+                    >
+                      <div className='flex items-center space-x-2'>
+                        <RadioGroupItem value='bad' id='bad' />
+                        <Label htmlFor='bad' className='text-xs'>
+                          Bad
+                        </Label>
+                      </div>
+                      <div className='flex items-center space-x-2'>
+                        <RadioGroupItem value='regular' id='regular' />
+                        <Label htmlFor='regular' className='text-xs'>
+                          Regular
+                        </Label>
+                      </div>
+                      <div className='flex items-center space-x-2'>
+                        <RadioGroupItem value='okay' id='okay' />
+                        <Label htmlFor='okay' className='text-xs'>
+                          Okay
+                        </Label>
+                      </div>
+                      <div className='flex items-center space-x-2'>
+                        <RadioGroupItem value='perfect' id='perfect' />
+                        <Label htmlFor='perfect' className='text-xs'>
+                          Perfect
+                        </Label>
+                      </div>
+                    </RadioGroup>
+                  </div>
 
-          <div className='flex items-center h-10 border-2 border-secondary rounded'>
-            <div className='pl-4'>0%</div>
-          </div>
-        </div>
-        {/* ===================== 2 COL ===================== */}
+                  {/* ----------------------- TASKS ----------------------- */}
 
-        <div className='w-1/3 h-full pb-6'>
-          <input
-            className='w-full h-full rounded pl-4'
-            placeholder='Any thoughts?'
-          />
-        </div>
+                  <div className='flex items-center gap-4'>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <ListChecksIcon
+                          className='h-6 w-6'
+                          strokeWidth='1.4px'
+                        />
+                      </TooltipTrigger>
+                      <TooltipContent className='text-xs'>
+                        Have you acomplished your goals today?
+                      </TooltipContent>
+                    </Tooltip>
+                    <Checkbox />
+                  </div>
 
-        {/* ===================== 3 COL ===================== */}
+                  {/* ----------------------- PROGRESS ----------------------- */}
 
-        <div className='w-1/3 pb-6'>
-          <div className='w-full h-full rounded pl-4 border-2 border-secondary' />
-        </div>
-      </form>
-    </div>
+                  <Progress
+                    value={33}
+                    className='mt-4 border border-primary bg-secondary rounded'
+                  />
+                </div>
+                {/* ===================== 2 COL ===================== */}
+
+                <div className='w-1/3 h-full pb-6'>
+                  <Textarea
+                    className='w-full h-full pb-6 bg-white'
+                    placeholder='Any thoughts?'
+                  />
+                </div>
+
+                {/* ===================== 3 COL ===================== */}
+
+                <div className='w-1/3 pb-6'>
+                  <div className='w-full h-full rounded pl-4 border-2 border-secondary' />
+                </div>
+              </form>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </TooltipProvider>
   );
 };
 

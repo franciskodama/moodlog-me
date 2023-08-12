@@ -52,12 +52,12 @@ export default async function RootLayout({
         },
       }}
     >
-      <html lang='en' className='bg-primary'>
+      <html lang='en'>
         <head>
           <link rel='icon' href='/favicon.ico' />
         </head>
         <body className={comfortaa.className}>
-          <main className='pt-8 pb-8 px-10'>
+          <main className='pt-8 pb-8 px-10 bg-secondary'>
             <Header locale={locale} />
             <HowIsToday />
             <div>{children}</div>

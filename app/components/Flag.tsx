@@ -3,7 +3,7 @@ import { CountryCode } from '../lib/coutries';
 
 const Flag = ({ countryCode }: { countryCode: string }) => {
   return (
-    <div className='h-4 w-6 border-1 border-primary'>
+    <div className='h-5 w-8 border-2 border-primary'>
       <Image
         width={160}
         height={90}

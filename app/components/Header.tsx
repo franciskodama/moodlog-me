@@ -17,7 +17,7 @@ export const Header = ({ locale }: { locale: string }) => {
 
   return (
     <>
-      <div className='nav bg-primary pb-6 px-2 flex justify-between items-center'>
+      <div className='nav bg-secondary pb-6 px-2 flex justify-between items-center'>
         <Link href={user ? '/map' : '/'}>
           <Logo />
           {/* <h1 className='text-2xl text-secondary font-bold hover:text-green-500'>
@@ -34,12 +34,12 @@ export const Header = ({ locale }: { locale: string }) => {
           </Link>
           <Carrot />
           {user && !user.userId && (
-            <div className='flex items-center text-white font-medium'>
+            <div className='flex items-center text-primary font-medium'>
               <Link href='sign-in'>
-                <h2 className='hover:text-green-500 px-4'>sign in</h2>
+                <h2 className='hover:text-red-500 px-4'>sign in</h2>
               </Link>
               <Link href='sign-up'>
-                <h2 className='hover:text-green-500 px-4'>sign up</h2>
+                <h2 className='hover:text-red-500 px-4'>sign up</h2>
               </Link>
             </div>
           )}
