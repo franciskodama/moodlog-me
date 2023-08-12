@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { CountryCode } from '../lib/coutries';
+import { CountryCode } from '../app/lib/coutries';
 
 const Flag = ({ countryCode }: { countryCode: string }) => {
   return (

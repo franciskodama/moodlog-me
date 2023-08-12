@@ -3,9 +3,9 @@ import type { Metadata } from 'next';
 import { ClerkProvider } from '@clerk/nextjs';
 import { Comfortaa } from 'next/font/google';
 
-import { Header } from './components/Header';
+import { Header } from '@/components/Header';
 import './globals.css';
-import { HowIsToday } from './components/HowIsToday';
+import { HowIsToday } from './how-is-today/page';
 
 const comfortaa = Comfortaa({
   subsets: ['latin'],
@@ -57,7 +57,7 @@ export default async function RootLayout({
           <link rel='icon' href='/favicon.ico' />
         </head>
         <body className={comfortaa.className}>
-          <main className='pt-8 pb-8 px-10 bg-secondary'>
+          <main className='container pt-8 pb-8 px-10 bg-secondary max-w-[1600px]'>
             <Header locale={locale} />
             <HowIsToday />
             <div>{children}</div>

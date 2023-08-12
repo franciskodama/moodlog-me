@@ -1,4 +1,4 @@
-import Cell from '../components/Cell';
+import Cell from '../../components/Cell';
 import calendarData from '../lib/calendar.json';
 import { DayObject } from '../lib/calendar';
 import { getHolidays } from '../lib/holidays';
