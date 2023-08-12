@@ -153,10 +153,10 @@ export const HowIsToday = () => {
                       </TooltipContent>
                     </Tooltip>
                     <Slider
+                      className='border border-primary bg-primary rounded cursor-pointer'
                       defaultValue={[7]}
                       max={10}
                       step={1}
-                      className='border-2 border-secondary rounded-md'
                     />
                   </div>
 
@@ -170,7 +170,7 @@ export const HowIsToday = () => {
                       </TooltipContent>
                     </Tooltip>
                     <Slider
-                      className='border-2 border-secondary rounded-md'
+                      className='border border-primary bg-primary rounded cursor-pointer'
                       defaultValue={[45]}
                       max={180}
                       step={15}
@@ -190,7 +190,7 @@ export const HowIsToday = () => {
                       </TooltipContent>
                     </Tooltip>
                     <Slider
-                      className='border-2 border-secondary rounded-md'
+                      className='border border-primary bg-primary rounded cursor-pointer'
                       defaultValue={[2]}
                       max={3}
                       step={0.5}
@@ -213,41 +213,25 @@ export const HowIsToday = () => {
                       className='flex items-center w-full ml-4 gap-8'
                     >
                       <div className='flex items-center space-x-2'>
-                        <RadioGroupItem
-                          className='border-2 border-secondary'
-                          value='bad'
-                          id='bad'
-                        />
+                        <RadioGroupItem value='bad' id='bad' />
                         <Label htmlFor='bad' className='text-xs'>
                           Bad
                         </Label>
                       </div>
                       <div className='flex items-center space-x-2'>
-                        <RadioGroupItem
-                          className='border-2 border-secondary'
-                          value='regular'
-                          id='regular'
-                        />
+                        <RadioGroupItem value='regular' id='regular' />
                         <Label htmlFor='regular' className='text-xs'>
                           Regular
                         </Label>
                       </div>
                       <div className='flex items-center space-x-2'>
-                        <RadioGroupItem
-                          className='border-2 border-secondary'
-                          value='okay'
-                          id='okay'
-                        />
+                        <RadioGroupItem value='okay' id='okay' />
                         <Label htmlFor='okay' className='text-xs'>
                           Okay
                         </Label>
                       </div>
                       <div className='flex items-center space-x-2'>
-                        <RadioGroupItem
-                          value='perfect'
-                          id='perfect'
-                          className='border-2 border-secondary'
-                        />
+                        <RadioGroupItem value='perfect' id='perfect' />
                         <Label htmlFor='perfect' className='text-xs'>
                           Perfect
                         </Label>
@@ -269,14 +253,14 @@ export const HowIsToday = () => {
                         Have you acomplished your goals today?
                       </TooltipContent>
                     </Tooltip>
-                    <Checkbox className='border-2 border-secondary' />
+                    <Checkbox />
                   </div>
 
                   {/* ----------------------- PROGRESS ----------------------- */}
 
                   <Progress
                     value={33}
-                    className='mt-4 border-2 border-secondary'
+                    className='mt-4 border border-primary bg-secondary rounded'
                   />
                 </div>
                 {/* ===================== 2 COL ===================== */}
