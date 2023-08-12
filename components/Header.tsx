@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 
 import Flag from './Flag';
-import { Logo } from './Logo';
+import { Logo } from '@/components/Logo';
 
 export const Header = ({ locale }: { locale: string }) => {
   const user = auth();

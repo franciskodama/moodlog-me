@@ -3,9 +3,9 @@ import type { Metadata } from 'next';
 import { ClerkProvider } from '@clerk/nextjs';
 import { Comfortaa } from 'next/font/google';
 
-import { Header } from './components/Header';
+import { Header } from '@/components/Header';
 import './globals.css';
-import { HowIsToday } from './components/HowIsToday';
+import { HowIsToday } from '@/components/HowIsToday';
 
 const comfortaa = Comfortaa({
   subsets: ['latin'],
