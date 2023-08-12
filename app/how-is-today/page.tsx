@@ -1,0 +1,39 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+import InteractionsPage from './interactions';
+
+export const HowIsToday = () => {
+  return (
+    <Accordion type='single' collapsible>
+      <AccordionItem value='item-1' className='border-0'>
+        <AccordionTrigger className='text-sm pl-2'>
+          {questions[Math.floor(Math.random() * 10)]}
+        </AccordionTrigger>
+        <AccordionContent>
+          <InteractionsPage />
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  );
+};
+
+// Loiro server actions: https://www.youtube.com/watch?v=RadgkoJrhu0&list=WL&index=120
+// To do app: https://www.youtube.com/watch?v=8e35eo447Zw
+
+const questions = [
+  'How are you doing today?',
+  "How's your day going so far?",
+  "How's everything treating you today?",
+  "How's your day been treating you?",
+  "How's your day unfolding?",
+  'How are things going for you today?',
+  "How's your day shaping up?",
+  "How's your day progressing?",
+  "How's your day panning out?",
+  "How's your day treating you thus far?",
+  "How's your day looking?",
+];

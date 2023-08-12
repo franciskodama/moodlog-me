@@ -20,12 +20,9 @@ export const Header = ({ locale }: { locale: string }) => {
       <div className='nav bg-secondary pb-6 px-2 flex justify-between items-center'>
         <Link href={user ? '/map' : '/'}>
           <Logo />
-          {/* <h1 className='text-2xl text-secondary font-bold hover:text-green-500'>
-            moodlog.me
-          </h1> */}
         </Link>
         <div className='flex items-center gap-4'>
-          <ClipboardList />
+          {/* <ClipboardList /> */}
           <AreaChart />
           <Calendar />
 

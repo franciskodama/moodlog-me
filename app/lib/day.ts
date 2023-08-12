@@ -1,3 +1,4 @@
+import { Days_One } from 'next/font/google';
 import prisma from './prisma';
 
 export const getDay = async (id: string) => {
@@ -11,12 +12,12 @@ export const getDay = async (id: string) => {
   }
 };
 
-export const setDay = async (id: string) => {
+export const setDay = async (phrase: string) => {
   try {
-    const day = await prisma.day.findMany({
-      where: { uid: id },
+    const day = await prisma.day.create({
+      data: { moodPhrase: phrase },
     });
-    return day;
+    return { day };
   } catch (error) {
     return { error };
   }
