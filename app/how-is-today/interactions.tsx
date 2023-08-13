@@ -25,7 +25,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import createTodaysData from '@/app/lib/_actions';
+import createTodaysData from '@/lib/_actions';
 
 const InteractionsPage = () => {
   const actionForDay = async (data: FormData) => {
@@ -78,8 +78,12 @@ const InteractionsPage = () => {
               <div className='flex w-full justify-evenly'>
                 <RadioGroup className='flex items'>
                   {moods.map((mood) => (
-                    <div key={mood.id} className='flex items-center space-x-2'>
+                    <div
+                      key={mood.id}
+                      className='flex items-center space-x-2 relative'
+                    >
                       <RadioGroupItem
+                        className='absolute t-0 l-0 translate-x-[10px] w-[2em] h-[2em]'
                         value={mood.id.toString()}
                         id={mood.id.toString()}
                       />
@@ -172,8 +176,15 @@ const InteractionsPage = () => {
 
                 <RadioGroup className='flex items-center justify-center w-full ml-4 gap-8'>
                   {foodQualities.map((quality) => (
-                    <div key={quality} className='flex items-center space-x-2'>
-                      <RadioGroupItem value={quality} id={quality} />
+                    <div
+                      key={quality}
+                      className='flex items-center space-x-2 relative'
+                    >
+                      <RadioGroupItem
+                        className='absolute t-0 l-0 translate-x-[1px] h-[2.6em] border-2 rounded py-1 px-8 text-sm'
+                        value={quality}
+                        id={quality}
+                      />
                       <Label htmlFor={quality} className='text-xs'>
                         {quality}
                       </Label>

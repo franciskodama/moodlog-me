@@ -1,5 +1,5 @@
 import { Loading } from '@/ui/Loading';
-import { cn } from '@/app/lib/cn';
+import { cn } from '@/lib/cn';
 import { CheckIcon } from 'lucide-react';
 
 import { ComponentProps, Ref, forwardRef } from 'react';
