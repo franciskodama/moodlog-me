@@ -1,4 +1,4 @@
-import { DayObject } from '../app/lib/calendar';
+import { DayObject } from '../lib/calendar';
 import {
   CircleDashedIcon,
   MehIcon,

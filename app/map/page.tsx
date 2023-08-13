@@ -1,12 +1,12 @@
 import Cell from '../../components/Cell';
-import calendarData from '../lib/calendar.json';
-import { DayObject } from '../lib/calendar';
-import { getHolidays } from '../lib/holidays';
+import calendarData from '../../lib/calendar.json';
+import { DayObject } from '../../lib/calendar';
+import { getHolidays } from '../../lib/holidays';
 import { currentUser } from '@clerk/nextjs';
-import { getDay } from '../lib/day';
+import { getDay } from '../../lib/day';
 import Link from 'next/link';
-// https://yarnpkg.com/package/classnames
 
+// https://yarnpkg.com/package/classnames
 // https://ui.shadcn.com/docs/components/dialog
 
 const MapPage = async () => {
@@ -16,8 +16,6 @@ const MapPage = async () => {
   if (user) {
     day = await getDay(user?.id);
   }
-
-  console.log('---  🚀 ---> | day:', day);
 
   return (
     <div className='flex flex-wrap items-center justify-center gap-2'>
