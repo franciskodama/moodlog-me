@@ -20,6 +20,10 @@ import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import {
+  RadioGroupEmojis,
+  RadioGroupItemEmojis,
+} from '@/components/ui/radio-group-emojis';
+import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
@@ -76,13 +80,13 @@ const InteractionsPage = () => {
 
             <div className='flex flex-col justify-center mx-auto gap-4 max-w-[27em]'>
               <div className='flex w-full justify-evenly'>
-                <RadioGroup className='flex items'>
+                <RadioGroupEmojis className='flex items'>
                   {moods.map((mood) => (
                     <div
                       key={mood.id}
                       className='flex items-center space-x-2 relative'
                     >
-                      <RadioGroupItem
+                      <RadioGroupItemEmojis
                         className='absolute t-0 l-0 translate-x-[10px] w-[2em] h-[2em]'
                         value={mood.id.toString()}
                         id={mood.id.toString()}
@@ -102,7 +106,7 @@ const InteractionsPage = () => {
                       </Label>
                     </div>
                   ))}
-                </RadioGroup>
+                </RadioGroupEmojis>
               </div>
 
               {/* ----------------------- SLEEP ----------------------- */}
@@ -215,10 +219,12 @@ const InteractionsPage = () => {
 
               {/* ----------------------- PROGRESS ----------------------- */}
 
-              <Progress
-                value={33}
-                className='mt-4 border border-primary bg-secondary rounded-lg'
-              />
+              <div className='pl-10'>
+                <Progress
+                  value={33}
+                  className='mt-4 border border-primary bg-secondary rounded-lg'
+                />
+              </div>
             </div>
           </div>
           {/* ----------------------- NOTES ----------------------- */}
