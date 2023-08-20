@@ -40,11 +40,11 @@ const InteractionsPage = () => {
 
   return (
     <TooltipProvider>
-      <div className='flex w-full'>
+      <div className='flex w-full mb-6'>
         <form action={actionForDay} className='flex w-full px-2 gap-8'>
           {/* ----------------------- INPUT FIELD ----------------------- */}
 
-          <div className='flex flex-col w-1/3 mb-6 gap-6'>
+          <div className='flex flex-col w-1/4 mb-6 gap-6'>
             <div className='flex gap-2'>
               <Input
                 type='text'
@@ -227,24 +227,103 @@ const InteractionsPage = () => {
               </div>
             </div>
           </div>
+
+          {/* ----------------------- 3 GRATEFULL ----------------------- */}
+
+          <div className='w-1/4 h-full'>
+            <h3 className='mb-2'>What brought a smile to your face today?</h3>
+            <div className='flex w-full'>
+              <div className='flex flex-col gap-2 w-full'>
+                <Input
+                  type='text'
+                  name='gratitude-one'
+                  className='bg-white'
+                  placeholder='First gratitude'
+                />
+                <Input
+                  type='text'
+                  name='gratitude-second'
+                  className='bg-white'
+                  placeholder='Second gratitude'
+                />
+                <Input
+                  type='text'
+                  name='gratitude-third'
+                  className='bg-white'
+                  placeholder='Third gratitude'
+                />
+              </div>
+              <Tooltip>
+                <TooltipTrigger>
+                  <HelpCircleIcon
+                    className='h-6 w-6 text-white ml-2'
+                    strokeWidth='2px'
+                  />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className='text-xs w-[20ch]'>
+                    {`Three Good Things (Gratitude): Each day, note three positive moments, achievements, or interactions that brought joy. Reflect on their significance.`}
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+            </div>
+
+            {/* ----------------------- 3 CCOULD BE BETTER ----------------------- */}
+
+            <h3 className='mt-6 mb-2'>Opportunities for growth today?</h3>
+            <div className='flex w-full'>
+              <div className='flex flex-col gap-2 w-full'>
+                <Input
+                  type='text'
+                  name='improvement-one'
+                  className='bg-white'
+                  placeholder='First improvement'
+                />
+                <Input
+                  type='text'
+                  name='improvement-second'
+                  className='bg-white'
+                  placeholder='Second improvement'
+                />
+                <Input
+                  type='text'
+                  name='improvement-third'
+                  className='bg-white'
+                  placeholder='Third improvement'
+                />
+              </div>
+              <Tooltip>
+                <TooltipTrigger>
+                  <HelpCircleIcon
+                    className='h-6 w-6 text-white ml-2'
+                    strokeWidth='2px'
+                  />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className='text-xs w-[20ch]'>
+                    {`Three Areas to Improve: Reflect on three opportunities for growth today. These could be challenges, mistakes, or moments where you can learn and do better.`}
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+            </div>
+          </div>
+
           {/* ----------------------- NOTES ----------------------- */}
 
-          <div className='w-1/3 h-full pb-6'>
+          <div className='w-1/4 h-full'>
             <Textarea
-              className='w-full h-full pb-6 bg-white'
+              className='w-full h-full bg-white'
               placeholder='Any thoughts?'
             />
           </div>
 
-          {/* ----------------------- 3rd COLUMN ----------------------- */}
+          {/* ----------------------- 4th COLUMN ----------------------- */}
+
+          <div className='w-1/4 h-full pb-6 border-2 border-dashed border-primary rounded'></div>
 
           {/* TODO: Statistics & Benchmarketing with other users  */}
           {/* TODO: Motivational phrases + Events celebrations + Badges  */}
           {/* TODO: Ads ig.: Better Help  */}
-
-          <div className='w-1/3 pb-6'>
-            <div className='w-full h-full rounded pl-4 border-2 border-secondary' />
-          </div>
         </form>
       </div>
     </TooltipProvider>
