@@ -12,11 +12,11 @@ export const getDay = async (id: string) => {
   }
 };
 
-export const setDay = async (phrase: string) => {
+export const setDay = async (data: string) => {
   try {
     const day = await prisma.day.create({
       data: {
-        moodPhrase: phrase,
+        moodPhrase: 'data',
         // other properties key and value to create
       },
     });
