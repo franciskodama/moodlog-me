@@ -1,18 +1,17 @@
 'use client';
 
 import {
-  MehIcon,
-  SmileIcon,
-  LaughIcon,
-  FrownIcon,
-  AngryIcon,
   BedDoubleIcon,
   DumbbellIcon,
   AppleIcon,
   GlassWaterIcon,
   ListChecksIcon,
   HelpCircleIcon,
+  SparklesIcon,
 } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+import type { FieldValues } from 'react-hook-form';
+
 import { Label } from '@/components/ui/label';
 import { Progress } from '@/components/ui/progress';
 import { Slider } from '@/components/ui/slider';
@@ -30,34 +29,46 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import createTodaysData from '@/lib/_actions';
+import { moods, foodQualities } from '@/lib/data-day';
 
 const InteractionsPage = () => {
-  const actionForDay = async (data: FormData) => {
-    const phrase = data.get('phrase');
-    if (!phrase || typeof phrase !== 'string') return;
-    await createTodaysData(phrase);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm();
+
+  const onSubmit = async (data: FieldValues) => {
+    console.log('---  🚀 ---> | data:', data);
+    await createTodaysData(data);
+    // await new Promise((resolve) => XXX)
+    reset();
   };
+
+  // const actionForDay = async (data: FormData) => {
+  //   const phrase = data.get('phrase');
+  //   if (!phrase || typeof phrase !== 'string') return;
+  //   await createTodaysData(phrase);
+  // };
 
   return (
     <TooltipProvider>
       <div className='flex w-full mb-6'>
-        <form action={actionForDay} className='flex w-full px-2 gap-8'>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className='flex w-full px-2 gap-8'
+        >
           {/* ----------------------- INPUT FIELD ----------------------- */}
 
           <div className='flex flex-col w-1/4 mb-6 gap-6'>
             <div className='flex gap-2'>
               <Input
+                {...register('phrase')}
                 type='text'
-                name='phrase'
                 className='bg-white'
                 placeholder='Leave a note for yourself'
               />
-              <button
-                type='submit'
-                className='border-2 border-primary rounded px-2'
-              >
-                SEND
-              </button>
               <Tooltip>
                 <TooltipTrigger>
                   <HelpCircleIcon
@@ -87,6 +98,7 @@ const InteractionsPage = () => {
                       className='flex items-center space-x-2 relative'
                     >
                       <RadioGroupItemEmojis
+                        {...register('mood')}
                         className='absolute t-0 l-0 translate-x-[10px] w-[2em] h-[2em]'
                         value={mood.id.toString()}
                         id={mood.id.toString()}
@@ -124,6 +136,25 @@ const InteractionsPage = () => {
                   className='border border-primary bg-primary rounded cursor-pointer'
                   defaultValue={[0]}
                   max={10}
+                  step={1}
+                />
+              </div>
+
+              {/* ----------------------- MEDITATION ----------------------- */}
+
+              <div className='flex items-center gap-4'>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <SparklesIcon className='h-6 w-6' strokeWidth='1.8px' />
+                  </TooltipTrigger>
+                  <TooltipContent className='text-xs ml-10 w-[20ch]'>
+                    For how long did you meditate?
+                  </TooltipContent>
+                </Tooltip>
+                <Slider
+                  className='border border-primary bg-primary rounded cursor-pointer'
+                  defaultValue={[0]}
+                  max={60}
                   step={1}
                 />
               </div>
@@ -235,20 +266,20 @@ const InteractionsPage = () => {
             <div className='flex w-full'>
               <div className='flex flex-col gap-2 w-full'>
                 <Input
+                  {...register('gratitude-one')}
                   type='text'
-                  name='gratitude-one'
                   className='bg-white'
                   placeholder='First gratitude'
                 />
                 <Input
+                  {...register('gratitude-second')}
                   type='text'
-                  name='gratitude-second'
                   className='bg-white'
                   placeholder='Second gratitude'
                 />
                 <Input
+                  {...register('gratitude-third')}
                   type='text'
-                  name='gratitude-third'
                   className='bg-white'
                   placeholder='Third gratitude'
                 />
@@ -274,20 +305,20 @@ const InteractionsPage = () => {
             <div className='flex w-full'>
               <div className='flex flex-col gap-2 w-full'>
                 <Input
+                  {...register('improvement-one')}
                   type='text'
-                  name='improvement-one'
                   className='bg-white'
                   placeholder='First improvement'
                 />
                 <Input
+                  {...register('improvement-second')}
                   type='text'
-                  name='improvement-second'
                   className='bg-white'
                   placeholder='Second improvement'
                 />
                 <Input
+                  {...register('improvement-third')}
                   type='text'
-                  name='improvement-third'
                   className='bg-white'
                   placeholder='Third improvement'
                 />
@@ -312,9 +343,22 @@ const InteractionsPage = () => {
 
           <div className='w-1/4 h-full'>
             <Textarea
+              {...register('thoughts', {
+                minLength: {
+                  value: 10,
+                  message: `C'mon, you can write more than 10 characteres, right?`,
+                },
+              })}
               className='w-full h-full bg-white'
               placeholder='Any thoughts?'
             />
+            <button
+              disabled={isSubmitting}
+              type='submit'
+              className='border-2 border-primary rounded px-2'
+            >
+              SEND
+            </button>
           </div>
 
           {/* ----------------------- 4th COLUMN ----------------------- */}
@@ -330,46 +374,3 @@ const InteractionsPage = () => {
   );
 };
 export default InteractionsPage;
-
-// Loiro server actions: https://www.youtube.com/watch?v=RadgkoJrhu0&list=WL&index=120
-// To do app: https://www.youtube.com/watch?v=8e35eo447Zw
-
-const moods = [
-  {
-    id: 1,
-    title: 'Sunny Delight',
-    description:
-      "This mood captures the sunny side of life, radiating warmth and optimism. It's perfect for days when everything is going well and you're feeling cheerful.",
-    icon: <AngryIcon className='h-8 w-8' strokeWidth='1.4px' />,
-  },
-  {
-    id: 2,
-    title: 'Whimsical Woe',
-    description:
-      "When things aren't going as planned but you can still find a bit of humor in the chaos. This mood embodies a quirky sense of resilience, perfect for those 'laugh through the tears' moments.",
-    icon: <FrownIcon className='h-8 w-8' strokeWidth='1.4px' />,
-  },
-  {
-    id: 3,
-    title: 'Electric Storm',
-    description:
-      'For the turbulent days filled with intense emotions, frustration, and challenges. This mood represents the stormy weather within, allowing users to express their inner turmoil.',
-    icon: <MehIcon className='h-8 w-8' strokeWidth='1.4px' />,
-  },
-  {
-    id: 4,
-    title: 'Cozy Respite',
-    description:
-      "When you're seeking solace and comfort on a tough day. This mood embraces the idea of finding refuge in simple pleasures and self-care, like a warm hug for the soul.",
-    icon: <SmileIcon className='h-8 w-8' strokeWidth='1.4px' />,
-  },
-  {
-    id: 5,
-    title: 'Fiery Fury',
-    description:
-      "The ultimate outlet for those days when you're about to explode with anger or frustration. This mood lets users express their fiery emotions in a lighthearted way.",
-    icon: <LaughIcon className='h-8 w-8' strokeWidth='1.4px' />,
-  },
-];
-
-const foodQualities = ['Poor', 'Fair', 'Good', 'Excellent'];
