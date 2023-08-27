@@ -247,15 +247,6 @@ const InteractionsPage = () => {
                   step={10}
                 />
               </div>
-
-              {/* ----------------------- PROGRESS ----------------------- */}
-
-              <div className='pl-10'>
-                <Progress
-                  value={33}
-                  className='mt-4 border border-primary bg-secondary rounded-lg'
-                />
-              </div>
             </div>
           </div>
 
@@ -341,7 +332,7 @@ const InteractionsPage = () => {
 
           {/* ----------------------- NOTES ----------------------- */}
 
-          <div className='w-1/4 h-full'>
+          <div className='flex flex-col w-1/4 h-full gap-4'>
             <Textarea
               {...register('thoughts', {
                 minLength: {
@@ -352,12 +343,24 @@ const InteractionsPage = () => {
               className='w-full h-full bg-white'
               placeholder='Any thoughts?'
             />
+
+            {/* ----------------------- PROGRESS ----------------------- */}
+
+            <div className=''>
+              <Progress
+                value={33}
+                className='border border-primary bg-secondary rounded-lg'
+              />
+            </div>
+
+            {/* ----------------------- BUTTOM SUBMIT ----------------------- */}
+
             <button
               disabled={isSubmitting}
               type='submit'
-              className='border-2 border-primary rounded px-2'
+              className='text-white font-bold bg-black rounded py-2'
             >
-              SEND
+              SUBMIT DRAFT
             </button>
           </div>
 
