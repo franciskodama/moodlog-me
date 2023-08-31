@@ -358,8 +358,11 @@ const InteractionsPage = () => {
             <button
               disabled={isSubmitting}
               type='submit'
-              className='text-white font-bold bg-black rounded py-2'
+              className='text-primary font-bold bg-accent border-2 border-primary rounded py-2
+              shadow-lg shadow-primary
+              '
             >
+              {/* box-shadow: 0.5rem 0.5rem black; */}
               SUBMIT DRAFT
             </button>
           </div>
