@@ -9,6 +9,12 @@
 
 @layer base {
   :root {
+    --blue: #70cdde;
+    --green: #6cbd45;
+    --red: #ff5052;
+    --purple: #7189ff;
+    --yellow: #ffdc02;
+
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -21,18 +27,13 @@
     --primary: 0, 0%, 15%;
     --primary-foreground: 210 40% 98%;
 
-    /* --secondary: 46, 97%, 65%;
-    --secondary-foreground: 222.2 47.4% 11.2%; */
-    /* #FFF2E8 */
-    --secondary: 26, 100%, 95%;
+    --secondary: #fff2e8;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    /* --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%; */
-    --accent: 52, 100%, 50%;
+    --accent: #ffdd00;
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
