@@ -72,7 +72,7 @@ const InteractionsPage = () => {
               <Tooltip>
                 <TooltipTrigger>
                   <HelpCircleIcon
-                    className='h-6 w-6 text-white'
+                    className='h-6 w-6 text-primary'
                     strokeWidth='2px'
                   />
                 </TooltipTrigger>
@@ -216,7 +216,7 @@ const InteractionsPage = () => {
                       className='flex items-center space-x-2 relative'
                     >
                       <RadioGroupItem
-                        className='absolute t-0 l-0 translate-x-[1px] h-[2.6em] border-2 rounded py-1 px-8 text-sm'
+                        className='absolute t-0 l-0 translate-x-[1px] h-[2.6em] shadow-md shadow-primary border-2 rounded-full py-1 px-8 text-sm'
                         value={quality}
                         id={quality}
                       />
@@ -253,7 +253,9 @@ const InteractionsPage = () => {
           {/* ----------------------- 3 GRATEFULL ----------------------- */}
 
           <div className='w-1/4 h-full'>
-            <h3 className='mb-2'>What brought a smile to your face today?</h3>
+            <h3 className='mb-2 font-semibold'>
+              What brought a smile to your face today?
+            </h3>
             <div className='flex w-full'>
               <div className='flex flex-col gap-2 w-full'>
                 <Input
@@ -278,7 +280,7 @@ const InteractionsPage = () => {
               <Tooltip>
                 <TooltipTrigger>
                   <HelpCircleIcon
-                    className='h-6 w-6 text-white ml-2'
+                    className='h-6 w-6 text-primary ml-2'
                     strokeWidth='2px'
                   />
                 </TooltipTrigger>
@@ -292,7 +294,9 @@ const InteractionsPage = () => {
 
             {/* ----------------------- 3 CCOULD BE BETTER ----------------------- */}
 
-            <h3 className='mt-6 mb-2'>Opportunities for growth today?</h3>
+            <h3 className='mt-6 mb-2 font-semibold'>
+              Opportunities for growth today?
+            </h3>
             <div className='flex w-full'>
               <div className='flex flex-col gap-2 w-full'>
                 <Input
@@ -317,7 +321,7 @@ const InteractionsPage = () => {
               <Tooltip>
                 <TooltipTrigger>
                   <HelpCircleIcon
-                    className='h-6 w-6 text-white ml-2'
+                    className='h-6 w-6 text-primary ml-2'
                     strokeWidth='2px'
                   />
                 </TooltipTrigger>
@@ -358,9 +362,7 @@ const InteractionsPage = () => {
             <button
               disabled={isSubmitting}
               type='submit'
-              className='text-primary font-bold bg-accent border-2 border-primary rounded py-2
-              shadow-lg shadow-primary
-              '
+              className='text-primary font-bold bg-accent border-2 border-primary rounded py-2 shadow-lg shadow-primary'
             >
               {/* box-shadow: 0.5rem 0.5rem black; */}
               SUBMIT DRAFT
@@ -369,7 +371,7 @@ const InteractionsPage = () => {
 
           {/* ----------------------- 4th COLUMN ----------------------- */}
 
-          <div className='w-1/4 h-full pb-6 border-2 border-dashed border-primary rounded'></div>
+          <div className='w-1/4 h-full pb-6 border-2 border-dashed border-primary rounded-xl'></div>
 
           {/* TODO: Statistics & Benchmarketing with other users  */}
           {/* TODO: Motivational phrases + Events celebrations + Badges  */}
