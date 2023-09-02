@@ -359,15 +359,25 @@ const InteractionsPage = () => {
             </div>
 
             {/* ----------------------- BUTTOM SUBMIT ----------------------- */}
+            <div className='flex w-full gap-4'>
+              <Button
+                disabled={isSubmitting}
+                type='submit'
+                className='text-base w-full font-bold text-primary bg-blue border-2 border-primary rounded-full py-2 shadow-lg shadow-primary'
+              >
+                {/* box-shadow: 0.5rem 0.5rem black; */}
+                SAVE DRAFT
+              </Button>
 
-            <Button
-              disabled={isSubmitting}
-              type='submit'
-              className='text-base font-bold text-primary bg-accent border-2 border-primary rounded-full py-2 shadow-lg shadow-primary'
-            >
-              {/* box-shadow: 0.5rem 0.5rem black; */}
-              SAVE DRAFT
-            </Button>
+              <Button
+                disabled={isSubmitting}
+                type='submit'
+                className='text-base w-full font-bold text-primary bg-yellow border-2 border-primary rounded-full py-2 shadow-lg shadow-primary'
+              >
+                {/* box-shadow: 0.5rem 0.5rem black; */}
+                SUBMIT
+              </Button>
+            </div>
           </div>
 
           {/* ----------------------- 4th COLUMN ----------------------- */}

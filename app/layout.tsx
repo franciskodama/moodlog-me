@@ -56,7 +56,7 @@ export default async function RootLayout({
         <head>
           <link rel='icon' href='/favicon.ico' />
         </head>
-        <body className={comfortaa.className}>
+        <body className={`${comfortaa.className} bg-secondary`}>
           <main className='container pt-8 pb-8 px-10 bg-secondary max-w-[1600px]'>
             <Header locale={locale} />
             <HowIsToday />
