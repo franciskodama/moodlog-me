@@ -40,10 +40,10 @@ export const Header = ({ locale }: { locale: string }) => {
           <Link href='/map'>
             <Button
               type='submit'
-              className='flex items-center justify-between w-[7em] mr-4 text-base font-bold text-primary bg-red border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
+              className='flex items-center justify-between w-[7em] mr-4 text-base font-bold text-primary bg-green border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
             >
               <GripIcon stroke='yellow' size={24} />|
-              <CalendarDaysIcon fill='red' size={24} />
+              <CalendarDaysIcon fill='#6cbd45' size={24} />
               {/* <span className='ml-2'>Style</span> */}
             </Button>
           </Link>
