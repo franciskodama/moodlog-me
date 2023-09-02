@@ -10,7 +10,7 @@ export const HowIsToday = () => {
   return (
     <Accordion type='single' collapsible>
       <AccordionItem value='item-1' className='border-0'>
-        <AccordionTrigger className='text-lg font-bold pl-2 border-2 border-primary shadow-md shadow-primary bg-blue px-6 rounded-full py-2 mb-4 mx-2'>
+        <AccordionTrigger className='text-lg font-bold pl-2 border-2 border-primary shadow-md shadow-primary bg-blue px-6 rounded-full py-2 mb-12 mx-2'>
           <div className='flex items-center'>
             <div className='mr-2'>
               <StarIcon fill='#ffdc02' />

@@ -56,7 +56,7 @@ export function getButtonClassNames(
 ) {
   return [
     'flex flex-row items-center justify-center gap-1 cursor-pointer',
-    'whitespace-nowrap text-center font-semibold uppercase tracking-[0.8px]',
+    'whitespace-nowrap text-center font-semibold tracking-[0.8px]',
     'focus:outline-none transition-all',
     'enabled:active:scale-95 enabled:active:opacity-80',
     'disabled:opacity-50',

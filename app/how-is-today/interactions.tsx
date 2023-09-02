@@ -30,6 +30,7 @@ import {
 } from '@/components/ui/tooltip';
 import createTodaysData from '@/lib/_actions';
 import { moods, foodQualities } from '@/lib/data-day';
+import { Button } from '@/ui/button';
 
 const InteractionsPage = () => {
   const {
@@ -54,7 +55,7 @@ const InteractionsPage = () => {
 
   return (
     <TooltipProvider>
-      <div className='flex w-full mb-6'>
+      <div className='flex w-full mb-10'>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className='flex w-full px-2 gap-8'
@@ -66,7 +67,7 @@ const InteractionsPage = () => {
               <Input
                 {...register('phrase')}
                 type='text'
-                className='bg-white'
+                className='bg-white ml-14'
                 placeholder='Leave a note for yourself'
               />
               <Tooltip>
@@ -359,14 +360,14 @@ const InteractionsPage = () => {
 
             {/* ----------------------- BUTTOM SUBMIT ----------------------- */}
 
-            <button
+            <Button
               disabled={isSubmitting}
               type='submit'
-              className='text-primary font-bold bg-accent border-2 border-primary rounded py-2 shadow-lg shadow-primary'
+              className='text-base font-bold text-primary bg-accent border-2 border-primary rounded-full py-2 shadow-lg shadow-primary'
             >
               {/* box-shadow: 0.5rem 0.5rem black; */}
-              SUBMIT DRAFT
-            </button>
+              SAVE DRAFT
+            </Button>
           </div>
 
           {/* ----------------------- 4th COLUMN ----------------------- */}
