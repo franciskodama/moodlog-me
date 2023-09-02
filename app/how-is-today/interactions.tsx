@@ -28,7 +28,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import createTodaysData from '@/lib/_actions';
+import { createTodaysData } from '@/lib/_actions';
 import { moods, foodQualities } from '@/lib/data-day';
 import { Button } from '@/ui/button';
 
@@ -42,9 +42,9 @@ const InteractionsPage = () => {
 
   const onSubmit = async (data: FieldValues) => {
     console.log('---  🚀 ---> | data:', data);
-    await createTodaysData(data);
-    // await new Promise((resolve) => XXX)
-    reset();
+    // await createTodaysData(data);
+    // await new Promise((resolve) => XXX);
+    // reset();
   };
 
   // const actionForDay = async (data: FormData) => {
@@ -99,7 +99,7 @@ const InteractionsPage = () => {
                       className='flex items-center space-x-2 relative'
                     >
                       <RadioGroupItemEmojis
-                        {...register('mood')}
+                        {...register('moodFace')}
                         className='absolute t-0 l-0 translate-x-[10px] w-[2em] h-[2em]'
                         value={mood.id.toString()}
                         id={mood.id.toString()}
@@ -260,19 +260,19 @@ const InteractionsPage = () => {
             <div className='flex w-full'>
               <div className='flex flex-col gap-2 w-full'>
                 <Input
-                  {...register('gratitude-one')}
+                  {...register('gratitudeOne')}
                   type='text'
                   className='bg-white'
                   placeholder='First gratitude'
                 />
                 <Input
-                  {...register('gratitude-second')}
+                  {...register('gratitudeTwo')}
                   type='text'
                   className='bg-white'
                   placeholder='Second gratitude'
                 />
                 <Input
-                  {...register('gratitude-third')}
+                  {...register('gratitudeThree')}
                   type='text'
                   className='bg-white'
                   placeholder='Third gratitude'
@@ -360,21 +360,19 @@ const InteractionsPage = () => {
 
             {/* ----------------------- BUTTOM SUBMIT ----------------------- */}
             <div className='flex w-full gap-4'>
-              <Button
+              {/* <Button
                 disabled={isSubmitting}
                 type='submit'
                 className='text-base w-full font-bold text-primary bg-blue border-2 border-primary rounded-full py-2 shadow-lg shadow-primary'
               >
-                {/* box-shadow: 0.5rem 0.5rem black; */}
                 SAVE DRAFT
-              </Button>
+              </Button> */}
 
               <Button
                 disabled={isSubmitting}
                 type='submit'
                 className='text-base w-full font-bold text-primary bg-yellow border-2 border-primary rounded-full py-2 shadow-lg shadow-primary'
               >
-                {/* box-shadow: 0.5rem 0.5rem black; */}
                 SUBMIT
               </Button>
             </div>

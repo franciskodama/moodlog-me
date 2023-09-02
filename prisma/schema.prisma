@@ -33,6 +33,7 @@ model Day {
   updatedAt        DateTime? @default(now()) @db.Timestamptz(6)
   moodPhrase       String?
   water            String?
+  thoughts         String?
 }
 
 model User {

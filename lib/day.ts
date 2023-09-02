@@ -15,10 +15,27 @@ export const getDay = async (id: string) => {
 export const setDay = async (data: string) => {
   try {
     const day = await prisma.day.create({
-      data: {
-        moodPhrase: 'data',
-        // other properties key and value to create
-      },
+      // moodPhrase: data.moodPhrase,
+      // moodFace: data.moodFace,
+      // sleep: data.sleep,
+      // meditation: data.meditation,
+      // gym: data.gym,
+      // water: data.water,
+      // food: data.food,
+      // todayGoals: data.todayGoals,
+      // gratitudeOne: data.gratitudeOne,
+      // gratitudeTwo: data.gratitudeTwo,
+      // gratitudeThree: data.gratitudeThree,
+      // improvementOne: data.improvementOne,
+      // improvementTwo: data.improvementTwo,
+      // improvementThree: data.improvementThree,
+      // thoughts: data.thoughts,
+      // date: data.date,
+      // city: data.city,
+      // state: data.state,
+      // country: data.country,
+      // temperature: data.temperature,
+      // moon: data.moon,
     });
     return { day };
   } catch (error) {
