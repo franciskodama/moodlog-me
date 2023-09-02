@@ -9,7 +9,7 @@ datasource db {
 
 model Day {
   id               Int       @id @default(autoincrement())
-  uid              String?   @unique
+  uid              String?
   sleep            String?
   meditation       Boolean?  @default(false)
   gym              Boolean?  @default(false)

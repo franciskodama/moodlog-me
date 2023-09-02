@@ -1,3 +1,5 @@
+import { useUser } from '@clerk/nextjs';
+
 import {
   Accordion,
   AccordionContent,
@@ -6,7 +8,17 @@ import {
 } from '@/components/ui/accordion';
 import InteractionsPage from './interactions';
 import { StarIcon } from 'lucide-react';
-export const HowIsToday = () => {
+import { auth } from '@clerk/nextjs';
+import { getDay } from '@/lib/day';
+
+export const HowIsToday = async () => {
+  const user = auth();
+
+  if (user.userId) {
+    const dayTest = await getDay(user.userId!);
+    console.log('---  🚀 ---> | dayTest:', dayTest);
+  }
+
   return (
     <Accordion type='single' collapsible>
       <AccordionItem value='item-1' className='border-0'>

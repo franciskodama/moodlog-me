@@ -1,5 +1,6 @@
 'use client';
 
+import { useUser } from '@clerk/nextjs';
 import {
   BedDoubleIcon,
   DumbbellIcon,
@@ -11,7 +12,6 @@ import {
 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import type { FieldValues } from 'react-hook-form';
-
 import { Label } from '@/components/ui/label';
 import { Progress } from '@/components/ui/progress';
 import { Slider } from '@/components/ui/slider';
@@ -28,11 +28,15 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { createTodaysData } from '@/lib/_actions';
-import { moods, foodQualities } from '@/lib/data-day';
 import { Button } from '@/ui/button';
 
+import { moods, foodQualities } from '@/lib/data-day';
+import { createTodaysData } from '@/lib/_actions';
+import { getDay } from '@/lib/day';
+
 const InteractionsPage = () => {
+  const { user } = useUser();
+
   const {
     register,
     handleSubmit,
@@ -41,8 +45,12 @@ const InteractionsPage = () => {
   } = useForm();
 
   const onSubmit = async (data: FieldValues) => {
+    // 'use server';
+    console.log('---  🚀 ---> | SHOOOOOT');
     console.log('---  🚀 ---> | data:', data);
-    // await createTodaysData(data);
+    if (user) {
+      await createTodaysData(user?.id, data);
+    }
     // await new Promise((resolve) => XXX);
     // reset();
   };
@@ -65,7 +73,7 @@ const InteractionsPage = () => {
           <div className='flex flex-col w-1/4 mb-6 gap-6'>
             <div className='flex gap-2'>
               <Input
-                {...register('phrase')}
+                {...register('moodPhrase')}
                 type='text'
                 className='bg-white ml-14'
                 placeholder='Leave a note for yourself'
@@ -360,13 +368,15 @@ const InteractionsPage = () => {
 
             {/* ----------------------- BUTTOM SUBMIT ----------------------- */}
             <div className='flex w-full gap-4'>
-              {/* <Button
-                disabled={isSubmitting}
-                type='submit'
+              <Button
+                // disabled={isSubmitting}
+                // type='submit'
                 className='text-base w-full font-bold text-primary bg-blue border-2 border-primary rounded-full py-2 shadow-lg shadow-primary'
+                // onClick={handleClickGetUsersDay}
               >
-                SAVE DRAFT
-              </Button> */}
+                {/* SAVE DRAFT */}
+                GET USER
+              </Button>
 
               <Button
                 disabled={isSubmitting}

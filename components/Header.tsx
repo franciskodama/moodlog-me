@@ -58,23 +58,23 @@ export const Header = ({ locale }: { locale: string }) => {
               </Link>
             </div>
           )}
-          <div className='mr-4 border-2 border-primary rounded-full shadow-lg shadow-primary'>
-            <UserButton
-              userProfileMode='navigation'
-              userProfileUrl={
-                typeof window !== 'undefined'
-                  ? `${window.location.origin}/profile`
-                  : undefined
-              }
-              afterSignOutUrl='/'
-              appearance={{
-                elements: {
-                  userButtonPopoverFooter: 'hidden',
-                  avatarBox: 'w-[3em] h-[3em]',
-                },
-              }}
-            />
-          </div>
+          {/* <div className='mr-4 border-2 border-primary rounded-full shadow-lg shadow-primary'> */}
+          <UserButton
+            userProfileMode='navigation'
+            userProfileUrl={
+              typeof window !== 'undefined'
+                ? `${window.location.origin}/profile`
+                : undefined
+            }
+            afterSignOutUrl='/'
+            appearance={{
+              elements: {
+                userButtonPopoverFooter: 'hidden',
+                avatarBox: 'w-[3em] h-[3em]',
+              },
+            }}
+          />
+          {/* </div> */}
 
           <div className='mr-2 shadow-lg shadow-primary'>
             <Flag countryCode={locale} />
