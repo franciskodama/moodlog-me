@@ -8,32 +8,16 @@ datasource db {
 }
 
 model Day {
-  id               Int       @id @default(autoincrement())
-  uid              String?
-  sleep            String?
-  meditation       Boolean?  @default(false)
-  gym              Boolean?  @default(false)
-  food             Boolean?  @default(false)
-  todayGoals       Boolean?  @default(false)
-  date             DateTime? @default(now()) @db.Date
-  city             String?
-  state            String?
-  country          String?
-  temperature      String?
-  weather          String?
-  moon             String?
-  moodFace         String?
-  createdAt        DateTime  @default(now()) @db.Timestamptz(6)
-  gratitudeOne     String?
-  gratitudeTwo     String?
-  gratitudeThree   String?
-  improvementOne   String?
-  improvementTwo   String?
-  improvementThree Boolean?  @default(false)
-  updatedAt        DateTime? @default(now()) @db.Timestamptz(6)
-  moodPhrase       String?
-  water            String?
-  thoughts         String?
+  id          Int       @id(map: "Day_pkey1") @default(autoincrement())
+  date        DateTime  @db.Date
+  city        String?
+  state       String?
+  country     String?
+  weather     String?
+  moon        String?
+  temperature Int?      @default(0)
+  createdAt   DateTime  @default(now()) @db.Timestamptz(6)
+  updatedAt   DateTime? @default(now()) @db.Timestamptz(6)
 }
 
 model User {
@@ -70,4 +54,85 @@ model applicant_tracking_system {
   status           String?
   notes            String?
   photo            String?
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  label     String   @unique
+  value     String   @unique
+  icon      String?
+  status    Boolean? @default(true)
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @default(now()) @db.Timestamptz(6)
+}
+
+model DayEvents {
+  id        Int      @id @default(autoincrement())
+  dayId     Int
+  eventId   Int
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @default(now()) @db.Timestamptz(6)
+  value     String?
+}
+
+model Day_Old {
+  id               Int       @id(map: "Day_pkey") @default(autoincrement())
+  uid              String
+  sleep            String?
+  meditation       Boolean?  @default(false)
+  gym              Boolean?  @default(false)
+  food             Boolean?  @default(false)
+  todayGoals       Boolean?  @default(false)
+  date             DateTime? @default(now()) @db.Date
+  city             String?
+  state            String?
+  country          String?
+  temperature      String?
+  weather          String?
+  moon             String?
+  moodFace         String?
+  createdAt        DateTime  @default(now()) @db.Timestamptz(6)
+  gratitudeOne     String?
+  gratitudeTwo     String?
+  gratitudeThree   String?
+  improvementOne   String?
+  improvementTwo   String?
+  improvementThree Boolean?  @default(false)
+  updatedAt        DateTime? @default(now()) @db.Timestamptz(6)
+  moodPhrase       String?
+  water            String?
+  thoughts         String?
+}
+
+model Event {
+  id        Int       @id(map: "Events_pkey") @default(autoincrement())
+  icon      String?
+  status    Boolean   @default(false)
+  createdAt DateTime  @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime? @default(now()) @db.Timestamptz(6)
+  name      String    @unique
+  label     String
+}
+
+model UserSettings {
+  id          Int                   @id @default(autoincrement())
+  uid         String?
+  View        View_enum_546e6dbe?   @default(Snake)
+  periodStart DateTime              @db.Date
+  period      period_enum_c35f055e?
+  createdAt   DateTime              @default(now()) @db.Timestamptz(6)
+  updatedAt   DateTime              @default(now()) @db.Timestamptz(6)
+}
+
+enum View_enum_546e6dbe {
+  Snake
+  Calendar
+}
+
+enum period_enum_c35f055e {
+  This_Year  @map("This Year")
+  Year_Days       @map("365 Days")
+  This_Month @map("This Month")
+  Month_Days       @map("30 Days")
 }
