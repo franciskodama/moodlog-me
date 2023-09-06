@@ -3,7 +3,7 @@ import calendarData from '../../lib/calendar.json';
 import { DayObject } from '../../lib/calendar';
 import { getHolidays } from '../../lib/holidays';
 import { currentUser } from '@clerk/nextjs';
-import { getDay } from '../../lib/day';
+import { getDay } from '../../lib/day.server';
 import Link from 'next/link';
 
 // https://yarnpkg.com/package/classnames
@@ -19,7 +19,7 @@ const MapPage = async () => {
 
   return (
     <div className='flex flex-wrap items-center justify-center gap-2'>
-      {calendarData.map((day: DayObject) => (
+      {calendarData.map((day: any) => (
         <div key={day.id}>
           <Link href={`/map/${day.id}`}>
             <Cell day={day} />
