@@ -1,6 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 
-import { auth, UserButton } from '@clerk/nextjs';
+import { auth, UserButton, useUser } from '@clerk/nextjs';
 import {
   ClipboardList,
   AreaChart,
@@ -15,9 +17,19 @@ import {
 import Flag from './Flag';
 import { Logo } from '@/components/Logo';
 import { Button } from '@/ui/button';
+import { useState } from 'react';
+import { setCalendarView } from '@/lib/settings.server';
 
 export const Header = ({ locale }: { locale: string }) => {
-  const user = auth();
+  const { user } = useUser();
+  const [view, setView] = useState(true);
+
+  const uid = user?.id;
+
+  const handleClickOnView = async () => {
+    setView(!view);
+    await setCalendarView(uid!, !view);
+  };
 
   return (
     <>
@@ -39,16 +51,16 @@ export const Header = ({ locale }: { locale: string }) => {
 
           <Link href='/map'>
             <Button
-              type='submit'
+              onClick={handleClickOnView}
               className='flex items-center justify-between w-[7em] mr-4 text-base font-bold text-primary bg-green border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
             >
-              <GripIcon stroke='yellow' size={24} />|
-              <CalendarDaysIcon fill='#6cbd45' size={24} />
+              <GripIcon stroke={view ? 'yellow' : 'black'} size={24} />|
+              <CalendarDaysIcon fill={view ? '#6cbd45' : 'yellow'} size={24} />
               {/* <span className='ml-2'>Style</span> */}
             </Button>
           </Link>
           {/* <Carrot /> */}
-          {user && !user.userId && (
+          {user && !user?.id && (
             <div className='flex items-center text-primary font-medium'>
               <Link href='sign-in'>
                 <h2 className='hover:text-red-500 px-4'>sign in</h2>

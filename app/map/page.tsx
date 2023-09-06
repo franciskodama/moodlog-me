@@ -3,7 +3,7 @@ import calendarData from '../../lib/calendar.json';
 import { DayObject } from '../../lib/calendar';
 import { getHolidays } from '../../lib/holidays';
 import { currentUser } from '@clerk/nextjs';
-import { getDay } from '../../lib/day';
+import { getDay } from '../../lib/day.server';
 import Link from 'next/link';
 
 // https://yarnpkg.com/package/classnames

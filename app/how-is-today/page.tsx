@@ -9,7 +9,7 @@ import {
 import InteractionsPage from './interactions';
 import { StarIcon } from 'lucide-react';
 import { auth } from '@clerk/nextjs';
-import { getDay } from '@/lib/day';
+import { getDay } from '@/lib/day.server';
 
 export const HowIsToday = async () => {
   const user = auth();

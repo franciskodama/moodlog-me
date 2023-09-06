@@ -32,7 +32,7 @@ import { Button } from '@/ui/button';
 
 import { moods, foodQualities } from '@/lib/data-day';
 import { createTodaysData } from '@/lib/_actions';
-import { getDay } from '@/lib/day';
+import { getDay } from '@/lib/day.server';
 
 const InteractionsPage = () => {
   const { user } = useUser();
