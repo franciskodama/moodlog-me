@@ -19,6 +19,7 @@ import { Logo } from '@/components/Logo';
 import { Button } from '@/ui/button';
 import { useState } from 'react';
 import { setCalendarView } from '@/lib/settings.server';
+import { changeView } from '@/lib/_actions';
 
 export const Header = ({ locale }: { locale: string }) => {
   const { user } = useUser();
@@ -28,7 +29,7 @@ export const Header = ({ locale }: { locale: string }) => {
 
   const handleClickOnView = async () => {
     setView(!view);
-    await setCalendarView(uid!, !view);
+    await changeView(uid!, !view);
   };
 
   return (
