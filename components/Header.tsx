@@ -12,6 +12,7 @@ import {
   MoonIcon,
   GripIcon,
   CalendarDaysIcon,
+  FlagTriangleRightIcon,
 } from 'lucide-react';
 
 import Flag from './Flag';
@@ -30,6 +31,8 @@ export const Header = ({ locale }: { locale: string }) => {
     await changeView(uid!, !view);
   };
 
+  const handleClickStartPeriod = async () => {};
+
   return (
     <>
       <div className='nav bg-secondary pb-6 px-2 ml-1 flex justify-between items-center'>
@@ -42,7 +45,7 @@ export const Header = ({ locale }: { locale: string }) => {
             className='flex items-center mr-4 text-base font-bold text-primary bg-green border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
           >
             <MoonIcon fill='yellow' size={24} />
-            <span className='ml-2'>Full Moon</span>
+            {/* <span className='ml-2'>Full Moon</span> */}
           </Button>
           {/* <ClipboardList /> */}
           {/* <AreaChart /> */}
@@ -58,6 +61,13 @@ export const Header = ({ locale }: { locale: string }) => {
               {/* <span className='ml-2'>Style</span> */}
             </Button>
           </Link>
+          <Button
+            onClick={handleClickStartPeriod}
+            className='flex items-center mr-4 text-base font-bold text-primary bg-green border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
+          >
+            <FlagTriangleRightIcon fill='yellow' size={24} />
+            <span className='ml-2'>Start Period</span>
+          </Button>
           {/* <Carrot /> */}
           {user && !user?.id && (
             <div className='flex items-center text-primary font-medium'>
