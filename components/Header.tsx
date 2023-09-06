@@ -18,13 +18,11 @@ import Flag from './Flag';
 import { Logo } from '@/components/Logo';
 import { Button } from '@/ui/button';
 import { useState } from 'react';
-import { setCalendarView } from '@/lib/settings.server';
 import { changeView } from '@/lib/_actions';
 
 export const Header = ({ locale }: { locale: string }) => {
   const { user } = useUser();
   const [view, setView] = useState(true);
-
   const uid = user?.id;
 
   const handleClickOnView = async () => {

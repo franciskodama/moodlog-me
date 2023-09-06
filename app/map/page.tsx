@@ -19,7 +19,7 @@ const MapPage = async () => {
 
   return (
     <div className='flex flex-wrap items-center justify-center gap-2'>
-      {calendarData.map((day: DayObject) => (
+      {calendarData.map((day: any) => (
         <div key={day.id}>
           <Link href={`/map/${day.id}`}>
             <Cell day={day} />
