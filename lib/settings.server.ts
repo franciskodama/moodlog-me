@@ -1,4 +1,6 @@
-import prisma from './prisma';
+// import prisma from './prisma';
+import { PrismaClient } from '@prisma/client';
+const prisma = new PrismaClient();
 
 export const setCalendarView = async (uid: string, view: boolean) => {
   try {
@@ -19,6 +21,30 @@ export const setCalendarView = async (uid: string, view: boolean) => {
       },
     });
     return { viewCalendar };
+  } catch (error) {
+    return { error };
+  }
+};
+
+export const setStartPeriod = async (uid: string, date: Date) => {
+  try {
+    if (!prisma) {
+      throw new Error('Prisma is not properly configured.');
+    }
+
+    const newDate = await prisma?.userSettings.upsert({
+      where: {
+        uid: uid,
+      },
+      update: {
+        periodStart: date,
+      },
+      create: {
+        uid: uid,
+        periodStart: date,
+      },
+    });
+    return { newDate };
   } catch (error) {
     return { error };
   }

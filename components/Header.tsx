@@ -2,13 +2,10 @@
 
 import Link from 'next/link';
 
-import { auth, UserButton, useUser } from '@clerk/nextjs';
+import { cn } from '@/lib/utils';
+import { useForm } from 'react-hook-form';
+import { UserButton, useUser } from '@clerk/nextjs';
 import {
-  ClipboardList,
-  AreaChart,
-  Calendar,
-  CalendarX2,
-  Carrot,
   MoonIcon,
   GripIcon,
   CalendarDaysIcon,
@@ -19,19 +16,31 @@ import Flag from './Flag';
 import { Logo } from '@/components/Logo';
 import { Button } from '@/ui/button';
 import { useState } from 'react';
-import { changeView } from '@/lib/_actions';
+import { changeStartPeriod, toggleView } from '@/lib/_actions';
+import { Calendar } from '@/components/ui/calendar';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
 
 export const Header = ({ locale }: { locale: string }) => {
+  const [date, setDate] = useState<Date | undefined>(new Date());
+  console.log('---  🚀 ---> | date:', date);
   const { user } = useUser();
   const [view, setView] = useState(true);
   const uid = user?.id;
 
   const handleClickOnView = async () => {
     setView(!view);
-    await changeView(uid!, !view);
+    await toggleView(uid!, !view);
   };
 
-  const handleClickStartPeriod = async () => {};
+  // const handleChangeStartPeriod = async (date: Date) => {
+  //   setDate(date);
+  //   await changeStartPeriod(uid!, date);
+  //   console.log('ENVIADO!');
+  // };
 
   return (
     <>
@@ -45,11 +54,25 @@ export const Header = ({ locale }: { locale: string }) => {
             className='flex items-center mr-4 text-base font-bold text-primary bg-green border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
           >
             <MoonIcon fill='yellow' size={24} />
-            {/* <span className='ml-2'>Full Moon</span> */}
           </Button>
-          {/* <ClipboardList /> */}
-          {/* <AreaChart /> */}
-          {/* <Calendar /> */}
+
+          <Popover>
+            <PopoverTrigger>
+              <div className='flex items-center mr-4 text-base font-bold text-primary bg-green border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'>
+                <FlagTriangleRightIcon fill='yellow' size={24} />
+                <p className='ml-2'>{date && date.toLocaleDateString()}</p>
+              </div>
+            </PopoverTrigger>
+            <PopoverContent>
+              <Calendar
+                mode='single'
+                selected={date}
+                // onSelect={handleChangeStartPeriod}
+                onSelect={setDate}
+                className='rounded-md border'
+              />
+            </PopoverContent>
+          </Popover>
 
           <Link href='/map'>
             <Button
@@ -58,17 +81,9 @@ export const Header = ({ locale }: { locale: string }) => {
             >
               <GripIcon stroke={view ? 'yellow' : 'black'} size={24} />|
               <CalendarDaysIcon fill={view ? '#6cbd45' : 'yellow'} size={24} />
-              {/* <span className='ml-2'>Style</span> */}
             </Button>
           </Link>
-          <Button
-            onClick={handleClickStartPeriod}
-            className='flex items-center mr-4 text-base font-bold text-primary bg-green border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
-          >
-            <FlagTriangleRightIcon fill='yellow' size={24} />
-            <span className='ml-2'>Start Period</span>
-          </Button>
-          {/* <Carrot /> */}
+
           {user && !user?.id && (
             <div className='flex items-center text-primary font-medium'>
               <Link href='sign-in'>
@@ -79,23 +94,24 @@ export const Header = ({ locale }: { locale: string }) => {
               </Link>
             </div>
           )}
-          {/* <div className='mr-4 border-2 border-primary rounded-full shadow-lg shadow-primary'> */}
-          <UserButton
-            userProfileMode='navigation'
-            userProfileUrl={
-              typeof window !== 'undefined'
-                ? `${window.location.origin}/profile`
-                : undefined
-            }
-            afterSignOutUrl='/'
-            appearance={{
-              elements: {
-                userButtonPopoverFooter: 'hidden',
-                avatarBox: 'w-[3em] h-[3em]',
-              },
-            }}
-          />
-          {/* </div> */}
+
+          <div className='mr-4 border-2 border-primary rounded-full shadow-lg shadow-primary'>
+            <UserButton
+              userProfileMode='navigation'
+              userProfileUrl={
+                typeof window !== 'undefined'
+                  ? `${window.location.origin}/profile`
+                  : undefined
+              }
+              afterSignOutUrl='/'
+              appearance={{
+                elements: {
+                  userButtonPopoverFooter: 'hidden',
+                  avatarBox: 'w-[3em] h-[3em]',
+                },
+              }}
+            />
+          </div>
 
           <div className='mr-2 shadow-lg shadow-primary'>
             <Flag countryCode={locale} />

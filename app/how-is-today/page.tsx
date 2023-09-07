@@ -14,10 +14,10 @@ import { getDay } from '@/lib/day.server';
 export const HowIsToday = async () => {
   const user = auth();
 
-  if (user.userId) {
-    const dayTest = await getDay(user.userId!);
-    console.log('---  🚀 ---> | dayTest:', dayTest);
-  }
+  // if (user.userId) {
+  //   const dayTest = await getDay(user.userId!);
+  //   console.log('---  🚀 ---> | dayTest:', dayTest);
+  // }
 
   return (
     <Accordion type='single' collapsible>
