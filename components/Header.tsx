@@ -26,7 +26,6 @@ import {
 
 export const Header = ({ locale }: { locale: string }) => {
   const [date, setDate] = useState<Date | undefined>(new Date());
-  console.log('---  🚀 ---> | date:', date);
   const { user } = useUser();
   const [view, setView] = useState(true);
   const uid = user?.id;
@@ -36,6 +35,8 @@ export const Header = ({ locale }: { locale: string }) => {
     await toggleView(uid!, !view);
   };
 
+  console.log('---  🚀 ---> | view:', !view);
+  console.log('---  🚀 ---> | date:', date);
   // const handleChangeStartPeriod = async (date: Date) => {
   //   setDate(date);
   //   await changeStartPeriod(uid!, date);
