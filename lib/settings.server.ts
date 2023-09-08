@@ -1,9 +1,10 @@
-import prisma from './prisma';
-// import { PrismaClient } from '@prisma/client';
-// const prisma = new PrismaClient();
+// import prisma from './prisma';
+import { PrismaClient } from '@prisma/client';
+const prisma = new PrismaClient();
+console.log('---  🚀 ---> | prisma:', prisma);
 
 export const setCalendarView = async (uid: string, view: boolean) => {
-  await prisma.$connect();
+  // await prisma.$connect();
   try {
     if (!prisma) {
       throw new Error('Prisma is not properly configured.');
