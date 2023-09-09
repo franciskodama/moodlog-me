@@ -11,6 +11,9 @@ import {
   CalendarDaysIcon,
   FlagTriangleRightIcon,
   KeyRoundIcon,
+  CalendarRangeIcon,
+  CalendarIcon,
+  CalendarXIcon,
 } from 'lucide-react';
 
 import Flag from './Flag';
@@ -36,14 +39,14 @@ export const Header = ({ locale }: { locale: string }) => {
     await toggleView(uid!, !view);
   };
 
-  console.log('---  🚀 ---> | view:', !view);
-  console.log('---  🚀 ---> | date:', date);
+  // -----------------------------------------------------
   console.log('---  🚀 ---> | user:', user);
-  // const handleChangeStartPeriod = async (date: Date) => {
-  //   setDate(date);
-  //   await changeStartPeriod(uid!, date);
-  //   console.log('ENVIADO!');
-  // };
+  // -----------------------------------------------------
+
+  const handleChangeStartPeriod = async (date: any) => {
+    setDate(date);
+    await changeStartPeriod(uid!, date);
+  };
 
   return (
     <>
@@ -52,7 +55,7 @@ export const Header = ({ locale }: { locale: string }) => {
           <Logo />
         </Link>
         <div className='flex items-center gap-4'>
-          <div className='flex items-center mr-1 text-base font-bold text-primary bg-green border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'>
+          <div className='flex items-center mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'>
             <Link href='/map'>
               <KeyRoundIcon fill='yellow' size={24} />
             </Link>
@@ -60,37 +63,45 @@ export const Header = ({ locale }: { locale: string }) => {
 
           <Button
             type='submit'
-            className='flex items-center mr-1 text-base font-bold text-primary bg-green border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
+            className='flex items-center mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
           >
+            <span className='mx-2'>24° C</span>
             <MoonIcon fill='yellow' size={24} />
           </Button>
 
           <Popover>
             <PopoverTrigger>
-              <div className='flex items-center mr-1 text-base font-bold text-primary bg-green border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'>
+              <div className='flex items-center mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'>
                 <FlagTriangleRightIcon fill='yellow' size={24} />
-                <p className='ml-2'>{date && date.toLocaleDateString()}</p>
+                <p className='ml-2'>
+                  {`From: ${date && date.toLocaleDateString()}`}
+                </p>
               </div>
             </PopoverTrigger>
             <PopoverContent>
               <Calendar
                 mode='single'
                 selected={date}
-                // onSelect={handleChangeStartPeriod}
-                onSelect={setDate}
+                onSelect={handleChangeStartPeriod}
                 className='rounded-md border'
               />
             </PopoverContent>
           </Popover>
 
+          <div className='flex items-center mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'>
+            <CalendarRangeIcon fill='yellow' size={24} />
+            <p className='ml-2'>Period Range</p>
+          </div>
+
           <Button
             onClick={handleClickOnView}
-            className='flex items-center justify-between w-[7em] mr-4 text-base font-bold text-primary bg-green border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
+            className='flex items-center justify-between w-[7em] mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
           >
-            <GripIcon stroke={view ? 'yellow' : 'black'} size={24} />|
-            <CalendarDaysIcon fill={view ? '#6cbd45' : 'yellow'} size={24} />
+            <CalendarXIcon fill={view ? '#fff2e8' : 'yellow'} size={24} />|
+            <CalendarIcon fill={view ? 'yellow' : '#fff2e8'} size={24} />
           </Button>
 
+          <span className='text-base font-bold'>|</span>
           {user && !user?.id && (
             <div className='flex items-center text-primary font-medium'>
               <Link href='sign-in'>

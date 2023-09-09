@@ -1,11 +1,7 @@
-// import prisma from './prisma';
-// import { PrismaClient } from '@prisma/client';
-// const prisma = new PrismaClient();
-console.log('---  🚀 ---> | prisma:', prisma);
+import prisma from './prisma';
 
 export const setCalendarView = async (uid: string, view: boolean) => {
   try {
-    // await prisma.$connect();
     if (!prisma) {
       throw new Error('Prisma is not properly configured.');
     }
@@ -22,7 +18,7 @@ export const setCalendarView = async (uid: string, view: boolean) => {
         view: !view,
       },
     });
-    return viewCalendar; // { viewCalendar }
+    return { viewCalendar };
   } catch (error) {
     return { error };
   }
