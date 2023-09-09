@@ -23,3 +23,27 @@ export const setCalendarView = async (uid: string, view: boolean) => {
     return { error };
   }
 };
+
+export const setStartPeriod = async (uid: string, date: Date) => {
+  try {
+    if (!prisma) {
+      throw new Error('Prisma is not properly configured.');
+    }
+
+    const newDate = await prisma?.userSettings.upsert({
+      where: {
+        uid: uid,
+      },
+      update: {
+        periodStart: date,
+      },
+      create: {
+        uid: uid,
+        periodStart: date,
+      },
+    });
+    return { newDate };
+  } catch (error) {
+    return { error };
+  }
+};

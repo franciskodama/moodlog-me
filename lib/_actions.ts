@@ -3,14 +3,19 @@
 import { revalidatePath } from 'next/cache';
 import { setDay } from './day.server';
 import { FieldValues } from 'react-hook-form';
-import { setCalendarView } from './settings.server';
+import { setCalendarView, setStartPeriod } from './settings.server';
 
 export const createTodaysData = async (uid: string, data: any) => {
   await setDay(uid, data);
   revalidatePath('/map');
 };
 
-export const changeView = async (uid: string, view: boolean) => {
+export const toggleView = async (uid: string, view: boolean) => {
   await setCalendarView(uid, view);
+  revalidatePath('/map');
+};
+
+export const changeStartPeriod = async (uid: string, date: Date) => {
+  await setStartPeriod(uid, date);
   revalidatePath('/map');
 };
