@@ -19,7 +19,7 @@ import {
 import Flag from './Flag';
 import { Logo } from '@/components/Logo';
 import { Button } from '@/ui/button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { changePeriod, changeStartPeriod, toggleView } from '@/lib/_actions';
 import { Calendar } from '@/components/ui/calendar';
 import {
@@ -34,13 +34,43 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { getWeather } from '@/lib/weather.server';
 
 export const Header = ({ locale }: { locale: string }) => {
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [period, setPeriod] = useState<string | undefined>();
+  const [weather, setWeather] = useState(null);
   const { user } = useUser();
   const [view, setView] = useState(true);
   const uid = user?.id;
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const result = await getWeather();
+  //     setWeather(result);
+  //     console.log('---  🚀 ---> | weather:', weather);
+  //   }
+  //   fetchData();
+  // }, []);
+
+  // useEffect(() => {
+  //   const getTemp = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         `http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=${process.env.NEXT_PUBLIC_OPENWEATHER_KEY}`
+  //       );
+
+  //       if (!response) {
+  //         throw new Error('Failed to get temperature');
+  //       }
+  //       const result = await response.json();
+  //       setWeather(result);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   getTemp();
+  // }, []);
 
   const handleClickOnView = async () => {
     setView(!view);
@@ -48,7 +78,7 @@ export const Header = ({ locale }: { locale: string }) => {
   };
 
   // -----------------------------------------------------
-  console.log('---  🚀 ---> | user:', user);
+  // console.log('---  🚀 ---> | user:', user);
   // -----------------------------------------------------
 
   const handleChangeStartPeriod = async (date: any) => {
@@ -67,16 +97,17 @@ export const Header = ({ locale }: { locale: string }) => {
         <Link href={user ? '/map' : '/'}>
           <Logo />
         </Link>
+
         <div className='flex items-center gap-4'>
-          {/* <div className='flex items-center mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'>
+          <div className='flex items-center mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'>
             <Link href='/map'>
               <KeyRoundIcon fill='yellow' size={24} />
             </Link>
-          </div> */}
+          </div>
 
           <Popover>
             <PopoverTrigger>
-              <div className='flex items-center mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'>
+              <div className='flex items-center justify-center w-[14em] mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'>
                 <FlagTriangleRightIcon fill='yellow' size={24} />
                 <p className='ml-2'>
                   {`From: ${date && date.toLocaleDateString()}`}
