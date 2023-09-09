@@ -27,6 +27,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 export const Header = ({ locale }: { locale: string }) => {
   const [date, setDate] = useState<Date | undefined>(new Date());
@@ -83,23 +90,32 @@ export const Header = ({ locale }: { locale: string }) => {
                 mode='single'
                 selected={date}
                 onSelect={handleChangeStartPeriod}
-                className='rounded-md border'
+                className='rounded-2xl'
               />
             </PopoverContent>
           </Popover>
 
-          <div className='flex items-center mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'>
-            <CalendarRangeIcon fill='yellow' size={24} />
-            <p className='ml-2'>Period Range</p>
-          </div>
+          <Select>
+            <SelectTrigger className='w-[200px] mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full shadow-lg shadow-primary'>
+              <CalendarRangeIcon fill='yellow' size={24} />
+              <SelectValue placeholder='Period Range' />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value='this-year'>This Year</SelectItem>
+              <SelectItem value='365-days'>365 days</SelectItem>
+              <SelectItem value='30-days'>180 days</SelectItem>
+              <SelectItem value='30-days'>90 days</SelectItem>
+              <SelectItem value='30-days'>30 days</SelectItem>
+            </SelectContent>
+          </Select>
 
-          <Button
+          <button
             onClick={handleClickOnView}
-            className='flex items-center justify-between w-[7em] mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
+            className='flex items-center justify-between w-[7em] py-2 mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full px-4 shadow-lg shadow-primary'
           >
             <CalendarXIcon fill={view ? '#fff2e8' : 'yellow'} size={24} />|
             <CalendarIcon fill={view ? 'yellow' : '#fff2e8'} size={24} />
-          </Button>
+          </button>
 
           <span className='text-base font-bold'>|</span>
           {user && !user?.id && (
