@@ -20,16 +20,24 @@ import Flag from './Flag';
 import { Logo } from '@/components/Logo';
 import { Button } from '@/ui/button';
 import { useState } from 'react';
-import { changeStartPeriod, toggleView } from '@/lib/_actions';
+import { changePeriod, changeStartPeriod, toggleView } from '@/lib/_actions';
 import { Calendar } from '@/components/ui/calendar';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 export const Header = ({ locale }: { locale: string }) => {
   const [date, setDate] = useState<Date | undefined>(new Date());
+  const [period, setPeriod] = useState<string | undefined>();
   const { user } = useUser();
   const [view, setView] = useState(true);
   const uid = user?.id;
@@ -48,6 +56,11 @@ export const Header = ({ locale }: { locale: string }) => {
     await changeStartPeriod(uid!, date);
   };
 
+  const handleChangePeriod = async (periodSelected: string) => {
+    setPeriod(periodSelected);
+    changePeriod(uid!, periodSelected);
+  };
+
   return (
     <>
       <div className='nav bg-secondary pb-6 px-2 ml-1 flex justify-between items-center'>
@@ -55,19 +68,11 @@ export const Header = ({ locale }: { locale: string }) => {
           <Logo />
         </Link>
         <div className='flex items-center gap-4'>
-          <div className='flex items-center mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'>
+          {/* <div className='flex items-center mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'>
             <Link href='/map'>
               <KeyRoundIcon fill='yellow' size={24} />
             </Link>
-          </div>
-
-          <Button
-            type='submit'
-            className='flex items-center mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
-          >
-            <span className='mx-2'>24° C</span>
-            <MoonIcon fill='yellow' size={24} />
-          </Button>
+          </div> */}
 
           <Popover>
             <PopoverTrigger>
@@ -83,25 +88,43 @@ export const Header = ({ locale }: { locale: string }) => {
                 mode='single'
                 selected={date}
                 onSelect={handleChangeStartPeriod}
-                className='rounded-md border'
+                className='rounded-2xl'
               />
             </PopoverContent>
           </Popover>
 
-          <div className='flex items-center mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'>
-            <CalendarRangeIcon fill='yellow' size={24} />
-            <p className='ml-2'>Period Range</p>
-          </div>
+          <Select onValueChange={handleChangePeriod}>
+            <SelectTrigger className='w-[200px] mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full shadow-lg shadow-primary'>
+              <CalendarRangeIcon fill='yellow' size={24} />
+              <SelectValue placeholder='Period Range' />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value='this-year'>This Year</SelectItem>
+              <SelectItem value='365-days'>365 days</SelectItem>
+              <SelectItem value='180-days'>180 days</SelectItem>
+              <SelectItem value='90-days'>90 days</SelectItem>
+              <SelectItem value='30-days'>30 days</SelectItem>
+            </SelectContent>
+          </Select>
 
-          <Button
+          <button
             onClick={handleClickOnView}
-            className='flex items-center justify-between w-[7em] mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
+            className='flex items-center justify-between w-[7em] py-2 mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full px-4 shadow-lg shadow-primary'
           >
             <CalendarXIcon fill={view ? '#fff2e8' : 'yellow'} size={24} />|
             <CalendarIcon fill={view ? 'yellow' : '#fff2e8'} size={24} />
-          </Button>
+          </button>
 
           <span className='text-base font-bold'>|</span>
+
+          <Button
+            type='submit'
+            className='flex items-center mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
+          >
+            <span className='mx-2'>24° C</span>
+            <MoonIcon fill='yellow' size={24} />
+          </Button>
+
           {user && !user?.id && (
             <div className='flex items-center text-primary font-medium'>
               <Link href='sign-in'>
