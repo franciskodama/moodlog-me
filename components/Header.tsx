@@ -10,6 +10,7 @@ import {
   GripIcon,
   CalendarDaysIcon,
   FlagTriangleRightIcon,
+  KeyRoundIcon,
 } from 'lucide-react';
 
 import Flag from './Flag';
@@ -37,6 +38,7 @@ export const Header = ({ locale }: { locale: string }) => {
 
   console.log('---  🚀 ---> | view:', !view);
   console.log('---  🚀 ---> | date:', date);
+  console.log('---  🚀 ---> | user:', user);
   // const handleChangeStartPeriod = async (date: Date) => {
   //   setDate(date);
   //   await changeStartPeriod(uid!, date);
@@ -50,16 +52,22 @@ export const Header = ({ locale }: { locale: string }) => {
           <Logo />
         </Link>
         <div className='flex items-center gap-4'>
+          <div className='flex items-center mr-1 text-base font-bold text-primary bg-green border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'>
+            <Link href='/map'>
+              <KeyRoundIcon fill='yellow' size={24} />
+            </Link>
+          </div>
+
           <Button
             type='submit'
-            className='flex items-center mr-4 text-base font-bold text-primary bg-green border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
+            className='flex items-center mr-1 text-base font-bold text-primary bg-green border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
           >
             <MoonIcon fill='yellow' size={24} />
           </Button>
 
           <Popover>
             <PopoverTrigger>
-              <div className='flex items-center mr-4 text-base font-bold text-primary bg-green border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'>
+              <div className='flex items-center mr-1 text-base font-bold text-primary bg-green border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'>
                 <FlagTriangleRightIcon fill='yellow' size={24} />
                 <p className='ml-2'>{date && date.toLocaleDateString()}</p>
               </div>
@@ -75,15 +83,13 @@ export const Header = ({ locale }: { locale: string }) => {
             </PopoverContent>
           </Popover>
 
-          <Link href='/map'>
-            <Button
-              onClick={handleClickOnView}
-              className='flex items-center justify-between w-[7em] mr-4 text-base font-bold text-primary bg-green border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
-            >
-              <GripIcon stroke={view ? 'yellow' : 'black'} size={24} />|
-              <CalendarDaysIcon fill={view ? '#6cbd45' : 'yellow'} size={24} />
-            </Button>
-          </Link>
+          <Button
+            onClick={handleClickOnView}
+            className='flex items-center justify-between w-[7em] mr-4 text-base font-bold text-primary bg-green border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
+          >
+            <GripIcon stroke={view ? 'yellow' : 'black'} size={24} />|
+            <CalendarDaysIcon fill={view ? '#6cbd45' : 'yellow'} size={24} />
+          </Button>
 
           {user && !user?.id && (
             <div className='flex items-center text-primary font-medium'>
@@ -96,7 +102,7 @@ export const Header = ({ locale }: { locale: string }) => {
             </div>
           )}
 
-          <div className='mr-4 border-2 border-primary rounded-full shadow-lg shadow-primary'>
+          <div className='mr-1 border-2 border-primary rounded-full shadow-lg shadow-primary'>
             <UserButton
               userProfileMode='navigation'
               userProfileUrl={
