@@ -65,7 +65,7 @@ const InteractionsPage = () => {
           <div className='flex flex-col w-1/4 mb-6 gap-6'>
             <div className='flex gap-2'>
               <Input
-                {...register('moodPhrase')}
+                {...register('note')}
                 type='text'
                 className='bg-white ml-14'
                 placeholder='Leave a note for yourself'
@@ -99,7 +99,7 @@ const InteractionsPage = () => {
                       className='flex items-center space-x-2 relative'
                     >
                       <RadioGroupItemEmojis
-                        {...register('moodFace')}
+                        {...register('moodRating')}
                         className='absolute t-0 l-0 translate-x-[10px] w-[2em] h-[2em]'
                         value={mood.id.toString()}
                         id={mood.id.toString()}
@@ -260,19 +260,19 @@ const InteractionsPage = () => {
             <div className='flex w-full'>
               <div className='flex flex-col gap-2 w-full'>
                 <Input
-                  {...register('gratitudeOne')}
+                  {...register('firstGratitude')}
                   type='text'
                   className='bg-white'
                   placeholder='First gratitude'
                 />
                 <Input
-                  {...register('gratitudeTwo')}
+                  {...register('secondGratitude')}
                   type='text'
                   className='bg-white'
                   placeholder='Second gratitude'
                 />
                 <Input
-                  {...register('gratitudeThree')}
+                  {...register('thirdGratitude')}
                   type='text'
                   className='bg-white'
                   placeholder='Third gratitude'
@@ -301,19 +301,19 @@ const InteractionsPage = () => {
             <div className='flex w-full'>
               <div className='flex flex-col gap-2 w-full'>
                 <Input
-                  {...register('improvement-one')}
+                  {...register('firstGrowthOpportunity')}
                   type='text'
                   className='bg-white'
                   placeholder='First improvement'
                 />
                 <Input
-                  {...register('improvement-second')}
+                  {...register('secondGrowthOpportunity')}
                   type='text'
                   className='bg-white'
                   placeholder='Second improvement'
                 />
                 <Input
-                  {...register('improvement-third')}
+                  {...register('thirdGrowthOpportunity')}
                   type='text'
                   className='bg-white'
                   placeholder='Third improvement'
