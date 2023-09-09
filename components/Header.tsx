@@ -14,6 +14,8 @@ import {
   CalendarRangeIcon,
   CalendarIcon,
   CalendarXIcon,
+  ToggleLeftIcon,
+  ToggleRightIcon,
 } from 'lucide-react';
 
 import Flag from './Flag';
@@ -40,6 +42,7 @@ export const Header = ({ locale }: { locale: string }) => {
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [period, setPeriod] = useState<string | undefined>();
   const [weather, setWeather] = useState(null);
+  const [toggleCurrentView, setToggleCurrentView] = useState(false);
   const { user } = useUser();
   const [view, setView] = useState(true);
   const uid = user?.id;
@@ -91,6 +94,10 @@ export const Header = ({ locale }: { locale: string }) => {
     changePeriod(uid!, periodSelected);
   };
 
+  const handleToggleCurrentView = async () => {
+    setToggleCurrentView(!toggleCurrentView);
+  };
+
   return (
     <>
       <div className='nav bg-secondary pb-6 px-2 ml-1 flex justify-between items-center'>
@@ -99,11 +106,9 @@ export const Header = ({ locale }: { locale: string }) => {
         </Link>
 
         <div className='flex items-center gap-4'>
-          <div className='flex items-center mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'>
-            <Link href='/map'>
-              <KeyRoundIcon fill='yellow' size={24} />
-            </Link>
-          </div>
+          <Link href='/map'>
+            <KeyRoundIcon fill='yellow' size={24} />
+          </Link>
 
           <Popover>
             <PopoverTrigger>
@@ -141,20 +146,32 @@ export const Header = ({ locale }: { locale: string }) => {
           <button
             onClick={handleClickOnView}
             className='flex items-center justify-between w-[7em] py-2 mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full px-4 shadow-lg shadow-primary'
+            // className='flex items-center justify-between mx-4'
           >
             <CalendarXIcon fill={view ? '#fff2e8' : 'yellow'} size={24} />|
             <CalendarIcon fill={view ? 'yellow' : '#fff2e8'} size={24} />
           </button>
 
+          <button onClick={handleToggleCurrentView}>
+            {/* <div className='flex items-center mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'> */}
+            {toggleCurrentView ? (
+              <ToggleLeftIcon fill={view ? '#fff2e8' : 'yellow'} size={24} />
+            ) : (
+              <ToggleRightIcon fill='yellow' size={24} />
+            )}
+            {/* </div> */}
+          </button>
+
           <span className='text-base font-bold'>|</span>
 
-          <Button
-            type='submit'
-            className='flex items-center mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
+          <div
+            // type='submit'
+            // className='flex items-center mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
+            className='flex items-center mr-1 text-base font-bold text-primary bg-secondary'
           >
             <span className='mx-2'>24° C</span>
             <MoonIcon fill='yellow' size={24} />
-          </Button>
+          </div>
 
           {user && !user?.id && (
             <div className='flex items-center text-primary font-medium'>
