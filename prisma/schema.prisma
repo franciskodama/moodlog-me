@@ -23,18 +23,18 @@ model Day {
 }
 
 model User {
-  id           Int            @id @default(autoincrement())
+  id           Int           @id @default(autoincrement())
   firstName    String?
   lastName     String?
   city         String?
   state        String?
   country      String?
   email        String?
-  uid          String?        @unique
-  createdAt    DateTime       @default(now()) @db.Timestamptz(6)
-  updatedAt    DateTime?      @default(now()) @db.Timestamptz(6)
+  uid          String?       @unique
+  createdAt    DateTime      @default(now()) @db.Timestamptz(6)
+  updatedAt    DateTime?     @default(now()) @db.Timestamptz(6)
   Day          Day[]
-  UserSettings UserSettings[]
+  UserSettings UserSettings?
 }
 
 model Wealth {
@@ -120,19 +120,12 @@ model Event {
 }
 
 model UserSettings {
-  id          Int                   @id @default(autoincrement())
-  uid         String                @unique
-  periodStart DateTime?             @db.Date
-  period      period_enum_c35f055e?
-  createdAt   DateTime              @default(now()) @db.Timestamptz(6)
-  updatedAt   DateTime              @default(now()) @db.Timestamptz(6)
-  view        Boolean               @default(true)
-  User        User                  @relation(fields: [uid], references: [uid], onDelete: NoAction, onUpdate: NoAction)
-}
-
-enum period_enum_c35f055e {
-  This_Year  @map("This Year")
-  Year_Days  @map("365 Days")
-  This_Month @map("This Month")
-  Month_Days @map("30 Days")
+  id          Int       @id @default(autoincrement())
+  uid         String    @unique
+  periodStart DateTime? @db.Date
+  period      String?
+  createdAt   DateTime  @default(now()) @db.Timestamptz(6)
+  updatedAt   DateTime  @default(now()) @db.Timestamptz(6)
+  view        Boolean   @default(true)
+  User        User      @relation(fields: [uid], references: [uid], onDelete: NoAction, onUpdate: NoAction)
 }
