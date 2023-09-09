@@ -31,7 +31,7 @@ import {
 import { Button } from '@/ui/button';
 
 import { moods, foodQualities } from '@/lib/data-day';
-import { createTodaysData } from '@/lib/_actions';
+import { createTodaysData, setTodayData } from '@/lib/_actions';
 import { getDay } from '@/lib/day.server';
 
 const InteractionsPage = () => {
@@ -45,21 +45,13 @@ const InteractionsPage = () => {
   } = useForm();
 
   const onSubmit = async (data: FieldValues) => {
-    // 'use server';
     console.log('---  🚀 ---> | SHOOOOOT');
     console.log('---  🚀 ---> | data:', data);
-    if (user) {
-      await createTodaysData(user?.id, data);
-    }
-    // await new Promise((resolve) => XXX);
+    // if (user) {
+    //   setTodayData(user?.id, data);
+    // }
     // reset();
   };
-
-  // const actionForDay = async (data: FormData) => {
-  //   const phrase = data.get('phrase');
-  //   if (!phrase || typeof phrase !== 'string') return;
-  //   await createTodaysData(phrase);
-  // };
 
   return (
     <TooltipProvider>
@@ -374,8 +366,8 @@ const InteractionsPage = () => {
                 className='text-base w-full font-bold text-primary bg-blue border-2 border-primary rounded-full py-2 shadow-lg shadow-primary'
                 // onClick={handleClickGetUsersDay}
               >
-                {/* SAVE DRAFT */}
-                GET USER
+                SAVE DRAFT
+                {/* GET USER */}
               </Button>
 
               <Button
@@ -383,7 +375,7 @@ const InteractionsPage = () => {
                 type='submit'
                 className='text-base w-full font-bold text-primary bg-yellow border-2 border-primary rounded-full py-2 shadow-lg shadow-primary'
               >
-                SUBMIT
+                SUBMIT DAY
               </Button>
             </div>
           </div>

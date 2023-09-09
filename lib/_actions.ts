@@ -24,3 +24,8 @@ export const changePeriod = (uid: string, period: string) => {
   setPeriod(uid, period);
   revalidatePath('/map');
 };
+
+export const setTodayData = (uid: string, data: FieldValues) => {
+  // setPeriod(uid, data);
+  revalidatePath('/map');
+};

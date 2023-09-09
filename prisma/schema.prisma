@@ -61,7 +61,7 @@ model applicant_tracking_system {
 }
 
 model Category {
-  id        Int      @id @default(autoincrement())
+  id        String   @id
   name      String   @unique
   label     String   @unique
   value     String   @unique
@@ -69,6 +69,7 @@ model Category {
   status    Boolean? @default(true)
   createdAt DateTime @default(now()) @db.Timestamptz(6)
   updatedAt DateTime @default(now()) @db.Timestamptz(6)
+  Event     Event[]
 }
 
 model DayEvents {
@@ -117,6 +118,8 @@ model Event {
   updatedAt DateTime? @default(now()) @db.Timestamptz(6)
   name      String    @unique
   label     String
+  category  String?
+  Category  Category? @relation(fields: [category], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model UserSettings {
