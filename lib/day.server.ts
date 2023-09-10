@@ -1,3 +1,4 @@
+import { FieldValues } from 'react-hook-form';
 import prisma from './prisma';
 
 // type DayProps = {
@@ -40,7 +41,7 @@ export const getDay = async (uid: string) => {
   }
 };
 
-export const setDay = async (uid: string, data: DayProps) => {
+export const setDay = async (uid: string, data: FieldValues) => {
   // try {
   //   const day = await prisma.day.create({
   //     data: {

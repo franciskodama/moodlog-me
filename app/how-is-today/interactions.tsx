@@ -31,7 +31,7 @@ import {
 import { Button } from '@/ui/button';
 
 import { moods, foodQualities } from '@/lib/data-day';
-import { createTodaysData, setTodayData } from '@/lib/_actions';
+import { setTodayData } from '@/lib/_actions';
 import { getDay } from '@/lib/day.server';
 
 const InteractionsPage = () => {
