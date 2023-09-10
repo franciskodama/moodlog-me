@@ -1,10 +1,40 @@
 import { SignIn } from '@clerk/nextjs';
+import { StarIcon } from 'lucide-react';
 
 const Home = () => {
   return (
     <>
-      <div className='flex'>
-        <div className='p-10 text-white w-1/2'>
+      <div className='flex mx-auto max-w-[1300px]'>
+        <div className='w-2/3 border-2 border-red-500'>
+          <StarIcon size={24} />
+          <h1 className='text-6xl'>Welcome to Moodlog.me!</h1>
+          <h2 className='text-3xl'>
+            where tracking your mood is a proactive step towards a happier you.
+          </h2>
+        </div>
+        <div className='w-1/3'>
+          <div className='border-2 border-green-900 h-screen'>
+            <div className='relative'>
+              Sign in
+              <SignIn
+                signUpUrl='/sign-up'
+                appearance={{
+                  elements: {
+                    card: 'bg-white',
+                    logoBox: 'hidden',
+                    headerTitle:
+                      'uppercase text-center font-semibold text-2xl mb-6',
+                    headerSubtitle: 'hidden',
+                    formButtonPrimary: 'bg-primary text-xl',
+                  },
+                }}
+              />
+              <div className='absolute top-0 left-0 w-7 h-[15em] bg-primary' />
+            </div>
+          </div>
+        </div>
+
+        {/* <div className='p-10 text-white w-1/2'>
           <h1 className='mb-5 uppercase text-2xl'>About</h1>
           <p className='mb-5'>
             MoodLogMe is your personal emotional companion, empowering you to
@@ -86,26 +116,7 @@ const Home = () => {
         meaningful life.
       `}
           </p>
-        </div>
-        <div className='w-1/2 border-2 border-green-900 h-screen'>
-          {/* <div className='relative'> */}
-          Sign in
-          <SignIn
-            signUpUrl='/sign-up'
-            appearance={{
-              elements: {
-                card: 'bg-white',
-                logoBox: 'hidden',
-                headerTitle:
-                  'uppercase text-center font-semibold text-2xl mb-6',
-                headerSubtitle: 'hidden',
-                formButtonPrimary: 'bg-primary text-xl',
-              },
-            }}
-          />
-          {/* <div className='absolute top-0 left-0 w-7 h-[15em] bg-primary' /> */}
-          {/* </div> */}
-        </div>
+        </div> */}
       </div>
     </>
   );

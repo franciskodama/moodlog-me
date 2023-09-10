@@ -66,7 +66,7 @@ export default async function RootLayout({
         <body className={`${comfortaa.className} bg-secondary`}>
           <main className='container pt-8 pb-8 px-10 bg-secondary max-w-[1600px]'>
             <Header locale={locale} />
-            <HowIsToday locale={locale} today={dayId} />
+            {/* <HowIsToday locale={locale} today={dayId} /> */}
             <div>{children}</div>
           </main>
         </body>
