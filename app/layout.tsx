@@ -6,6 +6,7 @@ import { Comfortaa } from 'next/font/google';
 import { Header } from '@/components/Header';
 import './globals.css';
 import { HowIsToday } from './how-is-today/page';
+import { currentUser } from '@clerk/nextjs/server';
 
 const comfortaa = Comfortaa({
   subsets: ['latin'],
@@ -38,7 +39,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   // const user = await currentUser();
-  // console.log('---  🚀 ---> | user:', user);
+  // console.log('---  🚀 ---> | user | layout:', user);
 
   return (
     <ClerkProvider

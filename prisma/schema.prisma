@@ -23,17 +23,18 @@ model Day {
 }
 
 model User {
-  id          Int          @id @default(autoincrement())
+  id          Int           @id @default(autoincrement())
   firstName   String?
   lastName    String?
   city        String?
   state       String?
   country     String?
   email       String?
-  uid         String?      @unique
-  createdAt   DateTime     @default(now()) @db.Timestamptz(6)
-  updatedAt   DateTime?    @default(now()) @db.Timestamptz(6)
+  uid         String?       @unique
+  createdAt   DateTime      @default(now()) @db.Timestamptz(6)
+  updatedAt   DateTime?     @default(now()) @db.Timestamptz(6)
   Day         Day[]
+  DayEvents   DayEvents[]
   UserSetting UserSettings?
 }
 
@@ -74,11 +75,13 @@ model Category {
 
 model DayEvents {
   id        Int      @id @default(autoincrement())
-  dayId     Int
+  dayId     String
   eventId   Int
   createdAt DateTime @default(now()) @db.Timestamptz(6)
   updatedAt DateTime @default(now()) @db.Timestamptz(6)
   value     String?
+  uid       String
+  User      User     @relation(fields: [uid], references: [uid], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model Day_Old {
@@ -111,7 +114,7 @@ model Day_Old {
 }
 
 model Event {
-  id        Int       @id(map: "Events_pkey") @default(autoincrement())
+  id        Int       @id(map: "Events_pkey")
   icon      String?
   status    Boolean   @default(false)
   createdAt DateTime  @default(now()) @db.Timestamptz(6)
@@ -123,8 +126,8 @@ model Event {
 }
 
 model UserSettings {
-  id          Int       @id(map: "UserSettings_pkey") @default(autoincrement())
-  uid         String    @unique(map: "UserSettings_uid_key")
+  id          Int       @id @default(autoincrement())
+  uid         String    @unique
   periodStart DateTime? @db.Date
   period      String?
   createdAt   DateTime  @default(now()) @db.Timestamptz(6)

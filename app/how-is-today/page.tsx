@@ -1,5 +1,3 @@
-import { useUser } from '@clerk/nextjs';
-
 import {
   Accordion,
   AccordionContent,
@@ -9,7 +7,6 @@ import {
 import InteractionsPage from './interactions';
 import { StarIcon } from 'lucide-react';
 import { auth } from '@clerk/nextjs';
-import { getDay } from '@/lib/day.server';
 
 type Props = {
   today: string;
@@ -18,12 +15,6 @@ type Props = {
 
 export const HowIsToday = async (params: Props) => {
   const { today, locale } = params;
-  const user = auth();
-
-  // if (user.userId) {
-  //   const dayTest = await getDay(user.userId!);
-  //   console.log('---  🚀 ---> | dayTest:', dayTest);
-  // }
 
   return (
     <Accordion type='single' collapsible>
@@ -43,9 +34,6 @@ export const HowIsToday = async (params: Props) => {
     </Accordion>
   );
 };
-
-// Loiro server actions: https://www.youtube.com/watch?v=RadgkoJrhu0&list=WL&index=120
-// To do app: https://www.youtube.com/watch?v=8e35eo447Zw
 
 const questions = [
   'How are you doing today?',

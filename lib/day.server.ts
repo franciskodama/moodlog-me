@@ -46,52 +46,45 @@ export const setDay = async (
   dayId: string,
   formData: FieldValues
 ) => {
-  // try {
-  //   if (!prisma) {
-  //     throw new Error(`Prisma client didn't work!`);
-  //   }
-  //   const data = await prisma.dayEvents.upsert({
-  //     where: {
-  //       uid: uid,
-  //       dayId: dayId,
-  //     },
-  //     create: {},
-  //   });
-  //   return { data };
-  // } catch (error) {
-  //   return { error };
-  // }
-  // try {
-  //   const day = await prisma.day.create({
-  //     data: {
-  //       uid: uid,
-  //       note: data.note,
-  //       moodFace: data.moodRating,
-  //       // sleep: data.sleep,
-  //       // meditation: data.meditation,
-  //       // gym: data.gym,
-  //       // water: data.water,
-  //       // food: data.food,
-  //       // todayGoals: data.todayGoals,
-  //       // firstGratitude: data.firstGratitude,
-  //       // secondGratitude: data.secondGratitude,
-  //       // thirdGratitude: data.thirdGratitude,
-  //       // firstGrowthOpportunity: firstGrowthOpportunity.improvementOne,
-  //       // secondGrowthOpportunity: data.secondGrowthOpportunity,
-  //       // thirdGrowthOpportunity: data.thirdGrowthOpportunity,
-  //       // thoughts: data.thoughts,
-  //       // date: data.date,
-  //       // city: data.city,
-  //       // state: data.state,
-  //       // country: data.country,
-  //       // temperature: data.temperature,
-  //       // moon: data.moon,
-  //     },
-  //   });
-  //   return { day };
-  // } catch (error) {
-  //   return { error };
-  // }
+  try {
+    if (!prisma) {
+      throw new Error(`Prisma client didn't work!`);
+    }
+    const dayData = await prisma.dayEvents.upsert({
+      where: {
+        uid: uid,
+        dayId: dayId,
+      },
+      data: {
+        // uid: uid,
+        note: formData.note,
+        moodFace: formData.moodRating,
+        sleep: formData.sleep,
+        meditation: formData.meditation,
+        gym: formData.gym,
+        water: formData.water,
+        food: formData.food,
+        todayGoals: formData.todayGoals,
+        firstGratitude: formData.firstGratitude,
+        secondGratitude: formData.secondGratitude,
+        thirdGratitude: formData.thirdGratitude,
+        firstGrowthOpportunity: formData.firstGrowthOpportunity,
+        secondGrowthOpportunity: formData.secondGrowthOpportunity,
+        thirdGrowthOpportunity: formData.thirdGrowthOpportunity,
+        thoughts: formData.thoughts,
+        // date: formData.date,
+        // city: formData.city,
+        // state: formData.state,
+        // country: formData.country,
+        // temperature: formData.temperature,
+        // moon: formData.moon,
+      },
+      // create: {},
+    });
+    return { dayData };
+  } catch (error) {
+    return { error };
+  }
 };
 
 // export const updateDay = async (
