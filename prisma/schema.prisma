@@ -23,18 +23,18 @@ model Day {
 }
 
 model User {
-  id           Int           @id @default(autoincrement())
-  firstName    String?
-  lastName     String?
-  city         String?
-  state        String?
-  country      String?
-  email        String?
-  uid          String?       @unique
-  createdAt    DateTime      @default(now()) @db.Timestamptz(6)
-  updatedAt    DateTime?     @default(now()) @db.Timestamptz(6)
-  Day          Day[]
-  UserSettings UserSettings?
+  id          Int          @id @default(autoincrement())
+  firstName   String?
+  lastName    String?
+  city        String?
+  state       String?
+  country     String?
+  email       String?
+  uid         String?      @unique
+  createdAt   DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt   DateTime?    @default(now()) @db.Timestamptz(6)
+  Day         Day[]
+  UserSetting UserSettings?
 }
 
 model Wealth {
@@ -123,12 +123,12 @@ model Event {
 }
 
 model UserSettings {
-  id          Int       @id @default(autoincrement())
-  uid         String    @unique
+  id          Int       @id(map: "UserSettings_pkey") @default(autoincrement())
+  uid         String    @unique(map: "UserSettings_uid_key")
   periodStart DateTime? @db.Date
   period      String?
   createdAt   DateTime  @default(now()) @db.Timestamptz(6)
   updatedAt   DateTime  @default(now()) @db.Timestamptz(6)
   view        Boolean   @default(true)
-  User        User      @relation(fields: [uid], references: [uid], onDelete: NoAction, onUpdate: NoAction)
+  User        User      @relation(fields: [uid], references: [uid], onDelete: NoAction, onUpdate: NoAction, map: "UserSettings_uid_fkey")
 }

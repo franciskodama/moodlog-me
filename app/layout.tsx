@@ -26,6 +26,12 @@ const locale: string = 'ca';
 // Custom Hook for context locale
 // https://www.youtube.com/watch?v=I7dwJxGuGYQ&list=WL&index=118&t=93s
 
+const today = new Date();
+const year = today.getFullYear();
+const month = String(today.getMonth() + 1).padStart(2, '0');
+const day = String(today.getDate()).padStart(2, '0');
+const dayId = `${year}-${month}-${day}`;
+
 export default async function RootLayout({
   children,
 }: {
@@ -38,17 +44,17 @@ export default async function RootLayout({
     <ClerkProvider
       appearance={{
         layout: {
-          helpPageUrl: 'https://www.shopthelnk.com/ca/c',
-          logoImageUrl: '/android-chrome-72x72.png',
-          logoPlacement: 'inside',
-          privacyPageUrl: 'https://www.shopthelnk.com/privacy-policy.html',
-          showOptionalFields: true,
-          socialButtonsPlacement: 'bottom',
-          socialButtonsVariant: 'iconButton',
-          termsPageUrl: 'https://www.shopthelnk.com/terms-conditions.html',
+          // helpPageUrl: 'https://www.moodlog.me/help',
+          // logoImageUrl: '/android-chrome-72x72.png',
+          // logoPlacement: 'inside',
+          privacyPageUrl: 'https://www.moodlog.me/privacy-policy.html',
+          // showOptionalFields: true,
+          // socialButtonsPlacement: 'bottom',
+          // socialButtonsVariant: 'iconButton',
+          termsPageUrl: 'https://www.moodlog.me/terms-conditions.html',
         },
         variables: {
-          borderRadius: '0rem',
+          // borderRadius: '0rem',
         },
       }}
     >
@@ -59,7 +65,7 @@ export default async function RootLayout({
         <body className={`${comfortaa.className} bg-secondary`}>
           <main className='container pt-8 pb-8 px-10 bg-secondary max-w-[1600px]'>
             <Header locale={locale} />
-            <HowIsToday />
+            <HowIsToday locale={locale} today={dayId} />
             <div>{children}</div>
           </main>
         </body>

@@ -41,7 +41,26 @@ export const getDay = async (uid: string) => {
   }
 };
 
-export const setDay = async (uid: string, data: FieldValues) => {
+export const setDay = async (
+  uid: string,
+  dayId: string,
+  formData: FieldValues
+) => {
+  // try {
+  //   if (!prisma) {
+  //     throw new Error(`Prisma client didn't work!`);
+  //   }
+  //   const data = await prisma.dayEvents.upsert({
+  //     where: {
+  //       uid: uid,
+  //       dayId: dayId,
+  //     },
+  //     create: {},
+  //   });
+  //   return { data };
+  // } catch (error) {
+  //   return { error };
+  // }
   // try {
   //   const day = await prisma.day.create({
   //     data: {

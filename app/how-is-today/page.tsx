@@ -11,7 +11,13 @@ import { StarIcon } from 'lucide-react';
 import { auth } from '@clerk/nextjs';
 import { getDay } from '@/lib/day.server';
 
-export const HowIsToday = async () => {
+type Props = {
+  today: string;
+  locale: string;
+};
+
+export const HowIsToday = async (params: Props) => {
+  const { today, locale } = params;
   const user = auth();
 
   // if (user.userId) {
@@ -31,7 +37,7 @@ export const HowIsToday = async () => {
           </div>
         </AccordionTrigger>
         <AccordionContent>
-          <InteractionsPage />
+          <InteractionsPage today={today} locale={locale} />
         </AccordionContent>
       </AccordionItem>
     </Accordion>

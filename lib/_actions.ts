@@ -5,8 +5,12 @@ import { setDay } from './day.server';
 import { FieldValues } from 'react-hook-form';
 import { setCalendarView, setPeriod, setStartPeriod } from './settings.server';
 
-export const setTodayData = (uid: string, data: FieldValues) => {
-  // setDay(uid, data);
+export const setTodayData = (
+  uid: string,
+  dayId: string,
+  formData: FieldValues
+) => {
+  setDay(uid, dayId, formData);
   revalidatePath('/map');
 };
 

@@ -33,8 +33,16 @@ import { Button } from '@/ui/button';
 import { moods, foodQualities } from '@/lib/data-day';
 import { setTodayData } from '@/lib/_actions';
 import { getDay } from '@/lib/day.server';
+import { useState } from 'react';
 
-const InteractionsPage = () => {
+type Props = {
+  today: string;
+  locale: string;
+};
+
+const InteractionsPage = (params: Props) => {
+  const [data, setData] = useState<FieldValues>({});
+  const { today, locale } = params;
   const { user } = useUser();
 
   const {
@@ -44,12 +52,12 @@ const InteractionsPage = () => {
     reset,
   } = useForm();
 
-  const onSubmit = async (data: FieldValues) => {
-    console.log('---  🚀 ---> | SHOOOOOT');
-    console.log('---  🚀 ---> | data:', data);
-    // if (user) {
-    //   setTodayData(user?.id, data);
-    // }
+  const onSubmit = async (formData: FieldValues) => {
+    setData(formData);
+    console.log('---  🚀 ---> | formData: ', formData);
+    if (user) {
+      setTodayData(user?.id, today, formData);
+    }
     // reset();
   };
 
@@ -339,7 +347,7 @@ const InteractionsPage = () => {
 
           <div className='flex flex-col w-1/4 h-full gap-4'>
             <Textarea
-              {...register('thoughts', {
+              {...register('reflections', {
                 minLength: {
                   value: 10,
                   message: `C'mon, you can write more than 10 characteres, right?`,
