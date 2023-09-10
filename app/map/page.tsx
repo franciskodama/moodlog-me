@@ -1,5 +1,5 @@
 import Cell from '../../components/Cell';
-import calendarData from '../../lib/calendar.json';
+import calendarData from '../../lib/data/calendar.json';
 import { DayObject } from '../../lib/calendar';
 import { getHolidays } from '../../lib/holidays';
 import { currentUser } from '@clerk/nextjs';

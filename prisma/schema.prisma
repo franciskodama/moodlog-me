@@ -34,7 +34,7 @@ model User {
   createdAt   DateTime      @default(now()) @db.Timestamptz(6)
   updatedAt   DateTime?     @default(now()) @db.Timestamptz(6)
   Day         Day[]
-  DayEvents   DayEvents[]
+  DayEvent    DayEvent[]
   UserSetting UserSettings?
 }
 
@@ -73,17 +73,6 @@ model Category {
   Event     Event[]
 }
 
-model DayEvents {
-  id        Int      @id @default(autoincrement())
-  dayId     String
-  eventId   Int
-  createdAt DateTime @default(now()) @db.Timestamptz(6)
-  updatedAt DateTime @default(now()) @db.Timestamptz(6)
-  value     String?
-  uid       String
-  User      User     @relation(fields: [uid], references: [uid], onDelete: NoAction, onUpdate: NoAction)
-}
-
 model Day_Old {
   id               Int       @id(map: "Day_pkey") @default(autoincrement())
   uid              String
@@ -114,7 +103,7 @@ model Day_Old {
 }
 
 model Event {
-  id        Int       @id(map: "Events_pkey")
+  id        String    @id(map: "Events_pkey") @default("eid-")
   icon      String?
   status    Boolean   @default(false)
   createdAt DateTime  @default(now()) @db.Timestamptz(6)
@@ -134,4 +123,15 @@ model UserSettings {
   updatedAt   DateTime  @default(now()) @db.Timestamptz(6)
   view        Boolean   @default(true)
   User        User      @relation(fields: [uid], references: [uid], onDelete: NoAction, onUpdate: NoAction, map: "UserSettings_uid_fkey")
+}
+
+model DayEvent {
+  id        Int      @id(map: "DayEvents_pkey") @default(autoincrement())
+  dayId     String
+  eventId   Int
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @default(now()) @db.Timestamptz(6)
+  value     String?
+  uid       String
+  User      User     @relation(fields: [uid], references: [uid], onDelete: NoAction, onUpdate: NoAction, map: "DayEvents_uid_fkey")
 }

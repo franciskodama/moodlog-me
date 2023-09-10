@@ -30,7 +30,7 @@ import {
 } from '@/components/ui/tooltip';
 import { Button } from '@/ui/button';
 
-import { moods, foodQualities } from '@/lib/data-day';
+import { moods, foodQualities } from '@/lib/data/data-day';
 import { setTodayData } from '@/lib/_actions';
 // import { getDay } from '@/lib/day.server';
 import { useState } from 'react';
