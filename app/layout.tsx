@@ -7,6 +7,7 @@ import { Header } from '@/components/Header';
 import './globals.css';
 import { HowIsToday } from './how-is-today/page';
 import { currentUser } from '@clerk/nextjs/server';
+import { HeaderLoggedOut } from '@/components/Header-Logged-Out';
 
 const comfortaa = Comfortaa({
   subsets: ['latin'],
@@ -38,8 +39,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // const user = await currentUser();
-  // console.log('---  🚀 ---> | user | layout:', user);
+  const user = await currentUser();
+  console.log('---  🚀 ---> | user | layout:', user);
 
   return (
     <ClerkProvider
@@ -54,9 +55,6 @@ export default async function RootLayout({
           // socialButtonsVariant: 'iconButton',
           termsPageUrl: 'https://www.moodlog.me/terms-conditions.html',
         },
-        variables: {
-          // borderRadius: '0rem',
-        },
       }}
     >
       <html lang='en'>
@@ -64,9 +62,13 @@ export default async function RootLayout({
           <link rel='icon' href='/favicon.ico' />
         </head>
         <body className={`${comfortaa.className} bg-secondary`}>
-          <main className='container pt-8 pb-8 px-10 bg-secondary max-w-[1600px]'>
-            <Header locale={locale} />
-            {/* <HowIsToday locale={locale} today={dayId} /> */}
+          <main className='container pt-8 pb-8 px-10 bg-blue max-w-[1600px]'>
+            {user ? (
+              <Header locale={locale} />
+            ) : (
+              <HeaderLoggedOut locale={locale} />
+            )}
+            {user && <HowIsToday locale={locale} today={dayId} />}
             <div>{children}</div>
           </main>
         </body>
