@@ -61,8 +61,8 @@ export default async function RootLayout({
         <head>
           <link rel='icon' href='/favicon.ico' />
         </head>
-        <body className={`${comfortaa.className} bg-secondary`}>
-          <main className='container pt-8 pb-8 px-10 bg-blue max-w-[1600px]'>
+        <body className={`${comfortaa.className} bg-yellow`}>
+          <main className='container pt-8 pb-8 px-10 bg-secondary max-w-[1600px] border-2 border-primary rounded-xl shadow-md shadow-primary mt-4'>
             {user ? (
               <Header locale={locale} />
             ) : (
