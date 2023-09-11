@@ -30,11 +30,19 @@ import {
 } from '@/components/ui/tooltip';
 import { Button } from '@/ui/button';
 
-import { moods, foodQualities } from '@/lib/data-day';
-import { createTodaysData } from '@/lib/_actions';
-import { getDay } from '@/lib/day.server';
+import { moods, foodQualities } from '@/lib/data/data-day';
+import { setTodayData } from '@/lib/_actions';
+// import { getDay } from '@/lib/day.server';
+import { useState } from 'react';
 
-const InteractionsPage = () => {
+type Props = {
+  today: string;
+  locale: string;
+};
+
+const InteractionsPage = (params: Props) => {
+  const [data, setData] = useState<FieldValues>({});
+  const { today, locale } = params;
   const { user } = useUser();
 
   const {
@@ -44,22 +52,14 @@ const InteractionsPage = () => {
     reset,
   } = useForm();
 
-  const onSubmit = async (data: FieldValues) => {
-    // 'use server';
-    console.log('---  🚀 ---> | SHOOOOOT');
-    console.log('---  🚀 ---> | data:', data);
+  const onSubmit = async (formData: FieldValues) => {
+    setData(formData);
+    console.log('---  🚀 ---> | formData: ', formData);
     if (user) {
-      await createTodaysData(user?.id, data);
+      setTodayData(user?.id, today, formData);
     }
-    // await new Promise((resolve) => XXX);
     // reset();
   };
-
-  // const actionForDay = async (data: FormData) => {
-  //   const phrase = data.get('phrase');
-  //   if (!phrase || typeof phrase !== 'string') return;
-  //   await createTodaysData(phrase);
-  // };
 
   return (
     <TooltipProvider>
@@ -73,7 +73,7 @@ const InteractionsPage = () => {
           <div className='flex flex-col w-1/4 mb-6 gap-6'>
             <div className='flex gap-2'>
               <Input
-                {...register('moodPhrase')}
+                {...register('note')}
                 type='text'
                 className='bg-white ml-14'
                 placeholder='Leave a note for yourself'
@@ -107,7 +107,7 @@ const InteractionsPage = () => {
                       className='flex items-center space-x-2 relative'
                     >
                       <RadioGroupItemEmojis
-                        {...register('moodFace')}
+                        {...register('moodRating')}
                         className='absolute t-0 l-0 translate-x-[10px] w-[2em] h-[2em]'
                         value={mood.id.toString()}
                         id={mood.id.toString()}
@@ -268,19 +268,19 @@ const InteractionsPage = () => {
             <div className='flex w-full'>
               <div className='flex flex-col gap-2 w-full'>
                 <Input
-                  {...register('gratitudeOne')}
+                  {...register('firstGratitude')}
                   type='text'
                   className='bg-white'
                   placeholder='First gratitude'
                 />
                 <Input
-                  {...register('gratitudeTwo')}
+                  {...register('secondGratitude')}
                   type='text'
                   className='bg-white'
                   placeholder='Second gratitude'
                 />
                 <Input
-                  {...register('gratitudeThree')}
+                  {...register('thirdGratitude')}
                   type='text'
                   className='bg-white'
                   placeholder='Third gratitude'
@@ -309,19 +309,19 @@ const InteractionsPage = () => {
             <div className='flex w-full'>
               <div className='flex flex-col gap-2 w-full'>
                 <Input
-                  {...register('improvement-one')}
+                  {...register('firstGrowthOpportunity')}
                   type='text'
                   className='bg-white'
                   placeholder='First improvement'
                 />
                 <Input
-                  {...register('improvement-second')}
+                  {...register('secondGrowthOpportunity')}
                   type='text'
                   className='bg-white'
                   placeholder='Second improvement'
                 />
                 <Input
-                  {...register('improvement-third')}
+                  {...register('thirdGrowthOpportunity')}
                   type='text'
                   className='bg-white'
                   placeholder='Third improvement'
@@ -347,7 +347,7 @@ const InteractionsPage = () => {
 
           <div className='flex flex-col w-1/4 h-full gap-4'>
             <Textarea
-              {...register('thoughts', {
+              {...register('reflections', {
                 minLength: {
                   value: 10,
                   message: `C'mon, you can write more than 10 characteres, right?`,
@@ -374,8 +374,8 @@ const InteractionsPage = () => {
                 className='text-base w-full font-bold text-primary bg-blue border-2 border-primary rounded-full py-2 shadow-lg shadow-primary'
                 // onClick={handleClickGetUsersDay}
               >
-                {/* SAVE DRAFT */}
-                GET USER
+                SAVE DRAFT
+                {/* GET USER */}
               </Button>
 
               <Button
@@ -383,7 +383,7 @@ const InteractionsPage = () => {
                 type='submit'
                 className='text-base w-full font-bold text-primary bg-yellow border-2 border-primary rounded-full py-2 shadow-lg shadow-primary'
               >
-                SUBMIT
+                SUBMIT DAY
               </Button>
             </div>
           </div>

@@ -23,18 +23,19 @@ model Day {
 }
 
 model User {
-  id           Int           @id @default(autoincrement())
-  firstName    String?
-  lastName     String?
-  city         String?
-  state        String?
-  country      String?
-  email        String?
-  uid          String?       @unique
-  createdAt    DateTime      @default(now()) @db.Timestamptz(6)
-  updatedAt    DateTime?     @default(now()) @db.Timestamptz(6)
-  Day          Day[]
-  UserSettings UserSettings?
+  id          Int           @id @default(autoincrement())
+  firstName   String?
+  lastName    String?
+  city        String?
+  state       String?
+  country     String?
+  email       String?
+  uid         String?       @unique
+  createdAt   DateTime      @default(now()) @db.Timestamptz(6)
+  updatedAt   DateTime?     @default(now()) @db.Timestamptz(6)
+  Day         Day[]
+  DayEvent    DayEvent[]
+  UserSetting UserSettings?
 }
 
 model Wealth {
@@ -61,7 +62,7 @@ model applicant_tracking_system {
 }
 
 model Category {
-  id        Int      @id @default(autoincrement())
+  id        String   @id
   name      String   @unique
   label     String   @unique
   value     String   @unique
@@ -69,15 +70,7 @@ model Category {
   status    Boolean? @default(true)
   createdAt DateTime @default(now()) @db.Timestamptz(6)
   updatedAt DateTime @default(now()) @db.Timestamptz(6)
-}
-
-model DayEvents {
-  id        Int      @id @default(autoincrement())
-  dayId     Int
-  eventId   Int
-  createdAt DateTime @default(now()) @db.Timestamptz(6)
-  updatedAt DateTime @default(now()) @db.Timestamptz(6)
-  value     String?
+  Event     Event[]
 }
 
 model Day_Old {
@@ -110,13 +103,15 @@ model Day_Old {
 }
 
 model Event {
-  id        Int       @id(map: "Events_pkey") @default(autoincrement())
+  id        String    @id(map: "Events_pkey") @default("eid-")
   icon      String?
   status    Boolean   @default(false)
   createdAt DateTime  @default(now()) @db.Timestamptz(6)
   updatedAt DateTime? @default(now()) @db.Timestamptz(6)
   name      String    @unique
   label     String
+  category  String?
+  Category  Category? @relation(fields: [category], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model UserSettings {
@@ -127,5 +122,16 @@ model UserSettings {
   createdAt   DateTime  @default(now()) @db.Timestamptz(6)
   updatedAt   DateTime  @default(now()) @db.Timestamptz(6)
   view        Boolean   @default(true)
-  User        User      @relation(fields: [uid], references: [uid], onDelete: NoAction, onUpdate: NoAction)
+  User        User      @relation(fields: [uid], references: [uid], onDelete: NoAction, onUpdate: NoAction, map: "UserSettings_uid_fkey")
+}
+
+model DayEvent {
+  id        Int      @id(map: "DayEvents_pkey") @default(autoincrement())
+  dayId     String
+  eventId   Int
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @default(now()) @db.Timestamptz(6)
+  value     String?
+  uid       String
+  User      User     @relation(fields: [uid], references: [uid], onDelete: NoAction, onUpdate: NoAction, map: "DayEvents_uid_fkey")
 }

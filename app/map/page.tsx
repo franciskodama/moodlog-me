@@ -1,9 +1,9 @@
 import Cell from '../../components/Cell';
-import calendarData from '../../lib/calendar.json';
+import calendarData from '../../lib/data/calendar.json';
 import { DayObject } from '../../lib/calendar';
 import { getHolidays } from '../../lib/holidays';
 import { currentUser } from '@clerk/nextjs';
-import { getDay } from '../../lib/day.server';
+// import { getDay } from '../../lib/day.server';
 import Link from 'next/link';
 
 // https://yarnpkg.com/package/classnames
@@ -12,10 +12,10 @@ import Link from 'next/link';
 const MapPage = async () => {
   const user = await currentUser();
 
-  let day;
-  if (user) {
-    day = await getDay(user?.id);
-  }
+  // let day;
+  // if (user) {
+  //   day = await getDay(user?.id);
+  // }
 
   return (
     <div className='flex flex-wrap items-center justify-center gap-2'>

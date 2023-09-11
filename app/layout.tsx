@@ -6,6 +6,8 @@ import { Comfortaa } from 'next/font/google';
 import { Header } from '@/components/Header';
 import './globals.css';
 import { HowIsToday } from './how-is-today/page';
+import { currentUser } from '@clerk/nextjs/server';
+import { HeaderLoggedOut } from '@/components/Header-Logged-Out';
 
 const comfortaa = Comfortaa({
   subsets: ['latin'],
@@ -26,29 +28,32 @@ const locale: string = 'ca';
 // Custom Hook for context locale
 // https://www.youtube.com/watch?v=I7dwJxGuGYQ&list=WL&index=118&t=93s
 
+const today = new Date();
+const year = today.getFullYear();
+const month = String(today.getMonth() + 1).padStart(2, '0');
+const day = String(today.getDate()).padStart(2, '0');
+const dayId = `${year}-${month}-${day}`;
+
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // const user = await currentUser();
-  // console.log('---  🚀 ---> | user:', user);
+  const user = await currentUser();
+  console.log('---  🚀 ---> | user | layout:', user);
 
   return (
     <ClerkProvider
       appearance={{
         layout: {
-          helpPageUrl: 'https://www.shopthelnk.com/ca/c',
-          logoImageUrl: '/android-chrome-72x72.png',
-          logoPlacement: 'inside',
-          privacyPageUrl: 'https://www.shopthelnk.com/privacy-policy.html',
-          showOptionalFields: true,
-          socialButtonsPlacement: 'bottom',
-          socialButtonsVariant: 'iconButton',
-          termsPageUrl: 'https://www.shopthelnk.com/terms-conditions.html',
-        },
-        variables: {
-          borderRadius: '0rem',
+          // helpPageUrl: 'https://www.moodlog.me/help',
+          // logoImageUrl: '/android-chrome-72x72.png',
+          // logoPlacement: 'inside',
+          privacyPageUrl: 'https://www.moodlog.me/privacy-policy.html',
+          // showOptionalFields: true,
+          // socialButtonsPlacement: 'bottom',
+          // socialButtonsVariant: 'iconButton',
+          termsPageUrl: 'https://www.moodlog.me/terms-conditions.html',
         },
       }}
     >
@@ -56,10 +61,14 @@ export default async function RootLayout({
         <head>
           <link rel='icon' href='/favicon.ico' />
         </head>
-        <body className={`${comfortaa.className} bg-secondary`}>
-          <main className='container pt-8 pb-8 px-10 bg-secondary max-w-[1600px]'>
-            <Header locale={locale} />
-            <HowIsToday />
+        <body className={`${comfortaa.className} bg-yellow`}>
+          <main className='container pt-8 pb-8 px-10 bg-secondary max-w-[1600px] border-2 border-primary rounded-xl shadow-md shadow-primary mt-4'>
+            {user ? (
+              <Header locale={locale} />
+            ) : (
+              <HeaderLoggedOut locale={locale} />
+            )}
+            {user && <HowIsToday locale={locale} today={dayId} />}
             <div>{children}</div>
           </main>
         </body>
