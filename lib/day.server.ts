@@ -1,16 +1,16 @@
 import { FieldValues } from 'react-hook-form';
 import prisma from './prisma';
 
-// export const getDay = async (uid: string) => {
-//   try {
-//     const day = await prisma.day.findMany({
-//       where: { uid: uid },
-//     });
-//     return day;
-//   } catch (error) {
-//     return { error };
-//   }
-// };
+export const getDay = async (uid: string) => {
+  try {
+    const day = await prisma.day.findMany({
+      where: { uid: uid },
+    });
+    return day;
+  } catch (error) {
+    return { error };
+  }
+};
 
 // https://www.prisma.io/docs/concepts/components/prisma-client/relation-queries
 // My uid: 'user_2TIPInn9925e8Mz0cz0AzF2Ib9A',
@@ -24,42 +24,42 @@ export const setDay = async (
     if (!prisma) {
       throw new Error(`Prisma client didn't work!`);
     }
-    const dayData = await prisma.dayEvents.update({
-      where: {
-        // uid: uid,
-        // dayId,
-        // dayId,
-      },
 
-      data: {
-        // uid: uid,
-        // --------------------------
-        // note: formData.note,
-        // moodFace: formData.moodRating,
-        // sleep: formData.sleep,
-        // meditation: formData.meditation,
-        // gym: formData.gym,
-        // water: formData.water,
-        // food: formData.food,
-        // todayGoals: formData.todayGoals,
-        // firstGratitude: formData.firstGratitude,
-        // secondGratitude: formData.secondGratitude,
-        // thirdGratitude: formData.thirdGratitude,
-        // firstGrowthOpportunity: formData.firstGrowthOpportunity,
-        // secondGrowthOpportunity: formData.secondGrowthOpportunity,
-        // thirdGrowthOpportunity: formData.thirdGrowthOpportunity,
-        // thoughts: formData.thoughts,
-        // --------------------------
-        // date: formData.date,
-        // city: formData.city,
-        // state: formData.state,
-        // country: formData.country,
-        // temperature: formData.temperature,
-        // moon: formData.moon,
-      },
-      // create: {},
-    });
-    return { dayData };
+    // const dayData = await prisma.dayEvents.update({
+    //   where: {
+    //     uid: uid,
+    //     dayId,
+    //     dayId,
+    //   },
+
+    //   data: {
+    //     --------------------------
+    //     note: formData.note,
+    //     moodFace: formData.moodRating,
+    //     sleep: formData.sleep,
+    //     meditation: formData.meditation,
+    //     gym: formData.gym,
+    //     water: formData.water,
+    //     food: formData.food,
+    //     todayGoals: formData.todayGoals,
+    //     firstGratitude: formData.firstGratitude,
+    //     secondGratitude: formData.secondGratitude,
+    //     thirdGratitude: formData.thirdGratitude,
+    //     firstGrowthOpportunity: formData.firstGrowthOpportunity,
+    //     secondGrowthOpportunity: formData.secondGrowthOpportunity,
+    //     thirdGrowthOpportunity: formData.thirdGrowthOpportunity,
+    //     thoughts: formData.thoughts,
+    //     --------------------------
+    //     date: formData.date,
+    //     city: formData.city,
+    //     state: formData.state,
+    //     country: formData.country,
+    //     temperature: formData.temperature,
+    //     moon: formData.moon,
+    //   },
+    // create: {},
+    // });
+    // return { dayData };
   } catch (error) {
     return { error };
   }
