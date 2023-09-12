@@ -1,16 +1,27 @@
 import type { Metadata } from 'next';
 
 import { ClerkProvider } from '@clerk/nextjs';
-import { Comfortaa } from 'next/font/google';
+import { Comfortaa, Luckiest_Guy, Pacifico } from 'next/font/google';
 
 import { Header } from '@/components/Header';
 import './globals.css';
-import { HowIsToday } from './how-is-today/page';
 import { currentUser } from '@clerk/nextjs/server';
 import { HeaderLoggedOut } from '@/components/Header-Logged-Out';
 
 const comfortaa = Comfortaa({
   subsets: ['latin'],
+  display: 'swap',
+});
+
+// const pacifico = Pacifico({
+//   weight: '400',
+//   subsets: ['latin'],
+// });
+
+const luckiest_guy = Luckiest_Guy({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -61,14 +72,15 @@ export default async function RootLayout({
         <head>
           <link rel='icon' href='/favicon.ico' />
         </head>
-        <body className={`${comfortaa.className} bg-yellow`}>
-          <main className='container pt-8 pb-8 px-10 bg-secondary max-w-[1600px] border-2 border-primary rounded-xl shadow-md shadow-primary mt-4'>
+        <body
+          className={`${comfortaa.className} ${user ? 'bg-yellow' : 'bg-blue'}`}
+        >
+          <main className='container pt-8 pb-8 px-10 bg-secondary max-w-[1500px] border-2 border-primary rounded-xl shadow-md shadow-primary mt-4'>
             {user ? (
               <Header locale={locale} />
             ) : (
               <HeaderLoggedOut locale={locale} />
             )}
-            {user && <HowIsToday locale={locale} today={dayId} />}
             <div>{children}</div>
           </main>
         </body>
