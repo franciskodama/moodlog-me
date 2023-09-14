@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-
 import { ClerkProvider } from '@clerk/nextjs';
 import { Comfortaa, Luckiest_Guy, Pacifico } from 'next/font/google';
 
