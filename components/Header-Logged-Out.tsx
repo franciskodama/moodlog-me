@@ -7,7 +7,7 @@ import { UserButton, useUser } from '@clerk/nextjs';
 // import { KeyRoundIcon } from 'lucide-react';
 
 import Flag from './Flag';
-import { Logo, LogoBlue } from '@/components/Logo';
+import { Logo } from '@/components/Logo';
 
 export const HeaderLoggedOut = ({ locale }: { locale: string }) => {
   return (
