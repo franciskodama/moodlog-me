@@ -59,6 +59,12 @@ const Home = () => {
                       'bg-blue text-xl shadow-md shadow-primary rounded-full',
                     formFieldInput:
                       'border-2 border-primary shadow-md shadow-primary h-[3.6em] rounded-full',
+                    dividerLine: 'border border-primary',
+                    dividerText: 'text-primary',
+                    socialButtonsIconButton:
+                      'border-2 border-primary shadow-md shadow-primary',
+                    footerActionText: 'text-primary',
+                    footerPagesLink: 'text-primary',
                   },
                 }}
               />
