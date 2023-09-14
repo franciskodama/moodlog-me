@@ -7,7 +7,7 @@ import { UserButton, useUser } from '@clerk/nextjs';
 // import { KeyRoundIcon } from 'lucide-react';
 
 import Flag from './Flag';
-import { Logo } from '@/components/Logo';
+import { Logo, LogoBlue } from '@/components/Logo';
 
 export const HeaderLoggedOut = ({ locale }: { locale: string }) => {
   return (
@@ -15,6 +15,7 @@ export const HeaderLoggedOut = ({ locale }: { locale: string }) => {
       <div className='nav bg-secondary pb-6 px-2 ml-1 flex justify-between items-center'>
         <Link href='/'>
           <Logo />
+          {/* <LogoBlue /> */}
         </Link>
 
         <div className='flex items-center gap-4'>

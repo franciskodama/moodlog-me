@@ -56,7 +56,7 @@ const Home = () => {
                       'lowercase text-center font-semibold text-2xl mb-6',
                     headerSubtitle: 'hidden',
                     formButtonPrimary:
-                      'bg-blue text-xl shadow-md shadow-primary rounded-full',
+                      'bg-blue text-xl shadow-md shadow-primary rounded-full  hover:bg-yellow hover:text-primary',
                     formFieldInput:
                       'border-2 border-primary shadow-md shadow-primary h-[3.6em] rounded-full',
                     dividerLine: 'border border-primary',
