@@ -15,7 +15,6 @@ export const HeaderLoggedOut = ({ locale }: { locale: string }) => {
       <div className='nav bg-secondary pb-6 px-2 ml-1 flex justify-between items-center'>
         <Link href='/'>
           <Logo />
-          {/* <LogoBlue /> */}
         </Link>
 
         <div className='flex items-center gap-4'>
