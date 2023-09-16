@@ -20,32 +20,32 @@ export const setDay = async (
   dayId: string,
   formData: FieldValues
 ) => {
-  try {
-    if (!prisma) {
-      throw new Error(`Prisma client didn't work!`);
-    }
-    const dayData = await prisma.dayEvent.upsert({
-      where: {
-        uid: uid,
-        // dayId,
-      },
-      update: {
-        dayId: dayId,
-        eventId: formData.note,
-        value: formData.firstGratitude,
-      },
-      create: {
-        uid: uid,
-        dayId: dayId,
-        eventId: formData.note,
-        value: formData.firstGratitude,
-      },
-    });
-    console.log('It worked!');
-    return { dayData };
-  } catch (error) {
-    return { error };
-  }
+  // try {
+  //   if (!prisma) {
+  //     throw new Error(`Prisma client didn't work!`);
+  //   }
+  //   const dayData = await prisma.dayEvent.upsert({
+  //     where: {
+  //       uid: uid,
+  //       // dayId,
+  //     },
+  //     update: {
+  //       dayId: dayId,
+  //       eventId: formData.note,
+  //       value: formData.firstGratitude,
+  //     },
+  //     create: {
+  //       uid: uid,
+  //       dayId: dayId,
+  //       eventId: formData.note,
+  //       value: formData.firstGratitude,
+  //     },
+  //   });
+  //   console.log('It worked!');
+  //   return { dayData };
+  // } catch (error) {
+  //   return { error };
+  // }
 };
 
 // note: formData.note,
