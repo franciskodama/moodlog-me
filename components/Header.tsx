@@ -53,14 +53,14 @@ export const Header = ({ location }: { location: Props }) => {
   const [view, setView] = useState(true);
   const uid = user?.id;
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const result = await getWeather();
-  //     setWeather(result);
-  //     console.log('---  🚀 ---> | weather:', weather);
-  //   }
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    async function fetchWeatherData() {
+      const data = await getWeather(location.city);
+      setWeather(data);
+      console.log('---  🚀 ---> | weather:', weather);
+    }
+    fetchWeatherData();
+  }, []);
 
   // useEffect(() => {
   //   const getTemp = async () => {
@@ -175,7 +175,7 @@ export const Header = ({ location }: { location: Props }) => {
             // className='flex items-center mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
             className='flex items-center mr-1 text-base font-bold text-primary bg-secondary'
           >
-            <span className='mx-2'>24° C</span>
+            <span className='mx-2'>24° C{/* {weather} */}</span>
             <MoonIcon fill='yellow' size={24} />
           </div>
 
