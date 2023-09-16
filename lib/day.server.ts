@@ -20,50 +20,55 @@ export const setDay = async (
   dayId: string,
   formData: FieldValues
 ) => {
-  try {
-    if (!prisma) {
-      throw new Error(`Prisma client didn't work!`);
-    }
-
-    // const dayData = await prisma.dayEvents.update({
-    //   where: {
-    //     uid: uid,
-    //     dayId,
-    //     dayId,
-    //   },
-
-    //   data: {
-    //     --------------------------
-    //     note: formData.note,
-    //     moodFace: formData.moodRating,
-    //     sleep: formData.sleep,
-    //     meditation: formData.meditation,
-    //     gym: formData.gym,
-    //     water: formData.water,
-    //     food: formData.food,
-    //     todayGoals: formData.todayGoals,
-    //     firstGratitude: formData.firstGratitude,
-    //     secondGratitude: formData.secondGratitude,
-    //     thirdGratitude: formData.thirdGratitude,
-    //     firstGrowthOpportunity: formData.firstGrowthOpportunity,
-    //     secondGrowthOpportunity: formData.secondGrowthOpportunity,
-    //     thirdGrowthOpportunity: formData.thirdGrowthOpportunity,
-    //     thoughts: formData.thoughts,
-    //     --------------------------
-    //     date: formData.date,
-    //     city: formData.city,
-    //     state: formData.state,
-    //     country: formData.country,
-    //     temperature: formData.temperature,
-    //     moon: formData.moon,
-    //   },
-    // create: {},
-    // });
-    // return { dayData };
-  } catch (error) {
-    return { error };
-  }
+  // try {
+  //   if (!prisma) {
+  //     throw new Error(`Prisma client didn't work!`);
+  //   }
+  //   const dayData = await prisma.dayEvent.upsert({
+  //     where: {
+  //       uid: uid,
+  //       // dayId,
+  //     },
+  //     update: {
+  //       dayId: dayId,
+  //       eventId: formData.note,
+  //       value: formData.firstGratitude,
+  //     },
+  //     create: {
+  //       uid: uid,
+  //       dayId: dayId,
+  //       eventId: formData.note,
+  //       value: formData.firstGratitude,
+  //     },
+  //   });
+  //   console.log('It worked!');
+  //   return { dayData };
+  // } catch (error) {
+  //   return { error };
+  // }
 };
+
+// note: formData.note,
+// moodFace: formData.moodRating,
+// sleep: formData.sleep,
+// meditation: formData.meditation,
+// gym: formData.gym,
+// water: formData.water,
+// food: formData.food,
+// todayGoals: formData.todayGoals,
+// firstGratitude: formData.firstGratitude,
+// secondGratitude: formData.secondGratitude,
+// thirdGratitude: formData.thirdGratitude,
+// firstGrowthOpportunity: formData.firstGrowthOpportunity,
+// secondGrowthOpportunity: formData.secondGrowthOpportunity,
+// thirdGrowthOpportunity: formData.thirdGrowthOpportunity,
+// thoughts: formData.thoughts,
+// date: formData.date,
+// city: formData.city,
+// state: formData.state,
+// country: formData.country,
+// temperature: formData.temperature,
+// moon: formData.moon,
 
 // export const updateDay = async (
 //   registerDate: string,

@@ -30,10 +30,11 @@ import {
 } from '@/components/ui/tooltip';
 import { Button } from '@/ui/button';
 
-import { moods, foodQualities } from '@/lib/data/data-day';
+import { moods } from '@/lib/data/moods';
 import { setTodayData } from '@/lib/_actions';
 // import { getDay } from '@/lib/day.server';
 import { useState } from 'react';
+import { foodQualities } from '@/lib/data/food-quality';
 
 type Props = {
   today: string;
@@ -53,17 +54,16 @@ const InteractionsPage = (params: Props) => {
   } = useForm();
 
   const onSubmit = async (formData: FieldValues) => {
-    setData(formData);
-    console.log('---  🚀 ---> | formData: ', formData);
     if (user) {
       setTodayData(user?.id, today, formData);
     }
+    setData(formData);
     // reset();
   };
 
   return (
     <TooltipProvider>
-      <div className='flex w-full mb-10'>
+      <div className='flex w-full mb-10 mt-1'>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className='flex w-full px-2 gap-8'

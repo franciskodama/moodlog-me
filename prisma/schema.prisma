@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Day {
-  id          Int       @id(map: "Day_pkey1") @default(autoincrement())
+  did         String    @id(map: "Day_pkey1") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   date        DateTime  @db.Date
   city        String?
   state       String?
@@ -62,10 +62,9 @@ model applicant_tracking_system {
 }
 
 model Category {
-  id        String   @id
+  cid       String   @id
   name      String   @unique
   label     String   @unique
-  value     String   @unique
   icon      String?
   status    Boolean? @default(true)
   createdAt DateTime @default(now()) @db.Timestamptz(6)
@@ -103,30 +102,30 @@ model Day_Old {
 }
 
 model Event {
-  id        String    @id(map: "Events_pkey") @default("eid-")
+  eid       String    @id(map: "Events_pkey") @default("eid-")
   icon      String?
   status    Boolean   @default(false)
   createdAt DateTime  @default(now()) @db.Timestamptz(6)
   updatedAt DateTime? @default(now()) @db.Timestamptz(6)
   name      String    @unique
   label     String
-  category  String?
-  Category  Category? @relation(fields: [category], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  cid       String?
+  Category  Category? @relation(fields: [cid], references: [cid], onDelete: NoAction, onUpdate: NoAction, map: "Event_category_fkey")
 }
 
 model UserSettings {
-  id          Int       @id @default(autoincrement())
   uid         String    @unique
   periodStart DateTime? @db.Date
   period      String?
   createdAt   DateTime  @default(now()) @db.Timestamptz(6)
   updatedAt   DateTime  @default(now()) @db.Timestamptz(6)
   view        Boolean   @default(true)
+  id          String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   User        User      @relation(fields: [uid], references: [uid], onDelete: NoAction, onUpdate: NoAction, map: "UserSettings_uid_fkey")
 }
 
 model DayEvent {
-  id        Int      @id(map: "DayEvents_pkey") @default(autoincrement())
+  id        String   @id(map: "DayEvents_pkey") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   dayId     String
   eventId   Int
   createdAt DateTime @default(now()) @db.Timestamptz(6)
