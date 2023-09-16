@@ -43,5 +43,4 @@ export const moods = [
     icon: <LaughIcon className='h-8 w-8' strokeWidth='1.4px' fill='#ffdc02' />,
   },
 ];
-
-export const foodQualities = ['Poor', 'Fair', 'Good', 'Excellent'];
+// Other options of moods: Excellent, Calm, Droopy, Sleepy, Sad
