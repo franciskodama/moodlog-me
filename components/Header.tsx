@@ -38,7 +38,13 @@ import {
 } from '@/components/ui/select';
 import { getWeather } from '@/lib/weather.server';
 
-export const Header = ({ locale }: { locale: string }) => {
+type Props = {
+  city: string;
+  region: string;
+  country: string;
+};
+
+export const Header = ({ location }: { location: Props }) => {
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [period, setPeriod] = useState<string | undefined>();
   const [weather, setWeather] = useState(null);
@@ -203,7 +209,7 @@ export const Header = ({ locale }: { locale: string }) => {
           </div>
 
           <div className='mr-2 shadow-lg shadow-primary'>
-            <Flag countryCode={locale} />
+            <Flag countryCode={location.country} />
           </div>
         </div>
       </div>
