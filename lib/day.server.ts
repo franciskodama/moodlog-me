@@ -24,7 +24,7 @@ export const setDay = async (
     if (!prisma) {
       throw new Error(`Prisma client didn't work!`);
     }
-    const dayData = await prisma.dayEvents.upsert({
+    const dayData = await prisma.dayEvent.upsert({
       where: {
         uid: uid,
         // dayId,

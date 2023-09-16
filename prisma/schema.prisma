@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Day {
-  id          Int       @id(map: "Day_pkey1") @default(autoincrement())
+  did         String    @id(map: "Day_pkey1") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   date        DateTime  @db.Date
   city        String?
   state       String?
@@ -34,7 +34,7 @@ model User {
   createdAt   DateTime      @default(now()) @db.Timestamptz(6)
   updatedAt   DateTime?     @default(now()) @db.Timestamptz(6)
   Day         Day[]
-  DayEvents   DayEvents[]
+  DayEvent    DayEvent[]
   UserSetting UserSettings?
 }
 
@@ -114,23 +114,23 @@ model Event {
 }
 
 model UserSettings {
-  id          Int       @id @default(autoincrement())
   uid         String    @unique
   periodStart DateTime? @db.Date
   period      String?
   createdAt   DateTime  @default(now()) @db.Timestamptz(6)
   updatedAt   DateTime  @default(now()) @db.Timestamptz(6)
   view        Boolean   @default(true)
+  id          String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   User        User      @relation(fields: [uid], references: [uid], onDelete: NoAction, onUpdate: NoAction, map: "UserSettings_uid_fkey")
 }
 
-model DayEvents {
-  id        Int      @id @default(autoincrement())
+model DayEvent {
+  id        String   @id(map: "DayEvents_pkey") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   dayId     String
   eventId   Int
   createdAt DateTime @default(now()) @db.Timestamptz(6)
   updatedAt DateTime @default(now()) @db.Timestamptz(6)
   value     String?
   uid       String
-  User      User     @relation(fields: [uid], references: [uid], onDelete: NoAction, onUpdate: NoAction)
+  User      User     @relation(fields: [uid], references: [uid], onDelete: NoAction, onUpdate: NoAction, map: "DayEvents_uid_fkey")
 }
