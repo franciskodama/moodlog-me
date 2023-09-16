@@ -53,14 +53,14 @@ export const Header = ({ location }: { location: Props }) => {
   const [view, setView] = useState(true);
   const uid = user?.id;
 
-  useEffect(() => {
-    async function fetchWeatherData() {
-      const data = await getWeather(location.city);
-      setWeather(data);
-      console.log('---  🚀 ---> | weather:', weather);
-    }
-    fetchWeatherData();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchWeatherData() {
+  //     const data = await getWeather(location.city);
+  //     setWeather(data);
+  //     console.log('---  🚀 ---> | weather:', weather);
+  //   }
+  //   fetchWeatherData();
+  // }, []);
 
   // useEffect(() => {
   //   const getTemp = async () => {
