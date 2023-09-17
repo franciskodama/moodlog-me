@@ -2,11 +2,10 @@ import type { Metadata } from 'next';
 import { ClerkProvider } from '@clerk/nextjs';
 import { Comfortaa } from 'next/font/google';
 
-import { Header } from '@/components/Header';
 import './globals.css';
 import { currentUser } from '@clerk/nextjs/server';
-import { HeaderLoggedOut } from '@/components/Header-Logged-Out';
 import { getUserLocation } from '@/lib/location.server';
+import { Header } from '@/components/Header/page';
 
 const comfortaa = Comfortaa({
   subsets: ['latin'],
@@ -64,9 +63,7 @@ export default async function RootLayout({
           className={`${comfortaa.className} ${user ? 'bg-yellow' : 'bg-blue'}`}
         >
           <main className='container pt-8 pb-8 px-10 bg-secondary max-w-[1500px] border-2 border-primary rounded-xl shadow-md shadow-primary mt-4'>
-            {user
-              ? location && <Header location={location} />
-              : location && <HeaderLoggedOut location={location} />}
+            {location && <Header location={location} />}
             <div>{children}</div>
           </main>
         </body>

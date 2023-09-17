@@ -3,7 +3,6 @@
 import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
-import { useForm } from 'react-hook-form';
 import { UserButton, useUser } from '@clerk/nextjs';
 import {
   MoonIcon,
@@ -18,7 +17,7 @@ import {
   ToggleRightIcon,
 } from 'lucide-react';
 
-import Flag from './Flag';
+import Flag from '../Flag';
 import { Logo } from '@/components/Logo';
 import { Button } from '@/ui/button';
 import { useEffect, useState } from 'react';
@@ -36,7 +35,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { getWeather } from '@/lib/weather.server';
 
 type Props = {
   city: string;
@@ -44,7 +42,7 @@ type Props = {
   country: string;
 };
 
-export const Header = ({ location }: { location: Props }) => {
+export const LoggedIn = ({ location }: { location: Props }) => {
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [period, setPeriod] = useState<string | undefined>();
   const [weather, setWeather] = useState(null);
@@ -112,9 +110,9 @@ export const Header = ({ location }: { location: Props }) => {
         </Link>
 
         <div className='flex items-center gap-4'>
-          <Link href='/map'>
+          {/* <Link href='/map'>
             <KeyRoundIcon fill='yellow' size={24} />
-          </Link>
+          </Link> */}
 
           <Popover>
             <PopoverTrigger>
@@ -177,39 +175,6 @@ export const Header = ({ location }: { location: Props }) => {
           >
             <span className='mx-2'>24° C{/* {weather} */}</span>
             <MoonIcon fill='yellow' size={24} />
-          </div>
-
-          {user && !user?.id && (
-            <div className='flex items-center text-primary font-medium'>
-              <Link href='sign-in'>
-                <h2 className='hover:text-red-500 px-4'>sign in</h2>
-              </Link>
-              <Link href='sign-up'>
-                <h2 className='hover:text-red-500 px-4'>sign up</h2>
-              </Link>
-            </div>
-          )}
-
-          <div className='mr-1 border-2 border-primary rounded-full shadow-lg shadow-primary'>
-            <UserButton
-              userProfileMode='navigation'
-              userProfileUrl={
-                typeof window !== 'undefined'
-                  ? `${window.location.origin}/profile`
-                  : undefined
-              }
-              afterSignOutUrl='/'
-              appearance={{
-                elements: {
-                  userButtonPopoverFooter: 'hidden',
-                  avatarBox: 'w-[3em] h-[3em]',
-                },
-              }}
-            />
-          </div>
-
-          <div className='mr-2 shadow-lg shadow-primary'>
-            <Flag countryCode={location.country} />
           </div>
         </div>
       </div>

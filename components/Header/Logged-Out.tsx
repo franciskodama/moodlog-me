@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import Flag from './Flag';
+import Flag from '../Flag';
 import { Logo } from '@/components/Logo';
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
   country: string;
 };
 
-export const HeaderLoggedOut = ({ location }: { location: Props }) => {
+export const LoggedOut = ({ location }: { location: Props }) => {
   return (
     <>
       <div className='nav bg-secondary pb-6 px-2 ml-1 flex justify-between items-center'>
@@ -19,9 +19,9 @@ export const HeaderLoggedOut = ({ location }: { location: Props }) => {
         </Link>
 
         <div className='flex items-center gap-4'>
-          <div className='mr-2 shadow-lg shadow-primary'>
+          {/* <div className='mr-2 shadow-lg shadow-primary'>
             <Flag countryCode={location.country} />
-          </div>
+          </div> */}
         </div>
       </div>
     </>
