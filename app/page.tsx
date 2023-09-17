@@ -18,8 +18,12 @@ const Home = () => {
   return (
     <>
       <div className='relative items-center flex mx-auto w-full h-[50em]'>
-        <SparklesIcon size={24} />
-        <SparkleIcon size={24} />
+        <div className='animate-spin spin-slow'>
+          <SparklesIcon size={24} />
+        </div>
+        <div className='animate-rotate spin-slow'>
+          <SparkleIcon size={24} />
+        </div>
 
         <div className='w-2/3 mt-8'>
           <div className='w-[23em] ml-[14em] mb-[8em]'>
