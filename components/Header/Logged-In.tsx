@@ -9,7 +9,6 @@ import {
   GripIcon,
   CalendarDaysIcon,
   FlagTriangleRightIcon,
-  KeyRoundIcon,
   CalendarRangeIcon,
   CalendarIcon,
   CalendarXIcon,
@@ -35,58 +34,29 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { LocationProps, MoonProps, WeatherProps } from '@/lib/types';
 
-type Props = {
-  city: string;
-  region: string;
-  country: string;
-};
-
-export const LoggedIn = ({ location }: { location: Props }) => {
+export const LoggedIn = ({
+  location,
+  weather,
+  moon,
+}: {
+  location: LocationProps;
+  weather: WeatherProps;
+  moon: MoonProps;
+}) => {
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [period, setPeriod] = useState<string | undefined>();
-  const [weather, setWeather] = useState(null);
+  // const [weather, setWeather] = useState(null);
   const [toggleCurrentView, setToggleCurrentView] = useState(false);
   const { user } = useUser();
   const [view, setView] = useState(true);
   const uid = user?.id;
 
-  // useEffect(() => {
-  //   async function fetchWeatherData() {
-  //     const data = await getWeather(location.city);
-  //     setWeather(data);
-  //     console.log('---  🚀 ---> | weather:', weather);
-  //   }
-  //   fetchWeatherData();
-  // }, []);
-
-  // useEffect(() => {
-  //   const getTemp = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         `http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=${process.env.NEXT_PUBLIC_OPENWEATHER_KEY}`
-  //       );
-
-  //       if (!response) {
-  //         throw new Error('Failed to get temperature');
-  //       }
-  //       const result = await response.json();
-  //       setWeather(result);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   getTemp();
-  // }, []);
-
   const handleClickOnView = async () => {
     setView(!view);
     await toggleView(uid!, !view);
   };
-
-  // -----------------------------------------------------
-  // console.log('---  🚀 ---> | user:', user);
-  // -----------------------------------------------------
 
   const handleChangeStartPeriod = async (date: any) => {
     setDate(date);
@@ -105,15 +75,7 @@ export const LoggedIn = ({ location }: { location: Props }) => {
   return (
     <>
       <div className='nav bg-secondary pb-6 px-2 ml-1 flex justify-between items-center'>
-        <Link href={user ? '/map' : '/'}>
-          <Logo />
-        </Link>
-
         <div className='flex items-center gap-4'>
-          {/* <Link href='/map'>
-            <KeyRoundIcon fill='yellow' size={24} />
-          </Link> */}
-
           <Popover>
             <PopoverTrigger>
               <div className='flex items-center justify-center w-[14em] mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'>
@@ -173,8 +135,13 @@ export const LoggedIn = ({ location }: { location: Props }) => {
             // className='flex items-center mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
             className='flex items-center mr-1 text-base font-bold text-primary bg-secondary'
           >
-            <span className='mx-2'>24° C{/* {weather} */}</span>
-            <MoonIcon fill='yellow' size={24} />
+            <span className='mx-2'>{Math.trunc(weather.main.temp)}°C</span>
+            <span className='mx-2'>{weather.weather.description}</span>
+
+            <div className='flex'>
+              <span className='mx-2'>{moon.astronomy.astro.moon_phase}</span>
+              <MoonIcon fill='yellow' size={24} />
+            </div>
           </div>
         </div>
       </div>
