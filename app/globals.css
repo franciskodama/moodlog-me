@@ -85,7 +85,7 @@
     @apply bg-background text-foreground;
   }
 }
-
+/* 
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -95,15 +95,24 @@
   }
 }
 
-@keyframes rotate {
-  0% {
-    transform: rotate(360deg);
-  }
+@keyframes float {
+  0%,
   100% {
-    transform: rotate(0deg);
+    transform: translateY(0);
   }
-}
-
+  50% {
+    transform: translateY(10px);
+  }
+} */
+/* 
 .spin-slow {
   animation: spin 5s linear infinite;
 }
+
+.float-slow {
+  animation: spin 10s linear infinite;
+}
+
+.spin-really-slow {
+  animation: spin 300s linear infinite;
+} */

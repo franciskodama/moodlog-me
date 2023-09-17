@@ -1,5 +1,12 @@
 import { SignIn } from '@clerk/nextjs';
-import { SparkleIcon, SparklesIcon } from 'lucide-react';
+import {
+  CloudIcon,
+  MoonStarIcon,
+  SparkleIcon,
+  SparklesIcon,
+  StarIcon,
+  SunDimIcon,
+} from 'lucide-react';
 import { Luckiest_Guy, Pacifico } from 'next/font/google';
 
 const luckiest_guy = Luckiest_Guy({
@@ -17,16 +24,52 @@ const pacifico = Pacifico({
 const Home = () => {
   return (
     <>
-      <div className='relative items-center flex mx-auto w-full h-[50em]'>
-        <div className='animate-spin spin-slow'>
-          <SparklesIcon size={24} />
-        </div>
-        <div className='animate-rotate spin-slow'>
-          <SparkleIcon size={24} />
-        </div>
+      <div className='relative items-center flex flex-col sm:flex-row mx-auto w-full sm:h-[50em]'>
+        <div className='sm:w-2/3 mt-8 relative -z-8'>
+          {/* -------------------- TOP LEFT -------------------- */}
+          <div className='absolute top-[-10%] left-[20%] animate-spin spinslow'>
+            <SparklesIcon fill='#ffdc02' size={24} />
+          </div>
 
-        <div className='w-2/3 mt-8'>
-          <div className='w-[23em] ml-[14em] mb-[8em]'>
+          <div className='absolute top-[10%] left-[10%] animate-spin spinslow'>
+            <SparkleIcon fill='#ffdc02' size={24} />
+          </div>
+          {/* -------------------- TOP RIGHT -------------------- */}
+
+          <div className='absolute top-[-16%] right-[40%] animate-spin spin-slow'>
+            <StarIcon fill='white' size={24} />
+          </div>
+
+          <div className='absolute top-[0] right-[30%] animate-float float-slow'>
+            <CloudIcon fill='#70cdde' size={48} strokeWidth='1.2px' />
+          </div>
+
+          {/* -------------------- BOTTOM LEFT -------------------- */}
+          <div className='absolute bottom-[20%] left-[20%] animate-spin spin-slow'>
+            <SparklesIcon fill='#ffdc02' size={24} />
+          </div>
+
+          <div className='absolute bottom-[30%] left-[10%] animate-float float-slow'>
+            <CloudIcon fill='#70cdde' size={48} strokeWidth='1.2px' />
+          </div>
+          {/* -------------------- BOTTOM RIGHT -------------------- */}
+
+          <div className='absolute bottom-[10%] right-[50%] animate-spin spin-slow'>
+            <StarIcon fill='white' size={24} />
+          </div>
+
+          <div className='absolute bottom-[40%] right-[20%] animate-spin spin-slow'>
+            <SparkleIcon fill='#ffdc02' size={24} />
+          </div>
+
+          {/* -------------------- MOON -------------------- */}
+
+          <div className='animate-rotate spin spin-really-slow'>
+            <SunDimIcon fill='#ffdc02' size={52} strokeWidth='1px' />
+          </div>
+          {/* -------------------- -------------------- */}
+
+          <div className='sm:w-[23em] sm:ml-[14em] mb-[8em] z-20'>
             <div className='relative text-6xl'>
               <h1
                 className={`${pacifico.className} leading-[5rem] text-primary absolute top-1 left-1`}
@@ -47,7 +90,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className='w-1/3 self-center absolute right-0 top-[50%] translate-y-[-65%]'>
+        <div className='sm:w-1/3 self-center sm:absolute sm:right-0 sm:top-[50%] sm:translate-y-[-65%]'>
           <div>
             <div className='relative'>
               <SignIn
@@ -60,7 +103,7 @@ const Home = () => {
                       'lowercase text-center font-semibold text-2xl mb-6',
                     headerSubtitle: 'hidden',
                     formButtonPrimary:
-                      'bg-blue text-xl shadow-md shadow-primary rounded-full  hover:bg-yellow hover:text-primary',
+                      'bg-blue text-xl shadow-md shadow-primary rounded-full hover:bg-white hover:text-primary',
                     formFieldInput:
                       'border-2 border-primary shadow-md shadow-primary h-[3.6em] rounded-full',
                     dividerLine: 'border border-primary',

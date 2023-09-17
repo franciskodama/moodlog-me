@@ -13,7 +13,7 @@ export const Header = async ({ location }: { location: LocationProps }) => {
   const moon = await getMoon(location.city);
 
   return (
-    <div className='bg-secondary mb-6 px-2 flex justify-between items-center'>
+    <div className='bg-secondary mb-6 px-2 flex justify-between items-center z-40'>
       <Link href={user ? '/map' : '/'}>
         <Logo />
       </Link>
@@ -34,7 +34,7 @@ export const Header = async ({ location }: { location: LocationProps }) => {
                 appearance={{
                   elements: {
                     userButtonPopoverFooter: 'hidden',
-                    avatarBox: 'w-[3em] h-[3em]',
+                    avatarBox: 'w-[3em] h-[3em] border-2 border-secondary',
                     userButtonPopoverCard:
                       'border-2 border-primary shadow-md shadow-primary bg-yellow',
                     userPreviewAvatarBox:
