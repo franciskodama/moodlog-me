@@ -1,24 +1,13 @@
 import type { Metadata } from 'next';
 import { ClerkProvider } from '@clerk/nextjs';
-import { Comfortaa, Luckiest_Guy, Pacifico } from 'next/font/google';
+import { Comfortaa } from 'next/font/google';
 
-import { Header } from '@/components/Header';
 import './globals.css';
 import { currentUser } from '@clerk/nextjs/server';
-import { HeaderLoggedOut } from '@/components/Header-Logged-Out';
+import { getUserLocation } from '@/lib/location.server';
+import { Header } from '@/components/Header/page';
 
 const comfortaa = Comfortaa({
-  subsets: ['latin'],
-  display: 'swap',
-});
-
-// const pacifico = Pacifico({
-//   weight: '400',
-//   subsets: ['latin'],
-// });
-
-const luckiest_guy = Luckiest_Guy({
-  weight: '400',
   subsets: ['latin'],
   display: 'swap',
 });
@@ -34,7 +23,6 @@ export const metadata: Metadata = {
   },
 };
 
-const locale: string = 'ca';
 // Custom Hook for context locale
 // https://www.youtube.com/watch?v=I7dwJxGuGYQ&list=WL&index=118&t=93s
 
@@ -50,6 +38,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const user = await currentUser();
+  const location = await getUserLocation();
 
   return (
     <ClerkProvider
@@ -74,11 +63,7 @@ export default async function RootLayout({
           className={`${comfortaa.className} ${user ? 'bg-yellow' : 'bg-blue'}`}
         >
           <main className='container pt-8 pb-8 px-10 bg-secondary max-w-[1500px] border-2 border-primary rounded-xl shadow-md shadow-primary mt-4'>
-            {user ? (
-              <Header locale={locale} />
-            ) : (
-              <HeaderLoggedOut locale={locale} />
-            )}
+            {location && <Header location={location} />}
             <div>{children}</div>
           </main>
         </body>

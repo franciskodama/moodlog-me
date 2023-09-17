@@ -3,7 +3,6 @@
 import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
-import { useForm } from 'react-hook-form';
 import { UserButton, useUser } from '@clerk/nextjs';
 import {
   MoonIcon,
@@ -18,7 +17,7 @@ import {
   ToggleRightIcon,
 } from 'lucide-react';
 
-import Flag from './Flag';
+import Flag from '../Flag';
 import { Logo } from '@/components/Logo';
 import { Button } from '@/ui/button';
 import { useEffect, useState } from 'react';
@@ -36,9 +35,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { getWeather } from '@/lib/weather.server';
 
-export const Header = ({ locale }: { locale: string }) => {
+type Props = {
+  city: string;
+  region: string;
+  country: string;
+};
+
+export const LoggedIn = ({ location }: { location: Props }) => {
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [period, setPeriod] = useState<string | undefined>();
   const [weather, setWeather] = useState(null);
@@ -48,12 +52,12 @@ export const Header = ({ locale }: { locale: string }) => {
   const uid = user?.id;
 
   // useEffect(() => {
-  //   async function fetchData() {
-  //     const result = await getWeather();
-  //     setWeather(result);
+  //   async function fetchWeatherData() {
+  //     const data = await getWeather(location.city);
+  //     setWeather(data);
   //     console.log('---  🚀 ---> | weather:', weather);
   //   }
-  //   fetchData();
+  //   fetchWeatherData();
   // }, []);
 
   // useEffect(() => {
@@ -106,9 +110,9 @@ export const Header = ({ locale }: { locale: string }) => {
         </Link>
 
         <div className='flex items-center gap-4'>
-          <Link href='/map'>
+          {/* <Link href='/map'>
             <KeyRoundIcon fill='yellow' size={24} />
-          </Link>
+          </Link> */}
 
           <Popover>
             <PopoverTrigger>
@@ -169,41 +173,8 @@ export const Header = ({ locale }: { locale: string }) => {
             // className='flex items-center mr-1 text-base font-bold text-primary bg-secondary border-2 border-primary rounded-full py-2 px-4 shadow-lg shadow-primary'
             className='flex items-center mr-1 text-base font-bold text-primary bg-secondary'
           >
-            <span className='mx-2'>24° C</span>
+            <span className='mx-2'>24° C{/* {weather} */}</span>
             <MoonIcon fill='yellow' size={24} />
-          </div>
-
-          {user && !user?.id && (
-            <div className='flex items-center text-primary font-medium'>
-              <Link href='sign-in'>
-                <h2 className='hover:text-red-500 px-4'>sign in</h2>
-              </Link>
-              <Link href='sign-up'>
-                <h2 className='hover:text-red-500 px-4'>sign up</h2>
-              </Link>
-            </div>
-          )}
-
-          <div className='mr-1 border-2 border-primary rounded-full shadow-lg shadow-primary'>
-            <UserButton
-              userProfileMode='navigation'
-              userProfileUrl={
-                typeof window !== 'undefined'
-                  ? `${window.location.origin}/profile`
-                  : undefined
-              }
-              afterSignOutUrl='/'
-              appearance={{
-                elements: {
-                  userButtonPopoverFooter: 'hidden',
-                  avatarBox: 'w-[3em] h-[3em]',
-                },
-              }}
-            />
-          </div>
-
-          <div className='mr-2 shadow-lg shadow-primary'>
-            <Flag countryCode={locale} />
           </div>
         </div>
       </div>
