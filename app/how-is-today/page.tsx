@@ -7,14 +7,10 @@ import {
 import InteractionsPage from './interactions';
 import { StarIcon } from 'lucide-react';
 import { auth } from '@clerk/nextjs';
+import { getUserLocation } from '@/lib/location.server';
 
-type Props = {
-  today: string;
-  locale: string;
-};
-
-export const HowIsToday = async (params: Props) => {
-  const { today, locale } = params;
+export const HowIsToday = async ({ today }: { today: string }) => {
+  const location = await getUserLocation();
 
   return (
     <Accordion type='single' collapsible>
@@ -28,7 +24,7 @@ export const HowIsToday = async (params: Props) => {
           </div>
         </AccordionTrigger>
         <AccordionContent>
-          <InteractionsPage today={today} locale={locale} />
+          <InteractionsPage today={today} />
         </AccordionContent>
       </AccordionItem>
     </Accordion>

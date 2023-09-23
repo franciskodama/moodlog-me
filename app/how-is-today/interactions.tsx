@@ -36,14 +36,8 @@ import { setTodayData } from '@/lib/_actions';
 import { useState } from 'react';
 import { foodQualities } from '@/lib/data/food-quality';
 
-type Props = {
-  today: string;
-  locale: string;
-};
-
-const InteractionsPage = (params: Props) => {
+const InteractionsPage = ({ today }: { today: string }) => {
   const [data, setData] = useState<FieldValues>({});
-  const { today, locale } = params;
   const { user } = useUser();
 
   const {
