@@ -6,20 +6,12 @@ import { currentUser } from '@clerk/nextjs';
 // import { getDay } from '../../lib/day.server';
 import Link from 'next/link';
 import { HowIsToday } from '../how-is-today/page';
+import { getUserLocation } from '@/lib/location.server';
 
 // https://yarnpkg.com/package/classnames
 // https://ui.shadcn.com/docs/components/dialog
 
-type Props = {
-  locale: string;
-  dayId: string;
-};
-
-const MapPage = async ({ params }: { params: Props }) => {
-  // const { locale, dayId } = locale;
-
-  const user = await currentUser();
-  const locale: string = 'ca';
+const MapPage = async () => {
   const today = new Date();
   const year = today.getFullYear();
   const month = String(today.getMonth() + 1).padStart(2, '0');
@@ -33,7 +25,7 @@ const MapPage = async ({ params }: { params: Props }) => {
 
   return (
     <>
-      <HowIsToday locale={locale} today={dayId} />
+      <HowIsToday today={dayId} />
       <div className='flex flex-wrap items-center justify-center gap-2'>
         {calendarData.map((day: any) => (
           <div key={day.id}>
