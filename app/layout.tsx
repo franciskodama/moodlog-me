@@ -39,6 +39,11 @@ export default async function RootLayout({
 }) {
   const user = await currentUser();
   const location = await getUserLocation();
+  // const location = {
+  //   city: 'Ottawa',
+  //   region: 'Ontario',
+  //   country: 'CA',
+  // };
 
   return (
     <ClerkProvider
