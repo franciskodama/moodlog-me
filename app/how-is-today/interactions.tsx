@@ -32,13 +32,27 @@ import { Button } from '@/ui/button';
 
 import { moods } from '@/lib/data/moods';
 import { setTodayData } from '@/lib/_actions';
-// import { getDay } from '@/lib/day.server';
 import { useState } from 'react';
 import { foodQualities } from '@/lib/data/food-quality';
 
-const InteractionsPage = ({ today }: { today: string }) => {
+type locationProps = {
+  city: string;
+  region: string;
+  country: string;
+};
+
+const InteractionsPage = ({
+  today,
+  location,
+}: {
+  today: string;
+  location: locationProps | null;
+}) => {
   const [data, setData] = useState<FieldValues>({});
   const { user } = useUser();
+
+  console.log('---  🚀 ---> | location:', location);
+  console.log('---  🚀 ---> | today:', today);
 
   const {
     register,

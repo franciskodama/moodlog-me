@@ -24,7 +24,7 @@ export const HowIsToday = async ({ today }: { today: string }) => {
           </div>
         </AccordionTrigger>
         <AccordionContent>
-          <InteractionsPage today={today} />
+          <InteractionsPage today={today} location={location} />
         </AccordionContent>
       </AccordionItem>
     </Accordion>
