@@ -39,20 +39,28 @@ type locationProps = {
   city: string;
   region: string;
   country: string;
+  weather: string;
+  moon: string;
 };
 
 const InteractionsPage = ({
   today,
   location,
+  weather,
+  moon,
 }: {
   today: string;
   location: locationProps | null;
+  weather: string;
+  moon: string;
 }) => {
   const [data, setData] = useState<FieldValues>({});
   const { user } = useUser();
 
   console.log('---  🚀 ---> | location:', location);
   console.log('---  🚀 ---> | today:', today);
+  console.log('---  🚀 ---> | weather:', weather);
+  console.log('---  🚀 ---> | moon:', moon);
 
   const {
     register,
@@ -61,13 +69,22 @@ const InteractionsPage = ({
     reset,
   } = useForm();
 
-  const onSubmit = async (formData: FieldValues) => {
-    if (user) {
-      setTodayData(user?.id, today, formData);
-    }
-    setData(formData);
-    // reset();
-  };
+  const onSubmit = async () =>
+    // formData: FieldValues
+    {
+      if (user) {
+        setTodayData(
+          user?.id,
+          today
+          // location,
+          // weather,
+          // moon
+          // , formData
+        );
+      }
+      // setData(formData);
+      // reset();
+    };
 
   return (
     <TooltipProvider>

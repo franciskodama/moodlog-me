@@ -7,10 +7,17 @@ import { setCalendarView, setPeriod, setStartPeriod } from './settings.server';
 
 export const setTodayData = (
   uid: string,
-  dayId: string,
-  formData: FieldValues
+  dayId: string
+  // formData: FieldValues
 ) => {
-  setDay(uid, dayId, formData);
+  setDay(
+    uid,
+    dayId
+    // location,
+    // weather,
+    // temperature
+    // formData
+  );
   revalidatePath('/map');
 };
 

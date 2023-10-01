@@ -8,9 +8,18 @@ import InteractionsPage from './interactions';
 import { StarIcon } from 'lucide-react';
 import { auth } from '@clerk/nextjs';
 import { getUserLocation } from '@/lib/location.server';
+import { getMoon, getWeather } from '@/lib/weather.server';
 
 export const HowIsToday = async ({ today }: { today: string }) => {
-  const location = await getUserLocation();
+  const location: any | null = await getUserLocation();
+  console.log('---  🚀 ---> | location:', location);
+
+  let weather;
+  let moon;
+  if (location) {
+    weather = await getWeather(location.city);
+    moon = await getMoon(location.city);
+  }
 
   return (
     <Accordion type='single' collapsible>
@@ -24,7 +33,12 @@ export const HowIsToday = async ({ today }: { today: string }) => {
           </div>
         </AccordionTrigger>
         <AccordionContent>
-          <InteractionsPage today={today} location={location} />
+          <InteractionsPage
+            today={today}
+            location={location}
+            weather={weather}
+            moon={moon}
+          />
         </AccordionContent>
       </AccordionItem>
     </Accordion>
