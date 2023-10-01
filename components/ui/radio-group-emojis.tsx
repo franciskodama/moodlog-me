@@ -33,9 +33,9 @@ const RadioGroupItemEmojis = React.forwardRef<
       )}
       {...props}
     >
-      <RadioGroupPrimitive.Indicator className='flex items-center justify-center'>
+      <RadioGroupPrimitive.Indicator className='flex items-center justify-center w-12 h-12'>
         {/* <Circle className='h-2.5 w-2.5 fill-current text-current' /> */}
-        <div className='w-6 h-6 rounded-full border-2 border-primary bg-secondary' />
+        <div className='w-9 h-9 -translate-x-[10px] -translate-y-[11px] rounded-full border-2 border-primary bg-transparent' />
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
   );
