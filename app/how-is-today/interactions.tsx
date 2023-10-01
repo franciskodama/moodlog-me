@@ -17,7 +17,10 @@ import { Progress } from '@/components/ui/progress';
 import { Slider } from '@/components/ui/slider';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import {
+  RadioGroupMeals,
+  RadioGroupItemMeals,
+} from '@/components/ui/radio-group-meals';
 import {
   RadioGroupEmojis,
   RadioGroupItemEmojis,
@@ -243,13 +246,13 @@ const InteractionsPage = ({
                   </TooltipContent>
                 </Tooltip>
 
-                <RadioGroup className='flex items-center justify-center w-full ml-4 gap-8'>
+                <RadioGroupMeals className='flex items-center justify-center w-full ml-4 gap-8'>
                   {foodQualities.map((quality) => (
                     <div
                       key={quality}
                       className='flex items-center space-x-2 relative'
                     >
-                      <RadioGroupItem
+                      <RadioGroupItemMeals
                         className='absolute t-0 l-0 translate-x-[1px] h-[2.6em] shadow-md shadow-primary border-2 rounded-full py-1 px-8 text-sm'
                         value={quality}
                         id={quality}
@@ -259,7 +262,7 @@ const InteractionsPage = ({
                       </Label>
                     </div>
                   ))}
-                </RadioGroup>
+                </RadioGroupMeals>
               </div>
 
               {/* ----------------------- TASKS ----------------------- */}
