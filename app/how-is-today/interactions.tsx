@@ -170,7 +170,9 @@ const InteractionsPage = ({
                   </TooltipContent>
                 </Tooltip>
                 <Slider
-                  className='border border-primary bg-primary rounded cursor-pointer'
+                  title='Sleep'
+                  name='h'
+                  className='cursor-pointer'
                   defaultValue={[0]}
                   max={10}
                   step={1}
@@ -189,7 +191,9 @@ const InteractionsPage = ({
                   </TooltipContent>
                 </Tooltip>
                 <Slider
-                  className='border border-primary bg-primary rounded cursor-pointer'
+                  title='Meditation'
+                  name='h'
+                  className='cursor-pointer'
                   defaultValue={[0]}
                   max={60}
                   step={1}
@@ -208,7 +212,9 @@ const InteractionsPage = ({
                   </TooltipContent>
                 </Tooltip>
                 <Slider
-                  className='border border-primary bg-primary rounded cursor-pointer'
+                  title='Workout'
+                  name='h'
+                  className='cursor-pointer'
                   defaultValue={[0]}
                   max={180}
                   step={15}
@@ -227,7 +233,9 @@ const InteractionsPage = ({
                   </TooltipContent>
                 </Tooltip>
                 <Slider
-                  className='border border-primary bg-primary rounded cursor-pointer'
+                  title='Water'
+                  name='liter'
+                  className='cursor-pointer'
                   defaultValue={[0]}
                   max={3}
                   step={0.5}
@@ -278,7 +286,9 @@ const InteractionsPage = ({
                   </TooltipContent>
                 </Tooltip>
                 <Slider
-                  className='border border-primary bg-primary rounded cursor-pointer'
+                  title='Tasks'
+                  name=''
+                  className='cursor-pointer'
                   defaultValue={[0]}
                   max={100}
                   step={10}
