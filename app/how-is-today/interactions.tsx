@@ -109,7 +109,7 @@ const InteractionsPage = ({
               <Tooltip>
                 <TooltipTrigger>
                   <HelpCircleIcon
-                    className='h-6 w-6 text-primary'
+                    className='h-4 w-4 text-primary'
                     strokeWidth='2px'
                   />
                 </TooltipTrigger>
@@ -128,7 +128,7 @@ const InteractionsPage = ({
 
             <div className='flex flex-col justify-center mx-auto gap-4 max-w-[27em]'>
               <div className='flex w-full justify-evenly'>
-                <RadioGroupEmojis className='flex items'>
+                <RadioGroupEmojis className='flex'>
                   {moods.map((mood) => (
                     <div
                       key={mood.id}
@@ -244,7 +244,7 @@ const InteractionsPage = ({
 
               {/* ----------------------- MEALS ----------------------- */}
 
-              <div className='flex w-full items-center'>
+              <div className='flex justify-between'>
                 <Tooltip>
                   <TooltipTrigger>
                     <AppleIcon className='h-6 w-6' strokeWidth='1.8px' />
@@ -254,14 +254,14 @@ const InteractionsPage = ({
                   </TooltipContent>
                 </Tooltip>
 
-                <RadioGroupMeals className='flex items-center justify-center w-full ml-4 gap-8'>
+                <RadioGroupMeals className='flex'>
                   {foodQualities.map((quality) => (
                     <div
                       key={quality}
-                      className='flex items-center space-x-2 relative'
+                      className='relative flex items-center space-x-2'
                     >
                       <RadioGroupItemMeals
-                        className='absolute t-0 l-0 translate-x-[1px] h-[2.6em] shadow-md shadow-primary border-2 rounded-full py-1 px-8 text-sm'
+                        className='absolute t-0 l-0 translate-x-[10px] w-[5em] h-[2em]'
                         value={quality}
                         id={quality}
                       />

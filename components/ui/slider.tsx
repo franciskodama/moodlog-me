@@ -24,7 +24,7 @@ const Slider = React.forwardRef<
       )}
       {...props}
     >
-      <div className='absolute -top-1 left-7 text-xs text-primary tracking-wide'>{`${props.title}: ${props.value} ${props.name}`}</div>
+      <div className='absolute -top-1 left-10 text-xs text-primary tracking-wide'>{`${props.title}: ${props.value} ${props.name}`}</div>
       <SliderPrimitive.Track className='relative h-2 w-full border-[1.8px] grow overflow-hidden rounded-full bg-secondary border-1 border-primary shadow-sm shadow-primary'>
         <SliderPrimitive.Range className='absolute h-full bg-blue' />
       </SliderPrimitive.Track>
