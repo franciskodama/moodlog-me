@@ -19,12 +19,12 @@ const Slider = React.forwardRef<
     <SliderPrimitive.Root
       ref={ref}
       className={cn(
-        'relative flex w-full h-9 touch-none select-none items-center',
+        'relative flex w-full h-12 touch-none select-none items-center',
         className
       )}
       {...props}
     >
-      <div className='absolute -top-1 left-10 text-xs text-primary tracking-wide'>{`${props.title}: ${props.value} ${props.name}`}</div>
+      <div className='absolute -top-[4px] left-0 text-[10px] text-primary tracking-wide'>{`${props.title}: ${props.value} ${props.name}`}</div>
       <SliderPrimitive.Track className='relative h-2 w-full border-[1.8px] grow overflow-hidden rounded-full bg-secondary border-1 border-primary shadow-sm shadow-primary'>
         <SliderPrimitive.Range className='absolute h-full bg-blue' />
       </SliderPrimitive.Track>
