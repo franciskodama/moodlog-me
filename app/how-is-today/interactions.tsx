@@ -91,7 +91,7 @@ const InteractionsPage = ({
 
   return (
     <TooltipProvider>
-      <div className='flex w-full mb-10 mt-1'>
+      <div className='flex w-full mb-2 mt-1'>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className='flex w-full px-2 gap-8'
@@ -103,13 +103,13 @@ const InteractionsPage = ({
               <Input
                 {...register('note')}
                 type='text'
-                className='bg-white ml-14'
+                className='bg-white'
                 placeholder='Leave a note for yourself'
               />
               <Tooltip>
                 <TooltipTrigger>
                   <HelpCircleIcon
-                    className='h-6 w-6 text-primary'
+                    className='h-4 w-4 text-primary'
                     strokeWidth='2px'
                   />
                 </TooltipTrigger>
@@ -124,39 +124,31 @@ const InteractionsPage = ({
             </div>
 
             {/* ----------------------- MOOD ----------------------- */}
-            {/* Convert a radio to a button: https://flowbite.com/docs/forms/radio/ */}
 
-            <div className='flex flex-col justify-center mx-auto gap-4 max-w-[27em]'>
-              <div className='flex w-full justify-evenly'>
-                <RadioGroupEmojis className='flex items'>
-                  {moods.map((mood) => (
-                    <div
-                      key={mood.id}
-                      className='flex items-center space-x-2 relative'
-                    >
-                      <RadioGroupItemEmojis
-                        {...register('moodRating')}
-                        className='absolute t-0 l-0 translate-x-[10px] w-[2em] h-[2em]'
-                        value={mood.id.toString()}
-                        id={mood.id.toString()}
-                      />
-                      <Label htmlFor={mood.id.toString()}>
-                        <Tooltip>
-                          <TooltipTrigger>{mood.icon}</TooltipTrigger>
-                          <TooltipContent>
-                            <p className='text-base font-bold mb-1'>
-                              {mood.title}
-                            </p>
-                            <p className='text-xs w-[20ch]'>
-                              {mood.description}
-                            </p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </Label>
-                    </div>
-                  ))}
-                </RadioGroupEmojis>
-              </div>
+            <div className='flex flex-col justify-center gap-2 mr-8'>
+              <RadioGroupEmojis className='flex justify-between ml-8 mb-2'>
+                {moods.map((mood) => (
+                  <div key={mood.id} className='flex items-center relative'>
+                    <RadioGroupItemEmojis
+                      {...register('moodRating')}
+                      className='absolute t-0 l-0 translate-x-[2px] w-[2em] h-[2em]'
+                      value={mood.id.toString()}
+                      id={mood.id.toString()}
+                    />
+                    <Label htmlFor={mood.id.toString()}>
+                      <Tooltip>
+                        <TooltipTrigger>{mood.icon}</TooltipTrigger>
+                        <TooltipContent>
+                          <p className='text-base font-bold mb-1'>
+                            {mood.title}
+                          </p>
+                          <p className='text-xs w-[20ch]'>{mood.description}</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </Label>
+                  </div>
+                ))}
+              </RadioGroupEmojis>
 
               {/* ----------------------- SLEEP ----------------------- */}
 
@@ -244,7 +236,7 @@ const InteractionsPage = ({
 
               {/* ----------------------- MEALS ----------------------- */}
 
-              <div className='flex w-full items-center'>
+              <div className='flex'>
                 <Tooltip>
                   <TooltipTrigger>
                     <AppleIcon className='h-6 w-6' strokeWidth='1.8px' />
@@ -254,18 +246,21 @@ const InteractionsPage = ({
                   </TooltipContent>
                 </Tooltip>
 
-                <RadioGroupMeals className='flex items-center justify-center w-full ml-4 gap-8'>
+                <RadioGroupMeals className='flex'>
                   {foodQualities.map((quality) => (
                     <div
                       key={quality}
-                      className='flex items-center space-x-2 relative'
+                      className='relative flex space-x-6 items-center'
                     >
                       <RadioGroupItemMeals
-                        className='absolute t-0 l-0 translate-x-[1px] h-[2.6em] shadow-md shadow-primary border-2 rounded-full py-1 px-8 text-sm'
+                        className='absolute t-0 l-0 translate-x-[26px] w-[5em] h-[2em]'
                         value={quality}
                         id={quality}
                       />
-                      <Label htmlFor={quality} className='text-xs'>
+                      <Label
+                        htmlFor={quality}
+                        className='text-xs z-10 cursor-pointer'
+                      >
                         {quality}
                       </Label>
                     </div>
@@ -304,7 +299,7 @@ const InteractionsPage = ({
               What brought a smile to your face today?
             </h3>
             <div className='flex w-full'>
-              <div className='flex flex-col gap-2 w-full'>
+              <div className='flex flex-col gap-4 w-full'>
                 <Input
                   {...register('firstGratitude')}
                   type='text'
@@ -327,7 +322,7 @@ const InteractionsPage = ({
               <Tooltip>
                 <TooltipTrigger>
                   <HelpCircleIcon
-                    className='h-6 w-6 text-primary ml-2'
+                    className='h-4 w-4 text-primary ml-2'
                     strokeWidth='2px'
                   />
                 </TooltipTrigger>
@@ -341,11 +336,11 @@ const InteractionsPage = ({
 
             {/* ----------------------- 3 CCOULD BE BETTER ----------------------- */}
 
-            <h3 className='mt-6 mb-2 font-semibold'>
+            <h3 className='mt-10 mb-2 font-semibold'>
               Opportunities for growth today?
             </h3>
             <div className='flex w-full'>
-              <div className='flex flex-col gap-2 w-full'>
+              <div className='flex flex-col gap-4 w-full'>
                 <Input
                   {...register('firstGrowthOpportunity')}
                   type='text'
@@ -368,7 +363,7 @@ const InteractionsPage = ({
               <Tooltip>
                 <TooltipTrigger>
                   <HelpCircleIcon
-                    className='h-6 w-6 text-primary ml-2'
+                    className='h-4 w-4 text-primary ml-2'
                     strokeWidth='2px'
                   />
                 </TooltipTrigger>
@@ -383,7 +378,7 @@ const InteractionsPage = ({
 
           {/* ----------------------- NOTES ----------------------- */}
 
-          <div className='flex flex-col w-1/4 h-full gap-4'>
+          <div className='flex flex-col w-1/4 h-[28.5em] gap-4'>
             <Textarea
               {...register('reflections', {
                 minLength: {
@@ -428,7 +423,7 @@ const InteractionsPage = ({
 
           {/* ----------------------- 4th COLUMN ----------------------- */}
 
-          <div className='w-1/4 h-full pb-6 border-2 border-dashed border-primary rounded-xl'></div>
+          <div className='w-1/4 h-[29em] pb-6 border-2 border-dashed border-primary rounded-xl'></div>
 
           {/* TODO: Statistics & Benchmarketing with other users  */}
           {/* TODO: Motivational phrases + Events celebrations + Badges  */}

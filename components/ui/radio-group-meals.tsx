@@ -28,14 +28,23 @@ const RadioGroupItemMeals = React.forwardRef<
     <RadioGroupPrimitive.Item
       ref={ref}
       className={cn(
-        'aspect-square h-4 text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+        'aspect-square h-4 w-4 rounded-full text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
         className
       )}
       {...props}
     >
-      <RadioGroupPrimitive.Indicator className='flex items-center justify-center'>
-        <Circle className='h-2.5 w-2.5 fill-current text-current' />
-        {/* <div className='w-9 h-9 -translate-x-[10px] -translate-y-[11px] rounded-full border-2 border-primary border-dashed bg-transparent' /> */}
+      <RadioGroupPrimitive.Indicator>
+        <div
+          className='h-6 w-12 rounded-full -translate-x-2 -translate-y-[1px] border-2 border-primary border-dashed bg-yellow'
+          style={{
+            width:
+              props.value === 'Excellent'
+                ? '4.8em'
+                : props.value === 'Good'
+                ? '3.2em'
+                : '2.8em',
+          }}
+        />
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
   );
